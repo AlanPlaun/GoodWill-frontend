@@ -22,7 +22,7 @@ export const IngresoSesion = () =>{
             <Text style={styles.placeholdercon}>Contraseña</Text>
             )}
         <Text style={styles.olvidarContraseña}>Recuperar contraseña</Text>
-        <Button style={styles.botton} title="Ingresar" onPress={() => alert('Ingresando')} />
+        <Button style={styles.ingresar} title="Ingresar" color="#CE5656" padding="30" onPress={() => alert('Ingresando')} />
         </View>
     );
 
@@ -98,13 +98,10 @@ const styles = StyleSheet.create({
         textDecorationLine: "underline",
         color: "#C2C2C2",
     },
-    botton:{
-        position: "absolute",
-        width: 260,
-        height: 32,
-        left: 50,
-        top: 229,
-        backgroundColor: "#CE5656",
+    ingresar:{
+      
+        paddingLeft: 50,
+        paddingTop: 229,
         borderRadius: 5,
     },
 });
