@@ -3,15 +3,17 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { IngresoSesion } from './components/IngresoSesion';
 
-
 const Stack = createNativeStackNavigator();
 
 function App() {
-  fetch
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="IngresoSesion" component={IngresoSesion} />
+        <Stack.Screen
+          name="IngresoSesion"
+          component={IngresoSesion}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

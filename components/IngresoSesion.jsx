@@ -33,67 +33,62 @@ export const IngresoSesion = () => {
     return (
         <View style={{ backgroundColor: "#F5F5F5", alignItems: 'center', justifyContent: 'center' }}>
             <Text style={styles.Titulo}>Ingresa tus datos</Text>
-            <TextInput style={styles.inputemail} value={email} onChangeText={handleInputChangeEmail} placeholder="E-mail"   placeholderTextColor="gray"  placeholderStyle={styles.placeholder}/>
-            <br />
-            <TextInput style={styles.inputContraseña} value={contraseña} onChangeText={handleInputChangeContraseña} />
-            {contraseña.length === 0 && (
-                <Text style={styles.placeholdercon}>Contraseña</Text>
-            )}
+            <TextInput style={styles.inputingreso} value={email} onChangeText={handleInputChangeEmail} placeholder="E-mail"   placeholderTextColor="gray"/>
+            <TextInput style={styles.inputcontra} value={contraseña} onChangeText={handleInputChangeContraseña} placeholder="Contraseña"   placeholderTextColor="gray" secureTextEntry={true}
+/>
+            
             <Text style={styles.olvidarContraseña}>Recuperar contraseña</Text>
-                    <br />
             <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => alert('Ingresando')}>
                 <Text style={styles.texto}>Siguiente</Text>
             </Pressable>
+            <Text style={styles.crearCuenta}>¿No tenés una cuenta? Crear cuenta</Text>
+
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    Titulo:{
-         width: 168,
-        height: 24,
-        left: 30,
-        top: 54,
+    crearCuenta:{
+        marginTop:14,
         fontStyle: "normal",
-        fontWeight: 600,
+        fontWeight: 400,
+        fontSize: 11,
+        lineHeight: 13,
+        textDecorationLine: "underline",
+        color: "#C2C2C2",
+    },
+    Titulo:{
+        marginTop:54,
+        marginRight:141,
+        fontWeight: 'bold',
         fontSize: 20,
         lineHeight: 24,
         textAlign: "center",
         color: "#000000",
+        
     },
-    inputemail:{
+    inputingreso:{
+        marginTop:14,
          width: 300,
         height: 40,
-        left: 30,
-        top: 92,
+        right: 10,
         backgroundColor: "#D9D9D9",
         borderRadius: 5,
         padding: 10,
     },
-    inputContraseña:{
+    inputcontra:{
+        marginTop:20,
          width: 300,
         height: 40,
-        left: 30,
-        top: 152,
+        right: 10,
         backgroundColor: "#D9D9D9",
         borderRadius: 5,
+        padding: 10,
     },
-    placeholderemail:{
-         width: 51,
-        height: 21,
-        left: 38,
-        top: 102,
-        fontStyle: "normal",
-        fontWeight: 400,
-        fontSize: 17,
-        lineHeight: 21,
-        color: "#999999",
-    },
+    
+ 
     placeholdercon:{
-         width: 93,
-        height: 21,
-        left: 39,
-        top: 163,
+       
         fontStyle: "normal",
         fontWeight: 400,
         fontSize: 17,
@@ -101,28 +96,26 @@ const styles = StyleSheet.create({
         color: "#999999",
     },
     olvidarContraseña:{
-         width: 115,
-        height: 13,
-        left: 30,
-        top: 192,
         fontStyle: "normal",
         fontWeight: 400,
         fontSize: 11,
+        marginRight:190,
         lineHeight: 13,
-        textAlign: "center",
         textDecorationLine: "underline",
         color: "#C2C2C2",
     },
     texto:{
-        color: "green",
+        color: "white",
         fontSize:17,
-        justifyContent: "center",
+        textAlign:"center",
+        marginTop:3,
+        
     },
     Boton:{
         width: 260,
         height: 32,
         borderRadius: 5,
-        marginTop: 2,
+        marginTop: 24,
         
        
 
