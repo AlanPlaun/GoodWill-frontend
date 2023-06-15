@@ -1,32 +1,37 @@
 import React, { useState } from 'react';
-import { View, Text,StyleSheet,TextInput,Button } from 'react-native';
+import { View, Text,StyleSheet,TextInput,Button, Pressable } from 'react-native';
 
-export const IngresoSesion = () =>{
+export const IngresoSesion = () => {
     const [email, setEmail] = useState('');
     const [contraseña, setContraseña] = useState('');
+
     const handleInputChangeEmail = (value) => {
         setEmail(value);
     };
+
     const handleInputChangeContraseña = (value) => {
         setContraseña(value);
     };
+
     return (
-        <View style={{backgroundColor:"#ffffff", alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={styles.Titulo}>Ingresa tus datos</Text>
-        <TextInput style={styles.inputemail} value={email} onChangeText={handleInputChangeEmail}/>
+        <View style={{ backgroundColor: "#F5F5F5", alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={styles.Titulo}>Ingresa tus datos</Text>
+            <TextInput style={styles.inputemail} value={email} onChangeText={handleInputChangeEmail} />
             {email.length === 0 && (
-            <Text style={styles.placeholderemail}>Email</Text>
+                <Text style={styles.placeholderemail}>Email</Text>
             )}
-        <TextInput style={styles.inputContraseña} value={contraseña} onChangeText={handleInputChangeContraseña}/>
+            <TextInput style={styles.inputContraseña} value={contraseña} onChangeText={handleInputChangeContraseña} />
             {contraseña.length === 0 && (
-            <Text style={styles.placeholdercon}>Contraseña</Text>
+                <Text style={styles.placeholdercon}>Contraseña</Text>
             )}
-        <Text style={styles.olvidarContraseña}>Recuperar contraseña</Text>
-        <Button style={styles.ingresar} title="Ingresar" color="#CE5656" padding="30" onPress={() => alert('Ingresando')} />
+            <Text style={styles.olvidarContraseña}>Recuperar contraseña</Text>
+            <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => alert('Ingresando')}>
+                <Text style={styles.texto}>Siguiente</Text>
+            </Pressable>
         </View>
     );
+};
 
-}
 const styles = StyleSheet.create({
     Titulo:{
         position: "absolute",
@@ -98,12 +103,21 @@ const styles = StyleSheet.create({
         textDecorationLine: "underline",
         color: "#C2C2C2",
     },
-    ingresar:{
-      
-        paddingLeft: 50,
-        paddingTop: 229,
+    Boton:{
+        width: 260,
+        height: 32,
         borderRadius: 5,
+        paddingLeft: 50,
+        paddingTop: 229
     },
+    texto:{
+        color: "white",
+        fontSize:17,
+        justifyContent: 'center',
+        alignItems: 'center',
+        
+
+    }
 });
 
 
