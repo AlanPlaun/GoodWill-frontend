@@ -7,6 +7,7 @@ import { IngresoSesion } from './components/IngresoSesion';
 const Stack = createNativeStackNavigator();
 
 function App() {
+  fetch
   return (
     <NavigationContainer>
       <Stack.Navigator>

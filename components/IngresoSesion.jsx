@@ -10,6 +10,24 @@ export const IngresoSesion = () =>{
     const handleInputChangeContraseña = (value) => {
         setContraseña(value);
     };
+    //manda la informacion luego que se apreta el boton (deberia estar en una funcion que se llame cuando se toque el boton) 
+    fetch('http://localhost:5000/ingresosesion ', {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json',
+        },
+        body:JSON.stringify({email: email,contraseña: contraseña}),
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error(error)
+    })
+    
+
+
     return (
         <View style={{backgroundColor:"#ffffff", alignItems: 'center', justifyContent: 'center' }}>
         <Text style={styles.Titulo}>Ingresa tus datos</Text>
