@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text,StyleSheet,TextInput,Button, Pressable } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Button, Pressable } from 'react-native';
 
 export const IngresoSesion = () => {
     const [email, setEmail] = useState('');
@@ -12,36 +12,41 @@ export const IngresoSesion = () => {
     const handleInputChangeContraseña = (value) => {
         setContraseña(value);
     };
-    //manda la informacion luego que se apreta el boton (deberia estar en una funcion que se llame cuando se toque el boton) 
-    // fetch('http://localhost:5000/ingresosesion ', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type':'application/json',
-    //     },
-    //     body:JSON.stringify({email: email,contraseña: contraseña}),
-    // })
-    // .then(res => res.json())
-    // .then(data => {
-    //     console.log(data);
-    // })
-    // .catch(error => {
-    //     console.error(error)
-    // })
-    
+    function subirDatos() {
+        console.log(email, contraseña);
+        fetch('http://localhost:5000/ingresosesion', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: email, contraseña: contraseña }),
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data === 'Usuario no encontrado') {
+                    console.log(data);
+                }
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
+
+
 
 
     return (
         <View style={{ backgroundColor: "#F5F5F5", alignItems: 'center', justifyContent: 'center' }}>
             <Text style={styles.Titulo}>Ingresa tus datos</Text>
-            <TextInput style={styles.inputemail} value={email} onChangeText={handleInputChangeEmail} placeholder="E-mail"   placeholderTextColor="gray"  placeholderStyle={styles.placeholder}/>
+            <TextInput style={styles.inputemail} value={email} onChangeText={handleInputChangeEmail} placeholder="E-mail" placeholderTextColor="gray" placeholderStyle={styles.placeholder} />
             <br />
             <TextInput style={styles.inputContraseña} value={contraseña} onChangeText={handleInputChangeContraseña} />
             {contraseña.length === 0 && (
                 <Text style={styles.placeholdercon}>Contraseña</Text>
             )}
             <Text style={styles.olvidarContraseña}>Recuperar contraseña</Text>
-                    <br />
-            <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => alert('Ingresando')}>
+            <br />
+            <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={subirDatos}>
                 <Text style={styles.texto}>Siguiente</Text>
             </Pressable>
         </View>
@@ -49,8 +54,8 @@ export const IngresoSesion = () => {
 };
 
 const styles = StyleSheet.create({
-    Titulo:{
-         width: 168,
+    Titulo: {
+        width: 168,
         height: 24,
         left: 30,
         top: 54,
@@ -61,8 +66,8 @@ const styles = StyleSheet.create({
         textAlign: "center",
         color: "#000000",
     },
-    inputemail:{
-         width: 300,
+    inputemail: {
+        width: 300,
         height: 40,
         left: 30,
         top: 92,
@@ -70,16 +75,16 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         padding: 10,
     },
-    inputContraseña:{
-         width: 300,
+    inputContraseña: {
+        width: 300,
         height: 40,
         left: 30,
         top: 152,
         backgroundColor: "#D9D9D9",
         borderRadius: 5,
     },
-    placeholderemail:{
-         width: 51,
+    placeholderemail: {
+        width: 51,
         height: 21,
         left: 38,
         top: 102,
@@ -89,8 +94,8 @@ const styles = StyleSheet.create({
         lineHeight: 21,
         color: "#999999",
     },
-    placeholdercon:{
-         width: 93,
+    placeholdercon: {
+        width: 93,
         height: 21,
         left: 39,
         top: 163,
@@ -100,8 +105,8 @@ const styles = StyleSheet.create({
         lineHeight: 21,
         color: "#999999",
     },
-    olvidarContraseña:{
-         width: 115,
+    olvidarContraseña: {
+        width: 115,
         height: 13,
         left: 30,
         top: 192,
@@ -113,21 +118,21 @@ const styles = StyleSheet.create({
         textDecorationLine: "underline",
         color: "#C2C2C2",
     },
-    texto:{
+    texto: {
         color: "green",
-        fontSize:17,
+        fontSize: 17,
         justifyContent: "center",
     },
-    Boton:{
+    Boton: {
         width: 260,
         height: 32,
         borderRadius: 5,
         marginTop: 2,
-        
-       
+
+
 
     }
-    
+
 });
 
 
