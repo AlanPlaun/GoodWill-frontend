@@ -13,7 +13,7 @@ export const IngresoSesion = () => {
         setContraseña(value);
     };
     function subirDatos() {
-        fetch('http://localhost:5000/ingresosesion', {
+        fetch('https://eec0-200-73-176-50.ngrok-free.app/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
