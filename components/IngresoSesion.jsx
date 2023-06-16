@@ -13,7 +13,6 @@ export const IngresoSesion = () => {
         setContraseña(value);
     };
     function subirDatos() {
-        console.log(email, contraseña);
         fetch('http://localhost:5000/ingresosesion', {
             method: 'POST',
             headers: {
@@ -23,9 +22,10 @@ export const IngresoSesion = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                if (data === ''){
-                    console.log("usuario no encontrado")
+                if (data === "No se encontró usuario"){
+                    console.log(data)
+                }else{
+                    console.log(data)
                 }
             })
             .catch(error => {
