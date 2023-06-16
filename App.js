@@ -10,8 +10,8 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="IngresoSesion" component={IngresoSesion} options={{ headerShown: false }}/>
         <Stack.Screen name="HomePage" component={HomePage} options={{ headerShown: false }}/>
+        <Stack.Screen name="IngresoSesion" component={IngresoSesion} options={{ headerShown: false }}/>
 
       </Stack.Navigator>
     </NavigationContainer>

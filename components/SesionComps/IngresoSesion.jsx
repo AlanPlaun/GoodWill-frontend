@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 export const IngresoSesion = () => {
     const [email, setEmail] = useState('');
@@ -12,6 +14,7 @@ export const IngresoSesion = () => {
     const handleInputChangeContraseña = (value) => {
         setContraseña(value);
     };
+    
     function subirDatos() {
         fetch('http://localhost:5000/ingresosesion', {
             method: 'POST',
@@ -32,7 +35,8 @@ export const IngresoSesion = () => {
                 console.error(error)
             })
     }
-    
+
+    const navigation = useNavigation();
 
     return (
         <View style={styles.Todo}>
@@ -40,13 +44,10 @@ export const IngresoSesion = () => {
             <TextInput style={styles.inputingreso} value={email} onChangeText={handleInputChangeEmail} placeholder="E-mail"   placeholderTextColor="gray"/>
             <TextInput style={styles.inputcontra} value={contraseña} onChangeText={handleInputChangeContraseña} placeholder="Contraseña"   placeholderTextColor="gray" secureTextEntry={true}/> 
             <Text style={styles.olvidarContraseña}>Recuperar contraseña</Text>
-            <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={subirDatos}>
+            <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={subirDatos }>
                 <Text style={styles.texto}>Siguiente</Text>
-                
             </Pressable>
-            <Button onPress = { () => {
-                    navigation.navigate('./HomePageComps/HomePage')
-                }}> <Text>Lol</Text></Button>
+            {/* <Button onPress = { () => {     navigation.navigate('HomePage') }}> <Text>Lol</Text></Button> */}
             <Text style={styles.crearCuenta}>¿No tenés una cuenta? Crear cuenta</Text>
             
 

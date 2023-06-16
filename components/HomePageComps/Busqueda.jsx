@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, Pressable } from 'react-native';
-import {Busqueda} from './Busqueda'
-export const HomePage = () => {
-   
+
+export const Busqueda = () =>{
+    <View>
+        <Text>Hola</Text>
+
+    </View>
 
 
-    return (
-        <View style={styles.Todo}>
-            <Busqueda/>
-            
 
-        </View>
-    );
-};
 
+}
 const styles = StyleSheet.create({
     Todo:{
          alignItems: 'center', justifyContent: 'center' 
@@ -93,8 +90,4 @@ const styles = StyleSheet.create({
 
 });
 
-
-
-
-
-export default HomePage;
+export default Busqueda
