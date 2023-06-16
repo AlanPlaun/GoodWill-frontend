@@ -23,8 +23,9 @@ export const IngresoSesion = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data === 'Usuario no encontrado') {
-                    console.log(data);
+                console.log(data)
+                if (data === ''){
+                    console.log("usuario no encontrado")
                 }
             })
             .catch(error => {
