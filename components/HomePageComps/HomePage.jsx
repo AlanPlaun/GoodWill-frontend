@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, Pressable } from 'react-native';
-import {Busqueda} from './Busqueda'
+import Busqueda from '../HomePageComps/Busqueda'
 export const HomePage = () => {
    
 
 
     return (
         <View style={styles.Todo}>
-            <Busqueda/>
-            
+            {/* <Text style={styles.Titulo}>Ingresa tus datos</Text> */}
+                <Busqueda/>
 
         </View>
     );

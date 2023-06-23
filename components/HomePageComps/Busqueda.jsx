@@ -1,93 +1,80 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, Pressable } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity,Fragment } from 'react-native';
 
-export const Busqueda = () =>{
-    <View>
-        <Text>Hola</Text>
+const Busqueda = () => {
+    const [busqueda, setBusqueda] = useState('');
+    const [showMenu, setShowMenu] = useState(false);
 
-    </View>
+    const handleInputChangeBusqueda = (value) => {
+        setBusqueda(value);
+    };
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu);
+    };
+
+    return (
+        <View style={styles.container}>
+            <View style={styles.srcBar}>
+            <TextInput
+                style={styles.inputBusqueda}
+                value={busqueda}
+                onChangeText={handleInputChangeBusqueda}
+                placeholder="Busqueda"
+                placeholderTextColor="gray"
+            />
+            <TouchableOpacity onPress={toggleMenu}>
+                <Text style={styles.menuIcon}>≡</Text>
+            </TouchableOpacity>
 
 
 
+            {/* {showMenu ? (
+                <View style={styles.menuContainer}>
+                    <Text>Opción 1</Text>
+                    <Text>Opción 2</Text>
+                    <Text>Opción 3</Text>
+                </View>
+            ) : null} */}
+            </View>
+        </View>
+    );
+};
 
-}
 const styles = StyleSheet.create({
-    Todo:{
-         alignItems: 'center', justifyContent: 'center' 
+    srcBar:{
+        bottom:37
     },
-    crearCuenta:{
-        marginTop:14,
-        fontStyle: "normal",
-        fontWeight: 400,
-        fontSize: 11,
-        lineHeight: 13,
-        textDecorationLine: "underline",
-        color: "#C2C2C2",
+    container: {
+        top: 50,
+        backgroundColor: '#CE5656',
+        height: 56,
+        width: 411,
     },
-    Titulo:{
-        marginTop:54,
-        marginRight:141,
+    inputBusqueda: {
+        marginTop: 20,
+        width: 231,
+        height: 40,
+        borderRadius: 5,
+        padding: 10,
+        top: 25.49,
+        bottom: 27.45,
+        backgroundColor: '#FFFFFF',
+        borderRadius: 35,
+        alignSelf: 'center',
+    },
+    menuIcon: {
+        fontSize: 40,
         fontWeight: 'bold',
-        fontSize: 20,
-        lineHeight: 24,
-        textAlign: "center",
-        color: "#000000",
-        
-    },
-    inputingreso:{
-        marginTop:14,
-         width: 300,
-        height: 40,
-        right: 10,
-        backgroundColor: "#D9D9D9",
-        borderRadius: 5,
-        padding: 10,
-    },
-    inputcontra:{
-        marginTop:20,
-         width: 300,
-        height: 40,
-        right: 10,
-        backgroundColor: "#D9D9D9",
-        borderRadius: 5,
-        padding: 10,
-    },
-    
- 
-    placeholdercon:{
-       
-        fontStyle: "normal",
-        fontWeight: 400,
-        fontSize: 17,
-        lineHeight: 21,
-        color: "#999999",
-    },
-    olvidarContraseña:{
-        fontStyle: "normal",
-        fontWeight: 400,
-        fontSize: 11,
-        marginRight:190,
-        lineHeight: 13,
-        textDecorationLine: "underline",
-        color: "#C2C2C2",
-    },
-    texto:{
-        color: "white",
-        fontSize:17,
-        textAlign:"center",
-        marginTop:3,
-        
-    },
-    Boton: {
-        width: 260,
-        height: 32,
-        borderRadius: 5,
-        marginTop: 24,
-        
-       
+        color: 'white',
+        marginLeft: 10,
+        bottom:23,
 
-    }
-
+    },
+    menuContainer: {
+        backgroundColor: '#FFFFFF',
+        
+    },
 });
 
-export default Busqueda
+export default Busqueda;
