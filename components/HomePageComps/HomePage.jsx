@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, Pressable } from 'react-native';
 import Busqueda from '../HomePageComps/Busqueda'
+import Anuncio  from './Anuncio';
 export const HomePage = () => {
    
 
@@ -9,7 +10,7 @@ export const HomePage = () => {
         <View style={styles.Todo}>
             {/* <Text style={styles.Titulo}>Ingresa tus datos</Text> */}
                 <Busqueda/>
-
+            <Anuncio/>
         </View>
     );
 };

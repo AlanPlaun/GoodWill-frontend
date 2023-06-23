@@ -16,7 +16,7 @@ export const IngresoSesion = () => {
     };
     
     function subirDatos() {
-        fetch('https://eec0-200-73-176-50.ngrok-free.app/login', {
+        fetch('https://eec0-200-73-176-50.ngrok-free.app/login', { //cambiar link
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

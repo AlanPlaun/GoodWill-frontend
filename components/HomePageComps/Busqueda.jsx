@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity,Fragment } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity,Fragment, Pressable } from 'react-native';
 
 const Busqueda = () => {
     const [busqueda, setBusqueda] = useState('');
@@ -21,21 +21,22 @@ const Busqueda = () => {
                 value={busqueda}
                 onChangeText={handleInputChangeBusqueda}
                 placeholder="Busqueda"
+                
                 placeholderTextColor="gray"
-            />
+
+            />                
+
             <TouchableOpacity onPress={toggleMenu}>
                 <Text style={styles.menuIcon}>≡</Text>
             </TouchableOpacity>
-
-
-
-            {/* {showMenu ? (
+             {showMenu ? (
                 <View style={styles.menuContainer}>
                     <Text>Opción 1</Text>
                     <Text>Opción 2</Text>
                     <Text>Opción 3</Text>
                 </View>
-            ) : null} */}
+            ) : null} 
+
             </View>
         </View>
     );
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
         bottom:37
     },
     container: {
-        top: 50,
+        top: 24,
         backgroundColor: '#CE5656',
         height: 56,
         width: 411,
