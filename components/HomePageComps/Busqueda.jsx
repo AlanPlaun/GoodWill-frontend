@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
         color: 'white',
         marginLeft: 10,
         bottom:23,
+        width:"10%",
 
     },
     menuContainer: {
