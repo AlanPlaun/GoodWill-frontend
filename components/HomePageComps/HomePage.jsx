@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput, Button, Pressable } from 'react-nati
 import Busqueda from '../HomePageComps/Busqueda'
 import Anuncio  from './Anuncio';
 import Categorias from './Categorías'
+import Productos from './Producto';
 export const HomePage = () => {
    
 
@@ -13,6 +14,7 @@ export const HomePage = () => {
             <Busqueda/>
             <Anuncio/>
             <Categorias/>
+            <Productos/>
         </View>
     );
 };
