@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
         height:182,
         position: "absolute",
         left: 50,
-        transform: Translate(-50)
     }
 });
 
