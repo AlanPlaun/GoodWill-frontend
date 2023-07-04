@@ -4,6 +4,7 @@ import Busqueda from '../HomePageComps/Busqueda'
 import Anuncio  from './Anuncio';
 import Categorias from './Categorías'
 import Productos from './Producto';
+import Servicio from './Servicio.jsx';
 export const HomePage = () => {
    
 
@@ -14,7 +15,7 @@ export const HomePage = () => {
             <Busqueda/>
             <Anuncio/>
             <Categorias/>
-            <Productos/>
+            <Servicio/>
         </View>
     );
 };
