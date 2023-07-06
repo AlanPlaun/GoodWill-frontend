@@ -15,7 +15,6 @@ export const HomePage = () => {
             <Busqueda/>
             <Anuncio/>
             <Categorias/>
-            <Servicio/>
         </View>
     );
 };

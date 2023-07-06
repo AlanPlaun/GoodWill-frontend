@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Fragment, Pressable, Image } from 'react-native';
+import { View, Text, StyleSheet} from 'react-native';
 import Producto from './Producto';
 
 const Servicio = () =>{
     return(
     <View style={styles.container}>
         <Text style={styles.texto}>Servicios</Text>
-        <Producto/>
     </View>)
 }
 const styles = StyleSheet.create({

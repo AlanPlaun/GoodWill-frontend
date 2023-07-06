@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity,Fragment, Pressable } from 'react-native';
+import 'react-native-gesture-handler';
 
 const Busqueda = () => {
     const [busqueda, setBusqueda] = useState('');
-    const [showMenu, setShowMenu] = useState(false);
 
     const handleInputChangeBusqueda = (value) => {
         setBusqueda(value);
     };
 
-    const toggleMenu = () => {
-        setShowMenu(!showMenu);
-    };
+  
 
     return (
         <View style={styles.container}>
@@ -21,22 +19,9 @@ const Busqueda = () => {
                 value={busqueda}
                 onChangeText={handleInputChangeBusqueda}
                 placeholder="Busqueda"
-                
                 placeholderTextColor="gray"
-
             />                
-
-            <TouchableOpacity onPress={toggleMenu}>
-                <Text style={styles.menuIcon}>≡</Text>
-            </TouchableOpacity>
-             {showMenu ? (
-                <View style={styles.menuContainer}>
-                    <Text>Opción 1</Text>
-                    <Text>Opción 2</Text>
-                    <Text>Opción 3</Text>
-                </View>
-            ) : null} 
-
+        
             </View>
         </View>
     );
@@ -63,21 +48,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         borderRadius: 35,
         alignSelf: 'center',
-    },
-    menuIcon: {
-        fontSize: 40,
-        fontWeight: 'bold',
-        color: 'white',
-        marginLeft: 10,
-        bottom:23,
-        width:"9%",
-        borderColor: "black"
-
-    },
-    menuContainer: {
-        backgroundColor: '#FFFFFF',
-        
-    },
+    }
 });
 
 export default Busqueda;
