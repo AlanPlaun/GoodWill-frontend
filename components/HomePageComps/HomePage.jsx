@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, Pressable } from 'react-native';
+import { View, Text, StyleSheet, ScrollView} from 'react-native';
 import Busqueda from '../HomePageComps/Busqueda'
 import Anuncio  from './Anuncio';
 import Categorias from './Categorías'
@@ -11,6 +11,7 @@ export const HomePage = () => {
 
     return (
         <View style={styles.Todo}>
+            <ScrollView>
             {/* <Text style={styles.Titulo}>Ingresa tus datos</Text> */}
             <Busqueda/>
             <Anuncio/>
@@ -18,6 +19,7 @@ export const HomePage = () => {
             <Servicio/>
             <Categorias/>
             <Productos/>
+            </ScrollView>
         </View>
     );
 };
