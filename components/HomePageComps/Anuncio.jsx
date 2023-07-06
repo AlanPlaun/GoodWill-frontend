@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         height: 206,
         width: 411,
+        marginBottom:50,
     },
     foto:{
         top: 12.5,

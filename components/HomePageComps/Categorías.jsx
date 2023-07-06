@@ -31,7 +31,6 @@ const Categorias = () => {
 
 const styles = StyleSheet.create({
     container: {
-        top: 40,
         height: 118,
         flexDirection: 'row', // Agregado para colocar los elementos en fila
     },
