@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     texto:{
         left: 14,
         fontSize:25,
-        fontWeight: "bold"
+        fontWeight: 600
     }
 
 })

@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, ScrollView } from 'react-native';
 
 const Producto = () => {
   return (
     <View style={styles.container}>
+      <ScrollView horizontal={true}>
       <View style={styles.card}>
         <View style={styles.cardContain}>
           <Image source={require('../../assets/splash/pelo.jpg')} style={styles.image} />
@@ -28,6 +29,7 @@ const Producto = () => {
           <Text style={styles.name}>Gonzalo Martínez</Text>
         </View>
       </View>
+      </ScrollView>
     </View>
   );
 };
