@@ -1,27 +1,25 @@
 import { View, Text, StyleSheet} from 'react-native';
 import Producto from './Producto';
 
-const Servicio = () =>{
+const Productos = () =>{
     return(
     <View style={styles.container}>
-        <Text style={styles.texto}>Servicios</Text>
+        <Text style={styles.texto}>Productos</Text>
         <Producto/>
     </View>)
 }
 const styles = StyleSheet.create({
     container:{
-        marginTop:-45,
         backgroundColor:"#ECECEC",
         height:260,
         width:410,
-        marginBottom:10,
+        marginTop:-45,
     },
     texto:{
         left: 14,
         fontSize:25,
         fontWeight: "bold"
-
     }
 
 })
-export default Servicio
+export default Productos
