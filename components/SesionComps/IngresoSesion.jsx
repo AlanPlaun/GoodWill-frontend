@@ -15,27 +15,26 @@ export const IngresoSesion = () => {
         setContraseña(value);
     };
     
-    function subirDatos() {
-        fetch('https://eec0-200-73-176-50.ngrok-free.app/login', { //cambiar link
+    async function subirDatos() {
+        try {
+          const response = await fetch('https://b4ba-200-73-176-50.ngrok-free.app/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify({ email: email, contraseña: contraseña }),
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data === "No se encontró usuario"){
-                    console.log(data)
-                }else{
-                    console.log(data)
-                }
-            })
-            .catch(error => {
-                console.error(error)
-            })
-    }
-
+          });
+      
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+          } else {
+            console.log('Request failed:', response.status);
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
     const navigation = useNavigation();
 
     return (
