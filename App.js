@@ -9,12 +9,11 @@ const Stack = createNativeStackNavigator();
 const Menu = createDrawerNavigator()
 
 function App() {
-  const [key, setKey] = useState([]);
   return (
     <NavigationContainer>
       <Menu.Navigator>
-        <Menu.Screen name="IngresoSesion" component={IngresoSesion} options={{ headerShown: false }} />
-        <Menu.Screen name="HomePage" component={HomePage} options={{ headerShown: false }}/>
+        <Menu.Screen name="IngresoSesion" component={IngresoSesion} options={{ headerShown: false }}/>
+        <Menu.Screen name="HomePage" component={HomePage} options={{ headerShown: false }} />
       </Menu.Navigator>
     </NavigationContainer>
   );
