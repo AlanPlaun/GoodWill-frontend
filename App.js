@@ -17,6 +17,7 @@ function App() {
 
         <Menu.Screen name="HomePage" component={HomePage} options={{ headerShown: false }}/>
         <Menu.Screen name="IngresoSesion" component={IngresoSesion} options={{ headerShown: false }}/>
+        <Menu.Screen name="Publicar" component={PublicarPage} options={{ headerShown: false }}/>
 
       </Menu.Navigator>
     </NavigationContainer>
