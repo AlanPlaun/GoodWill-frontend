@@ -22,14 +22,14 @@ const PublicarProducto1 = () => {
             <View style={styles.container}>
                 <Text style={styles.textHeader}>Ingrese datos</Text>
             </View>
-            <View style={styles.fondo}>
+            <View style={styles.ingresar}>
                 <Text style={styles.txtIngreso}>Ingresa los datos del producto</Text>
-                <SelectList style={styles.desplegable} onChangeText={handleInputChangeTipo}
+                <SelectList style={styles.desplegable} boxStyles={{backgroundColor:'#D9D9D9', width:394, left:10, borderColor:"#D9D9D9", height:45}} onChangeText={handleInputChangeTipo} 
                     setTipo={(val) => setTipo(val)}
                     data={data}
                     save="value"
                 />
-                <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => { navigation.navigate('IngresarNombre') }}>
+                <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => { navigation.navigate('PublicarProducto2') }}>
                     <Text style={styles.textoBoton}>Siguiente</Text>
                 </Pressable>
             </View>
@@ -38,15 +38,20 @@ const PublicarProducto1 = () => {
 
 }
 const styles = StyleSheet.create({
+    ingresar:{
+        top: 30,
+    },
     desplegable: {
-        top: 100,
+        top: 110,
         width: 10,
         height: 30
+        
     },
     container: {
-        top: 30,
+        top: 24,
         backgroundColor: '#CE5656',
-        padding: 5,
+        height: 56,
+        width: 411,
     },
     textHeader: {
         fontSize: 19,

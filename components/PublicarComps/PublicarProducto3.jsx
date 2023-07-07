@@ -38,9 +38,10 @@ const styles = StyleSheet.create({
         padding: 10,
       },
     container: {
-        top: 30,
+        top: 24,
         backgroundColor: '#CE5656',
-        padding: 5,
+        height: 56,
+        width: 411,
     },
     fondo: {
         padding: 20,
@@ -73,8 +74,8 @@ const styles = StyleSheet.create({
         width: 350,
         height: 36,
         borderRadius: 5,
-        top: 650,
+        top: 550,
+        left: 30
     }
-
 })
 export { PublicarProducto2 }

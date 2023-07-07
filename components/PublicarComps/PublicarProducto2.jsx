@@ -8,9 +8,9 @@ import { useNavigation } from '@react-navigation/native';
 const PublicarProducto2 = () => {
     const [text, onChangeText] = useState('');
     const data = [
-        { key: '1', value: 'Mobiles' },
-        { key: '2', value: 'Cameras' },
-        { key: '3', value: 'Computers' },
+        { key: '1', value: 'Nuevo' },
+        { key: '2', value: 'Usado' },
+        { key: '3', value: 'Reacondicionado' },
     ]
     const handleInputChangeTipo = (value) => {
         setTipo(value);
@@ -25,12 +25,13 @@ const PublicarProducto2 = () => {
             <View style={styles.fondo}>
                 <Text style={styles.txtIngreso}>Ingresa los datos del producto</Text>
                 <TextInput style={styles.input} onChangeText={onChangeText} placeholder="Marca"/>
-                <SelectList style={styles.desplegable} onChangeText={handleInputChangeTipo}
+                <SelectList style={styles.desplegable} boxStyles={{backgroundColor:'#D9D9D9', width:394, left:10, borderColor:"#D9D9D9", height:45}} onChangeText={handleInputChangeTipo}
                     setTipo={(val) => setTipo(val)}
                     data={data}
                     save="value"
+                    placeholder='Estado'
                 />
-                <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => { navigation.navigate('HomePage') }}>
+                <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => { navigation.navigate('PublicarProducto3') }}>
                     <Text style={styles.textoBoton}>Siguiente</Text>
                 </Pressable>
             </View>
@@ -42,24 +43,22 @@ const styles = StyleSheet.create({
     input: {
         height: 40,
         margin: 12,
-        borderWidth: 1,
         padding: 10,
+        backgroundColor: "#D9D9D9",
+        
       },
     desplegable: {
-        top: 100,
-        width: 10,
-        height: 30
+            
     },
     container: {
-        top: 30,
+        top: 24,
         backgroundColor: '#CE5656',
-        padding: 5,
+        height: 56,
+        width: 411,
     },
     fondo: {
-        padding: 20,
-        alignContent: "center",
-        alignItems: "center",
         top: 30,
+
     },
     textHeader: {
         fontSize: 19,
@@ -70,8 +69,9 @@ const styles = StyleSheet.create({
         marginBottom: 32
     },
     txtIngreso: {
-        fontWeight: "500",
+       fontWeight: "500",
         fontSize: 20,
+        left: 27,
         top: 5,
         marginBottom: 10,
 
@@ -86,7 +86,8 @@ const styles = StyleSheet.create({
         width: 350,
         height: 36,
         borderRadius: 5,
-        top: 650,
+        top: 500,
+        left: 30
     }
 
 })

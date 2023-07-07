@@ -8,24 +8,24 @@ const Producto = () => {
       <View style={styles.card}>
         <View style={styles.cardContain}>
           <Image source={require('../../assets/splash/pelo.jpg')} style={styles.image} />
-          <Text style={styles.title}>Peluquería</Text>
-          <Text style={styles.subtitle}>Favor</Text>
+          <Text style={styles.title}>Peluqueríashe</Text>
+          <Text style={styles.subtitle}>Favorashe</Text>
           <Text style={styles.name}>Gonzalo Martínez</Text>
         </View>
       </View>
       <View style={styles.card}>
         <View style={styles.cardContain}>
-          <Image source={require('../../assets/splash/pelo.jpg')} style={styles.image} />
-          <Text style={styles.title}>Peluquería</Text>
-          <Text style={styles.subtitle}>Favor</Text>
-          <Text style={styles.name}>Gonzalo Martínez</Text>
+          <Image source={require('../../assets/splash/electricislo.jpg')} style={styles.image} />
+          <Text style={styles.title}>Electricistashe</Text>
+          <Text style={styles.subtitle}>Favorashe</Text>
+          <Text style={styles.name}>Angel Labrunashe</Text>
         </View>
       </View>
       <View style={styles.card}>
         <View style={styles.cardContain}>
-          <Image source={require('../../assets/splash/pelo.jpg')} style={styles.image} />
-          <Text style={styles.title}>Peluquería</Text>
-          <Text style={styles.subtitle}>Favor</Text>
+              <Image source={require('../../assets/splash/plomerazo.jpg')} style={styles.image} />
+          <Text style={styles.title}>Plomeríashe</Text>
+          <Text style={styles.subtitle}>Favorashe</Text>
           <Text style={styles.name}>Gonzalo Martínez</Text>
         </View>
       </View>
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     left: 13,
   },
   image: {
+    left:1,
     width: 100,
     height: 100,
     marginBottom: 8,
