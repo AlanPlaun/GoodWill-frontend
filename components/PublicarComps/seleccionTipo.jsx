@@ -1,12 +1,12 @@
 import React, { useContext,useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Fragment, Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { InputContext } from '../../context/CrearPublicacionContext';
-
+import { useNavigation } from '@react-navigation/native';
 
 //un dropdown(lo puso chatgpt :v) https://www.npmjs.com/package/react-native-dropdown-select-list
 
-const SeleccionTipo = ({navigation}) => {
+const SeleccionTipo = () => {
+    const navigation = useNavigation();
     const { updateInputValue } = useContext(InputContext);
   const [inputValue, setInputValue] = useState('');
 
@@ -14,7 +14,7 @@ const SeleccionTipo = ({navigation}) => {
     updateInputValue('seleccionTipo', inputValue);
     navigation.navigate('PublicarProducto1')
   };
-
+ //no funciona el setinputvalue                 
     return (
         <View>
             <View style={styles.container}>

@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Fragment, Pressable } from 'react-native';
-import { SelectList } from 'react-native-dropdown-select-list'
+import React, {useContext, useState } from 'react';
+import { View, Text, StyleSheet, TextInput, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { InputContext } from '../../context/CrearPublicacionContext';
 
 // https://www.npmjs.com/package/react-native-dropdown-select-list
 
-const PublicarProducto2 = () => {
+const PublicarProducto3 = () => {
+    const navigation = useNavigation();
+    const { updateInputValue } = useContext(InputContext);
     const [text, onChangeText] = useState('');
     const [text2, onChangeText2] = useState('');
-    const handleInputChangeTipo = (value) => {
-        setTipo(value);
-    };
-    const navigation = useNavigation();
+    const handleNext = () => {
+        updateInputValue('titulo', text)
+        updateInputValue('descripcion', text2)
+        navigation.navigate('PantallaFinal')
+      };
 
     return (
         <View >
@@ -20,9 +23,9 @@ const PublicarProducto2 = () => {
             </View>
             <View style={styles.fondo}>
                 <Text style={styles.txtIngreso}>Ingresa los datos del producto</Text>
-                <TextInput style={styles.input} onChangeText={onChangeText} placeholder="Marca"/>
-                <TextInput style={styles.input} onChangeText={onChangeText2} placeholder="Marca"/>
-                <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => { navigation.navigate('HomePage') }}>
+                <TextInput style={styles.input} onChangeText={onChangeText} placeholder="titulo"/>
+                <TextInput style={styles.input} onChangeText={onChangeText2} placeholder="descripcion"/>
+                <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => { handleNext() }}>
                     <Text style={styles.textoBoton}>Siguiente</Text>
                 </Pressable>
             </View>
@@ -62,7 +65,7 @@ const styles = StyleSheet.create({
         top: 5,
         marginBottom: 10,
 
-    }, textoBoton: {
+    },textoBoton: {
         color: "white",
         fontSize: 17,
         textAlign: "center",
@@ -73,8 +76,8 @@ const styles = StyleSheet.create({
         width: 350,
         height: 36,
         borderRadius: 5,
-        top: 650,
+        top: 550,
     }
 
 })
-export { PublicarProducto2 }
+export { PublicarProducto3 }

@@ -6,11 +6,12 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { HomePage } from './components/HomePageComps/HomePage';
 import { SeleccionTipo } from './components/PublicarComps/seleccionTipo';
 import { PublicarProducto1 } from './components/PublicarComps/PublicarProducto1';
-import { PublicarProducto2 } from './components/PublicarComps/PublicarProducto2';
+import { PublicarProducto3} from './components/PublicarComps/PublicarProducto3';
+import { PantallaFinal } from './components/PublicarComps/pantallafinal'; 
 import { InputProvider } from './context/CrearPublicacionContext';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-
+//camino publicar
 const PublicarStack = () => {
   return (
     <InputProvider>
@@ -26,8 +27,13 @@ const PublicarStack = () => {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="PublicarProducto2"
-            component={PublicarProducto2}
+            name="PublicarProducto3"
+            component={PublicarProducto3}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="PantallaFinal"
+            component={PantallaFinal}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
@@ -35,7 +41,7 @@ const PublicarStack = () => {
   );
 };
 
-
+//navegacion total
 function App() {
   return (
     <NavigationContainer>
