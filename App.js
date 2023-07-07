@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { HomePage } from './components/HomePageComps/HomePage';
+import { IngresoSesion } from './components/SesionComps/IngresoSesion';
 import { SeleccionTipo } from './components/PublicarComps/seleccionTipo';
 import { PublicarProducto1 } from './components/PublicarComps/PublicarProducto1';
 import { PublicarProducto3} from './components/PublicarComps/PublicarProducto3';
@@ -51,6 +52,11 @@ function App() {
           component={HomePage}
           options={{ headerShown: false }}
         />
+      <Drawer.Screen
+          name="Sesion"
+          component={IngresoSesion}
+          options={{ headerShown: false }}
+      />
         <Drawer.Screen
           name="Publicar"
           component={PublicarStack}
