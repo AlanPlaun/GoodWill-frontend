@@ -6,10 +6,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { HomePage } from './components/HomePageComps/HomePage';
 import { IngresoSesion } from './components/SesionComps/IngresoSesion';
-import { SeleccionTipo } from './components/PublicarComps/seleccionTipo';
+import { SeleccionTipo } from './components/PublicarComps/SeleccionTipo';
 import { PublicarProducto1 } from './components/PublicarComps/PublicarProducto1';
 import { PublicarProducto2} from './components/PublicarComps/PublicarProducto2';
 import { PantallaFinal } from './components/PublicarComps/pantallafinal'; 
+import {Agradecimiento} from './components/PublicarComps/Agradecimiento';
 import { InputProvider } from './context/CrearPublicacionContext';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -58,8 +59,10 @@ const PublicarStack = () => {
             }}
           />
           <Stack.Screen
-            name="PantallaFinal"
-            component={PantallaFinal}
+            name="Agradecimiento"
+            component={Agradecimiento}
+            options={{ headerShown: false }}
+
           />
         </Stack.Navigator>
     </InputProvider>
