@@ -2,12 +2,15 @@ import React, {useContext, useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { InputContext } from '../../context/CrearPublicacionContext';
+import { SelectList } from 'react-native-dropdown-select-list'
 
 // https://www.npmjs.com/package/react-native-dropdown-select-list
 
-const PublicarProducto3 = () => {
+const PublicarProducto2 = () => {
     const navigation = useNavigation();
     const { updateInputValue } = useContext(InputContext);
+    const [inputValue, setInputValue] = useState('');
+
     const [text, onChangeText] = useState('');
     const [text2, onChangeText2] = useState('');
     const handleNext = () => {
@@ -15,16 +18,17 @@ const PublicarProducto3 = () => {
         updateInputValue('descripcion', text2)
         navigation.navigate('PantallaFinal')
       };
-
+      const data = [
+        {key: '1', value:'tecnologia'},
+        {key:'2', value:'mueble'},
+    ]
     return (
         <View >
-            <View style={styles.container}>
-                <Text style={styles.textHeader}>Ingrese datos</Text>
-            </View>
             <View style={styles.fondo}>
-                <Text style={styles.txtIngreso}>Ingresa los datos del producto</Text>
-                <TextInput style={styles.input} onChangeText={onChangeText} placeholder="titulo"/>
-                <TextInput style={styles.input} onChangeText={onChangeText2} placeholder="descripcion"/>
+                <Text style={styles.titulo}>Ingresa los datos del producto</Text>
+                <TextInput style={styles.inputingreso} onChangeText={onChangeText} placeholder="Título de la publicación" placeholderTextColor="gray"/>
+                <TextInput style={styles.inputingreso} onChangeText={onChangeText2} placeholder="Descripción de la publicación"/>
+                <SelectList  setSelected={(val) => setInputValue(val)} boxStyles={{backgroundColor:"#D9D9D9", borderWidth:0, width:350}} dropdownStyles={{backgroundColor:"#D9D9D9",  borderWidth:0, width:350}}  data={data} save="value" placeholder="Seleccione categoria"/>
                 <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => { handleNext() }}>
                     <Text style={styles.textoBoton}>Siguiente</Text>
                 </Pressable>
@@ -40,31 +44,17 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
       },
-    container: {
-        top: 24,
-        backgroundColor: '#CE5656',
-        height: 56,
-        width: 411,
-    },
+    
     fondo: {
-        padding: 20,
         alignContent: "center",
         alignItems: "center",
         top: 30,
     },
-    textHeader: {
-        fontSize: 19,
-        fontWeight: "500",
-        color: "white",
-        top: 12,
-        left: 27,
-        marginBottom: 32
-    },
-    txtIngreso: {
+    titulo: {
         fontWeight: "500",
         fontSize: 20,
-        top: 5,
         marginBottom: 10,
+        right:22
 
     },textoBoton: {
         color: "white",
@@ -73,11 +63,21 @@ const styles = StyleSheet.create({
         marginTop: 5,
 
     },
+    inputingreso:{
+        marginBottom:20,
+        width: 350,
+        height: 40,
+        alignContent: "center",
+        backgroundColor: "#D9D9D9",
+        borderRadius: 5,
+        padding: 10,
+    },
     Boton: {
+        position:"absolute",
         width: 350,
         height: 36,
         borderRadius: 5,
         top: 550,
     }
 })
-export { PublicarProducto3 }
+export { PublicarProducto2 }

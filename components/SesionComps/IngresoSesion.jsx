@@ -42,7 +42,7 @@ export const IngresoSesion = (props) => {
     return (
         <View style={styles.Todo}>
             <Text style={styles.Titulo}>Ingresa tus datos</Text>
-            <TextInput style={styles.inputingreso} value={email} onChangeText={handleInputChangeEmail} placeholder="E-mail"   placeholderTextColor="gray"/>
+            <TextInput style={styles.inputingreso} value={email} onChangeText={handleInputChangeEmail} placeholder="E-mail"   placeholderTextColor="gray" />
             <TextInput style={styles.inputcontra} value={contraseña} onChangeText={handleInputChangeContraseña} placeholder="Contraseña"   placeholderTextColor="gray" secureTextEntry={true}/> 
             <Text style={styles.olvidarContraseña}>Recuperar contraseña</Text>
             <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={()=>{subirDatos, navigation.navigate('HomePage')}}>
@@ -80,18 +80,19 @@ const styles = StyleSheet.create({
     },
     inputingreso:{
         marginTop:14,
-         width: 300,
+         width: 350,
         height: 40,
-        right: 10,
         backgroundColor: "#D9D9D9",
+        alignContent: "center",
+
         borderRadius: 5,
         padding: 10,
     },
     inputcontra:{
         marginTop:20,
-         width: 300,
+         width: 350,
         height: 40,
-        right: 10,
+        alignContent: "center",
         backgroundColor: "#D9D9D9",
         borderRadius: 5,
         padding: 10,

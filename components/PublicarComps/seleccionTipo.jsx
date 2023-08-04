@@ -19,9 +19,7 @@ const SeleccionTipo = () => {
  //no funciona el setinputvalue                 
     return (
         <View>
-            <View style={styles.container}>
-                <Text style={styles.textHeader}>¿Qué quieres publicar hoy?</Text>
-            </View>
+            
             <View style={styles.fondo}>
                 <Pressable onPress={() => {setInputValue('Producto'),handleNext()}}>
                     <View style={styles.option} >

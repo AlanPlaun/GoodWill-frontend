@@ -15,7 +15,7 @@ const PublicarProducto1 = () => {
   
   const handleNext = () => {
     updateInputValue('Categoria', inputValue);
-    navigation.navigate('PublicarProducto3')
+    navigation.navigate('PublicarProducto2')
   
   };
   useEffect(() => {
@@ -37,12 +37,9 @@ const PublicarProducto1 = () => {
 
     return (
         <View>
-            <View style={styles.container}>
-                <Text style={styles.textHeader}>Ingrese datos</Text>
-            </View>
             <View style={styles.ingresar}>
-                <Text style={styles.txtIngreso}>Ingresa los datos del producto</Text>
-                <SelectList  setSelected={(val) => setInputValue(val)}  data={data} save="value" placeholder="Seleccione categoria"/>
+                <Text style={styles.titulo}>Ingresa los datos del producto</Text>
+                <SelectList  setSelected={(val) => setInputValue(val)}  data={data} boxStyles={{backgroundColor:"#D9D9D9", borderWidth:0, width:350}} dropdownStyles={{backgroundColor:"#D9D9D9",  borderWidth:0, width:350}} save="value" placeholder="Seleccione categoria"/>
                 <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => { handleNext() }}>
                     <Text style={styles.textoBoton}>Siguiente</Text>
                 </Pressable>
@@ -54,6 +51,8 @@ const PublicarProducto1 = () => {
 const styles = StyleSheet.create({
     ingresar:{
         top: 30,
+        alignItems: "center",
+
     },
     desplegable: {
         top: 110,
@@ -75,13 +74,11 @@ const styles = StyleSheet.create({
         left: 27,
         marginBottom: 32
     },
-    txtIngreso: {
+    titulo: {
         fontWeight: "500",
         fontSize: 20,
-        left: 27,
-        top: 5,
         marginBottom: 10,
-
+        right:22
     }, textoBoton: {
         color: "white",
         fontSize: 17,
@@ -90,11 +87,11 @@ const styles = StyleSheet.create({
 
     },
     Boton: {
+        position:"absolute",
         width: 350,
         height: 36,
         borderRadius: 5,
         top: 550,
-        left: 30
     }
 
 })
