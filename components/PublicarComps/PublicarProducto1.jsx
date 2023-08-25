@@ -3,37 +3,34 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Fragment, Pressabl
 import { SelectList } from 'react-native-dropdown-select-list'
 import { useNavigation } from '@react-navigation/native';
 import { InputContext } from '../../context/CrearPublicacionContext';
+import { set } from 'react-native-reanimated';
 // https://www.npmjs.com/package/react-native-dropdown-select-list
 
 const PublicarProducto1 = () => {
-  const navigation = useNavigation();
-  const { updateInputValue } = useContext(InputContext);
-  const [inputValue, setInputValue] = useState('');
-
-  const [categorias, setCategorias] = useState([]);
-  console.log(categorias);
-  
-  const handleNext = () => {
-    updateInputValue('Categoria', inputValue);
-    navigation.navigate('PublicarProducto2')
-  
-  };
-  useEffect(() => {
-    fetch('https://8cec-200-73-176-50.ngrok-free.app/categoriasProducto' ,{
-      method: 'POST',
+const navigation = useNavigation();
+const { updateInputValue } = useContext(InputContext);
+const [inputValue, setInputValue] = useState('');
+const [categorias, setCategorias] = useState([]);
+const [data, setData] = useState([]);
+useEffect(() => {
+    fetch('https://7b08-200-73-176-50.ngrok-free.app/categoriasProducto' ,{
+        method: 'POST',
     })
     .then(res => res.json())
     .then(res => {
-      setCategorias(res.data);
+        setCategorias(res);
+        const mappedData = res.map(categoria => ({
+            key: categoria.id,
+            value: categoria.categoria
+        }));
+        setData(mappedData);
     })
     .catch(err => console.log(err));
-    
-  }, []);
-
-  const data = [
-      {key: '1', value:'tecnologia'},
-      {key:'2', value:'mueble'},
-  ]
+}, []);
+const handleNext = () => {
+    updateInputValue('Categoria', inputValue);
+    navigation.navigate('PublicarProducto2')
+};
 
     return (
         <View>

@@ -1,8 +1,8 @@
-// FinalScreen.js
+
 import React, { useContext } from "react";
 import { View, Text, Button } from "react-native";
 import { InputContext } from "../../context/CrearPublicacionContext";
-
+import { useNavigation } from '@react-navigation/native';
 const PantallaFinal = () => {
   const { inputValues } = useContext(InputContext);
 
@@ -14,7 +14,6 @@ const PantallaFinal = () => {
         value2: inputValues["titulo"],
         value3: inputValues["descripcion"],
         value4: 1 //idUsuario 
-        //CAMBIAR EN EL RESTO DEL CODIGO (SACAMOS 3 VALUES, marca, tipo, condicion)
       };
 
       // Make fetch request with payload
@@ -38,6 +37,7 @@ const PantallaFinal = () => {
   };
 
   return (
+    //ingresar imagen
     <View>
       <Text>Final Screen</Text>
       {/* Display input values or other content */}
