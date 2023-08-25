@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
 
 const InputContext = createContext();
-
+//volver a ver como funciona esto(necesita pasar el usario a la pantalla final)
 const InputProvider = ({ children }) => {
   const [inputValues, setInputValues] = useState({});
   console.log(inputValues);

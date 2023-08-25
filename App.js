@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { HomePage } from './components/HomePageComps/HomePage';
 import { IngresoSesion } from './components/SesionComps/IngresoSesion';
-import { SeleccionTipo } from './components/PublicarComps/SeleccionTipo';
+import { SeleccionTipo } from './components/PublicarComps/seleccionTipo';
 import { PublicarProducto1 } from './components/PublicarComps/PublicarProducto1';
 import { PublicarProducto2} from './components/PublicarComps/PublicarProducto2';
 import { PantallaFinal } from './components/PublicarComps/pantallafinal'; 
@@ -14,7 +14,7 @@ import {Agradecimiento} from './components/PublicarComps/Agradecimiento';
 import { InputProvider } from './context/CrearPublicacionContext';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-//camino publicar
+//camino publicar (solo se tiene que mostrar si el usuario esta logueado)arreglar
 const PublicarStack = () => {
   return (
     <InputProvider>
