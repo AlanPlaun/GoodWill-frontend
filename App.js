@@ -12,6 +12,7 @@ import { PublicarProducto2} from './components/PublicarComps/PublicarProducto2';
 import { PantallaFinal } from './components/PublicarComps/pantallafinal'; 
 import {Agradecimiento} from './components/PublicarComps/Agradecimiento';
 import { InputProvider } from './context/CrearPublicacionContext';
+import {Perfil} from './components/PerfilComps/Perfil';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 //camino publicar
@@ -89,6 +90,20 @@ function App() {
           component={PublicarStack}
           options={{ headerShown: false,
           title:"Publicar" }}
+          
+        />
+        <Drawer.Screen 
+          name="Perfil"
+          component={Perfil}
+          options={{
+            headerStyle: {
+              backgroundColor: '#CE5656',
+            },
+            headerTitleStyle: {
+              fontWeight: 'bolds',
+              color:"white"
+            },title:"Perfil" 
+          }}
           
         />
       </Drawer.Navigator>

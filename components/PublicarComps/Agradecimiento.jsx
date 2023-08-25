@@ -11,7 +11,8 @@ const Agradecimiento = () =>{
 
     return(
         <View style={styles.container}>
-            <Text>Hola</Text>
+
+            <Text style={styles.texto}>:)</Text>
         </View>
     )
 
@@ -20,9 +21,15 @@ const Agradecimiento = () =>{
 }
 const styles = StyleSheet.create({
 container:{
+    top: 24,
+    backgroundColor: '#CE5656',
+    height: 56,
+    width: 411,
     backgroundColor:"red",
-    position:"absolute",
-    width:100
+},
+texto:{
+    alignContent: "center",
+    alignItems:"center",
 }
 
 
