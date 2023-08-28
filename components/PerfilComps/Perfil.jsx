@@ -14,8 +14,9 @@ const Perfil = () => {
         <View style={styles.container}>
             <Image source={require('../../assets/splash/electricislo.jpg')} style={styles.image}/>
             
-            <Text style={styles.texto}>Ángel Labruna</Text>
             <View style={styles.estrella}>
+            <Text style={styles.texto}>Ángel Labruna</Text>
+
                 <MaterialCommunityIcons name="star" size={40} color="#FFD439" />
                 <MaterialCommunityIcons name="star" size={40} color="#FFD439" />
                 <MaterialCommunityIcons name="star" size={40} color="#FFD439" />
@@ -27,7 +28,11 @@ const Perfil = () => {
             <Text style={styles.publicaciones}>Publicaciones</Text>
             <View style={styles.publicacion}>
             <Image source={require('../../assets/splash/Microondas.jpeg')} style={styles.producto} />
-            <Text>Arreglo microondas</Text>
+            <Text style={styles.titulo}>Arreglo microondas</Text>
+            </View>
+            <View style={styles.publicacion2}>
+            <Image source={require('../../assets/splash/lampara.jpeg')} style={styles.producto} />
+            <Text style={styles.titulo}>Arreglo lamparas</Text>
             </View>
         </View>
     )
@@ -53,22 +58,21 @@ const styles = StyleSheet.create({
         fontWeight: "700"
     },
     estrella: {
-        bottom: 35,
-        marginLeft: 165,
         flexDirection: 'row',
     },
     subtitulo: {
         marginLeft: 9,
-        bottom: 33,
         fontSize: 17,
-        marginBottom:14
+        marginBottom:10,
+        width:600,
+        height:30
     },
     lineaRoja: {
         width: '95%',
-        height: 1,
+        height: 2,
         alignSelf:"center",
         backgroundColor: '#D8D8D8',
-        bottom: 31, // Ajusta según tu diseño
+        marginBottom:7
     },
     publicaciones:{
         fontSize:19,
@@ -77,9 +81,23 @@ const styles = StyleSheet.create({
     producto:{
         width:130,
         height:130,
+        marginLeft:40,
+        marginTop:10
     },
     publicacion:{
-        flexDirection:"row"
+        flexDirection:"row",
+         height:150
+    },
+    publicacion2:{
+        flexDirection:"row",
+         height:150,
+         backgroundColor:"#E1E1E1"
+    },
+    titulo:{
+        fontWeight:500,
+        fontSize:16,
+        marginTop:24,
+        marginLeft:10
     }
 })
 

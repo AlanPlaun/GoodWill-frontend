@@ -29,7 +29,7 @@ const PublicarStack = () => {
               },
               headerTitleStyle: {
                 fontWeight: 'bolds',
-                color:"white"
+                color:"black"
               },title:"¿Qué querés publicar hoy?" 
             }}
           />
@@ -42,7 +42,7 @@ const PublicarStack = () => {
             },
             headerTitleStyle: {
               fontWeight: 'bold',
-              color:"white"
+              color:"black"
             }, title:"Ingrese datos"
           }}
           />
@@ -55,7 +55,7 @@ const PublicarStack = () => {
               },
               headerTitleStyle: {
                 fontWeight: 'bold',
-                color:"white"
+                color:"black"
               }, title:"Ingrese datos"
             }}
           />
@@ -74,7 +74,7 @@ const PublicarStack = () => {
 function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator>
+      <Drawer.Navigator >
         <Drawer.Screen
           name="HomePage"
           component={HomePage}
@@ -101,7 +101,7 @@ function App() {
             },
             headerTitleStyle: {
               fontWeight: 'bolds',
-              color:"white"
+              color:"black"
             },title:"Perfil" 
           }}
           
