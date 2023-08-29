@@ -1,6 +1,6 @@
 import React, {useContext, useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Pressable } from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 import { InputContext } from '../../context/CrearPublicacionContext';
 import { SelectList } from 'react-native-dropdown-select-list'
 
