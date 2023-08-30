@@ -16,7 +16,7 @@ const PublicarProducto2 = () => {
     const handleNext = () => {
         updateInputValue('titulo', text)
         updateInputValue('descripcion', text2)
-        navigation.navigate('Agradecimiento')
+        navigation.navigate('PantallaFinal')
     };  
     return (
         <View >

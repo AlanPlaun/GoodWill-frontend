@@ -60,10 +60,17 @@ const PublicarStack = () => {
             }}
           />
           <Stack.Screen
-            name="Agradecimiento"
-            component={Agradecimiento}
-            options={{ headerShown: false }}
-
+            name="PantallaFinal"
+            component={PantallaFinal}
+            options={{
+              headerStyle: {
+                backgroundColor: '#CE5656',
+              },
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                color:"black"
+              }, title:"Ingrese datos"
+            }}
           />
         </Stack.Navigator>
     </InputProvider>

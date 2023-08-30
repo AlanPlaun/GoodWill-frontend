@@ -1,8 +1,12 @@
 
 import React, { useContext } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, StyleSheet,  Button, Pressable, TouchableOpacity, useState } from "react-native";
 import { InputContext } from "../../context/CrearPublicacionContext";
 import { useNavigation } from '@react-navigation/native';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker' 
+
 const PantallaFinal = () => {
   const { inputValues } = useContext(InputContext);
 
@@ -36,24 +40,77 @@ const PantallaFinal = () => {
     }
   };
 
+  const [image, setImage] = useState(null);
+
+  const handlePickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
+      
+
   return (
     //ingresar imagen
     <View>
-      <Text>Final Screen</Text>
       {/* Display input values or other content */}
       <Pressable
         style={({ pressed }) => [
           { backgroundColor: pressed ? "#924747" : "#CE5656" },
-          styles.Boton,
         ]}
         onPress={() => {
           makeFetchRequest;
         }}
       >
-        <Text style={styles.textoBoton}>llamar al back</Text>
+
       </Pressable>
-    </View>
+      <Pressable style={styles.icono} onPress={{handlePickImage}}>
+        <MaterialCommunityIcons style={styles.uplImage} name="file-image-plus" size={120} color="black" />
+        <Text style={styles.texto}>Elegi las fotos de tu producto</Text>
+        </Pressable>
+        <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => { handleNext() }}>
+                    <Text style={styles.textoBoton}>Siguiente</Text>
+                </Pressable>
+
+        </View>
   );
 };
+const styles = StyleSheet.create({
+  bolsa:{
+      bottom:2
+  },
+  uplImage:{
+  },
+  texto:{
+    opacity: 0.7,
+    fontSize: 18
+  },
+  icono:{
+    alignItems:"center",
+    marginTop:126
+  },
+    textoBoton: {
+    color: "white",
+    fontSize: 17,
+    textAlign: "center",
+    marginTop: 5,
+
+}, Boton: {
+  width: 350,
+  height: 36,
+  borderRadius: 5,
+  top:310,
+  marginLeft:30
+}
+})
 
 export { PantallaFinal };
