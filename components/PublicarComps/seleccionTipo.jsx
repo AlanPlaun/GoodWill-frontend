@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 
 //un dropdown(lo puso chatgpt :v) https://www.npmjs.com/package/react-native-dropdown-select-list
 
-const SeleccionTipo = () => {
+export const SeleccionTipo = () => {
     const navigation = useNavigation();
     const { updateInputValue } = useContext(InputContext);
   const [inputValue, setInputValue] = useState('');
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
         marginBottom: 32,
     },
 });
-export { SeleccionTipo }
+export default SeleccionTipo 

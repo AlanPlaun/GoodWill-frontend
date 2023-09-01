@@ -2,9 +2,8 @@ import React from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Provider } from 'react-redux';
+import { Provider,  useSelector} from 'react-redux';
 import store from './redux/store'; 
-import { useSelector } from 'react-redux'; // Importa el hook useSelector
 
 // Importa tus componentes
 import HomePage from './components/HomePageComps/HomePage';

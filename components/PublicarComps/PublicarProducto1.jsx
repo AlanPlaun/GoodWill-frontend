@@ -6,14 +6,14 @@ import { InputContext } from '../../context/CrearPublicacionContext';
 import { set } from 'react-native-reanimated';
 // https://www.npmjs.com/package/react-native-dropdown-select-list
 
-const PublicarProducto1 = () => {
+export const PublicarProducto1 = () => {
 const navigation = useNavigation();
 const { updateInputValue } = useContext(InputContext);
 const [inputValue, setInputValue] = useState('');
 const [categorias, setCategorias] = useState([]);
 const [data, setData] = useState([]);
 useEffect(() => {
-    fetch('https://abd8-181-170-142-78.ngrok.io/categoriasProducto' ,{
+    fetch('https://f37e-200-73-176-50.ngrok-free.app/categoriasProducto' ,{
         method: 'POST',
     })
     .then(res => res.json())
@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
     }
 
 })
-export { PublicarProducto1 }
+export default PublicarProducto1 

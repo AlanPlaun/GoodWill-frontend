@@ -6,7 +6,7 @@ import { SelectList } from 'react-native-dropdown-select-list'
 
 // https://www.npmjs.com/package/react-native-dropdown-select-list
 
-const PublicarProducto2 = () => {
+export const PublicarProducto2 = () => {
     const navigation = useNavigation();
     const { updateInputValue } = useContext(InputContext);
     const [inputValue, setInputValue] = useState('');
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
         top: 550,
     }
 })
-export { PublicarProducto2 }
+export default PublicarProducto2
