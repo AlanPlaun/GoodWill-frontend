@@ -15,16 +15,16 @@ import store from "./redux/store";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-
+//no funciona ninguna navegacion
 const PublicarStack = () => {
-  //deberia funcionar (no lo probe, chequea el inicio de sesion y si no esta logeado te manda a la pantalla de inicio de sesion, ademas pasa el token a todas las pantallas. )
-  const loggedIn = useSelector((state) => state.login.loggedIn);
-  const navigation = useNavigation();
+  console.log("hola")
+  //const loggedIn = useSelector((state) => state.login.loggedIn);
+  //const navigation = useNavigation();
 
-  if (!loggedIn) {
-    navigation.navigate("Sesion");
-    return null;
-  }
+  //if (!loggedIn) {
+  //  navigation.navigate("Sesion");
+  //  return null;
+  //}
 
   return (
     <Stack.Navigator initialRouteName="Seleccion">
