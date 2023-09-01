@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
-
+import { useSelector, useDispatch } from 'react-redux';
+import { login, logout } from '../../redux/loginSlice'; 
+import { setToken } from '../../redux/tokenSlice';
 export const IngresoSesion = (props) => {
     const [email, setEmail] = useState('');
     const [contraseña, setContraseña] = useState('');
+    const loggedIn = useSelector(state => state.login.loggedIn);
+    const dispatch = useDispatch();
 
     const handleInputChangeEmail = (value) => {
         setEmail(value);
@@ -17,7 +20,7 @@ export const IngresoSesion = (props) => {
     
     async function subirDatos() {
         try {
-          const response = await fetch('https://b4ba-200-73-176-50.ngrok-free.app/login', {
+          const response = await fetch('https://abd8-181-170-142-78.ngrok.io/login', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -27,9 +30,10 @@ export const IngresoSesion = (props) => {
       
           if (response.ok) {
             const data = await response.json();
-
-            //pasar valores a la otra pagina(homepage)
-            console.log(data);
+            //verificar
+            console.log(data.successful);
+            dispatch(setToken(data.successful));
+            dispatch(login());
           } else {
             console.log('Request failed:', response.status);
           }

@@ -17,7 +17,7 @@ const PantallaFinal = () => {
         value1: inputValues["Categoria"],
         value2: inputValues["titulo"],
         value3: inputValues["descripcion"],
-        value4: 1 //idUsuario 
+        value4: 1 /
       };
 
       // Make fetch request with payload
@@ -62,7 +62,6 @@ const PantallaFinal = () => {
   return (
     //ingresar imagen
     <View>
-      {/* Display input values or other content */}
       <Pressable
         style={({ pressed }) => [
           { backgroundColor: pressed ? "#924747" : "#CE5656" },
