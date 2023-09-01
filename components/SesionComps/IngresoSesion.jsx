@@ -20,7 +20,7 @@ export const IngresoSesion = (props) => {
     
     async function subirDatos() {
         try {
-          const response = await fetch('https://f37e-200-73-176-50.ngrok-free.app/login', {
+          const response = await fetch('https://81eb-200-73-176-50.ngrok-free.app/login', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

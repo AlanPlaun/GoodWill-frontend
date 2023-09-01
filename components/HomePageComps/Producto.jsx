@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 14
   },
   subtitle: {
-    fontWeight: "400",
+    fontWeight: 'light',
     color: "grey",
     marginBottom: 15,
     fontSize: 14
@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
     fontWeight: 'light',
     fontSize: 12,
     width: 130,
-    fontWeight: "400",
     color: "grey",
 
 

@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     texto:{
         left: 14,
         fontSize:25,
-        fontWeight: 600
+        fontWeight: 'bold',
 
     }
 

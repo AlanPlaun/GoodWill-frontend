@@ -2,13 +2,8 @@ import { Text, View, StyleSheet, Image } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
-const Perfil = () => {
-    const navigation = useNavigation();
-    const handleNext = () => {
-        updateInputValue('titulo', text)
-        updateInputValue('descripcion', text2)
-        navigation.navigate('PublicarProducto1')
-    };
+export const Perfil = () => {
+
 
     return (
         <View style={styles.container}>
@@ -101,4 +96,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export { Perfil }
+export default  Perfil
