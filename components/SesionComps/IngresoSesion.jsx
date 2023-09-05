@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useSelector, useDispatch } from 'react-redux';
-import { login, logout } from '../../redux/loginSlice'; 
-import { setToken } from '../../redux/tokenSlice';
+import { useAuth } from '../../context/LoginContext';
+import { useToken } from '../../context/TokenContext';
+
 export const IngresoSesion = (props) => {
     const [email, setEmail] = useState('');
     const [contraseña, setContraseña] = useState('');
-    const loggedIn = useSelector(state => state.login.loggedIn);
-    const dispatch = useDispatch();
-
+    const {login,logout}  = useAuth();
+    const {setToken, clearToken } = useToken();
     const handleInputChangeEmail = (value) => {
         setEmail(value);
     };
@@ -30,10 +29,10 @@ export const IngresoSesion = (props) => {
       
           if (response.ok) {
             const data = await response.json();
-            //verificar
+            //verificar si existe data.successful 
             console.log(data.successful);
-            dispatch(setToken(data.successful));
-            dispatch(login());
+            setToken(data.successful)
+            login();
           } else {
             console.log('Request failed:', response.status);
           }
