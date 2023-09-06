@@ -19,7 +19,7 @@ export const IngresoSesion = (props) => {
     
     async function subirDatos() {
         try {
-          const response = await fetch('https://81eb-200-73-176-50.ngrok-free.app/login', {
+          const response = await fetch('https://d769-200-73-176-50.ngrok-free.app/login', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     crearCuenta:{
         marginTop:14,
         fontStyle: "normal",
-        fontWeight: 400,
+        fontWeight: 'bold',
         fontSize: 11,
         lineHeight: 13,
         textDecorationLine: "underline",
@@ -105,14 +105,14 @@ const styles = StyleSheet.create({
     placeholdercon:{
        
         fontStyle: "normal",
-        fontWeight: 400,
+        fontWeight: 'bold',
         fontSize: 17,
         lineHeight: 21,
         color: "#999999",
     },
     olvidarContraseña:{
         fontStyle: "normal",
-        fontWeight: 400,
+        fontWeight: 'bold',
         fontSize: 11,
         marginRight:190,
         lineHeight: 13,

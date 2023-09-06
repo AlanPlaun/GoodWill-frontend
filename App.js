@@ -13,7 +13,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { InputProvider } from './context/CrearPublicacionContext';
 import { AuthProvider } from "./context/LoginContext";
 import { TokenProvider } from "./context/TokenContext";
-
+//no funciona el boton de perfil  y tampoco funciono el iniciar sesion ??? aunque no dio error
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
