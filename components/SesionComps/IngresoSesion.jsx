@@ -18,15 +18,16 @@ export const IngresoSesion = () => {
   };
 
  const subirDatos = async () => {
+  console.log(email, contraseña)
     try {
       const response = await fetch(
-        "https://bcb0-200-73-176-50.ngrok-free.app/login",
+        "https://1992-200-73-176-50.ngrok-free.app/login",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email: email, contraseña: contraseña }),
+          body: JSON.stringify({ email: email, contrasena: contraseña }),
         }
       );
 

@@ -2,13 +2,13 @@
 import React, { useContext, useState } from "react";
 import { View, Text, StyleSheet,  Button, Pressable, TouchableOpacity } from "react-native";
 import { InputContext } from "../../context/CrearPublicacionContext";
-import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker' 
 import { useToken } from '../../context/TokenContext';
 export const PantallaFinal = () => {
   const { inputValues } = useContext(InputContext);
   const { tokenState} = useToken();
+  console.log(tokenState.value.successful)
   const makeFetchRequest = async () => {
     try {
       // Construct payload using input values
@@ -20,7 +20,7 @@ export const PantallaFinal = () => {
       };
 
       // Make fetch request with payload
-      const response = await fetch("https://bcb0-200-73-176-50.ngrok-free.app/publicar", {
+      const response = await fetch("https://1992-200-73-176-50.ngrok-free.app/publicar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

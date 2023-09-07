@@ -7,27 +7,40 @@ import PublicarProducto2 from "./components/PublicarComps/PublicarProducto2";
 import PantallaFinal from "./components/PublicarComps/pantallafinal";
 import Perfil from "./components/PerfilComps/Perfil";
 import React from "react";
+import { View, Text, StyleSheet, TextInput, useState } from 'react-native';
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { InputProvider } from './context/CrearPublicacionContext';
 import { AuthProvider } from "./context/LoginContext";
 import { TokenProvider } from "./context/TokenContext";
-//no funciona el boton de perfil  y tampoco funciono el iniciar sesion ??? aunque no dio error
+//falta publicar imagen y despues el fetch final(falta poco!!)
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 
 function App() {
+  // const [busqueda, setBusqueda] = useState('');
+  // const handleInputChangeBusqueda = (value) => {
+  //     setBusqueda(value);
+  // };
   return (
     <TokenProvider>
       <AuthProvider>
         <NavigationContainer>
           <Drawer.Navigator>
+          {/* <TextInput
+                style={styles.inputBusqueda}
+                value={busqueda}
+                onChangeText={handleInputChangeBusqueda}
+                placeholder="Busqueda"
+                placeholderTextColor="gray"
+            />        */}
             <Drawer.Screen
               name="HomePage"
               component={HomePage}
-              options={{ headerShown: false }}
+              options={{ headerShown: true }}
+
             />
             <Drawer.Screen
               name="Sesion"
@@ -129,5 +142,28 @@ const PublicarStack = () => {
     </InputProvider>
   );
 };
+const styles = StyleSheet.create({
+  srcBar:{
+      bottom:37
+  },
+  container: {
+      top: 24,
+      backgroundColor: '#CE5656',
+      height: 56,
+      width: 411,
+  },
+  inputBusqueda: {
+      marginTop: 20,
+      width: 231,
+      height: 40,
+      borderRadius: 5,
+      padding: 10,
+      top: 25.49,
+      bottom: 27.45,
+      backgroundColor: '#FFFFFF',
+      borderRadius: 35,
+      alignSelf: 'center',
+  }
+});
 
 export default App;
