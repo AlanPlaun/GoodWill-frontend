@@ -4,23 +4,24 @@ import { View, Text, StyleSheet,  Button, Pressable, TouchableOpacity } from "re
 import { InputContext } from "../../context/CrearPublicacionContext";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker' 
-import { useToken } from '../../context/TokenContext';
+import { useToken } from "../../context/TokenContext";
+
 export const PantallaFinal = () => {
   const { inputValues } = useContext(InputContext);
   const { tokenState} = useToken();
-  console.log(tokenState.value.successful)
   const makeFetchRequest = async () => {
     try {
       // Construct payload using input values
       const payload = {
-        value1: inputValues["Categoria"],
-        value2: inputValues["titulo"],
-        value3: inputValues["descripcion"],
-        value4: tokenState.value,
+        token: tokenState.value.successful,
+        titulo: inputValues["titulo"],
+        descripcion: inputValues["descripcion"],
+        precio: 50, //inputValues["precio"],
+        categoria: inputValues["categoria"],
       };
 
       // Make fetch request with payload
-      const response = await fetch("https://1992-200-73-176-50.ngrok-free.app/publicar", {
+      const response = await fetch("https://540e-190-16-102-37.ngrok.io/publicar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +31,8 @@ export const PantallaFinal = () => {
 
       // Handle response
       if (response.ok) {
-        // Fetch request success
+       const data = await response.json();
+       console.log(data)
       } else {
         // Fetch request failed
       }
@@ -56,10 +58,9 @@ export const PantallaFinal = () => {
     }
   };
 
-      
-
+ //falta ingresar imagen
   return (
-    //ingresar imagen
+
     <View>
       <Pressable
         style={({ pressed }) => [
@@ -75,7 +76,7 @@ export const PantallaFinal = () => {
         <MaterialCommunityIcons style={styles.uplImage} name="file-image-plus" size={120} color="black" />
         <Text style={styles.texto}>Elegi las fotos de tu producto</Text>
         </Pressable>
-        <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => { handleNext() }}>
+        <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? "#924747" : "#CE5656" }, styles.Boton]} onPress={() => {makeFetchRequest() }}>
                     <Text style={styles.textoBoton}>Siguiente</Text>
                 </Pressable>
 

@@ -7,19 +7,21 @@ import PublicarProducto2 from "./components/PublicarComps/PublicarProducto2";
 import PantallaFinal from "./components/PublicarComps/pantallafinal";
 import Perfil from "./components/PerfilComps/Perfil";
 import React from "react";
-import { View, Text, StyleSheet, TextInput, useState } from 'react-native';
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { StyleSheet} from 'react-native';
+import { NavigationContainer} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { InputProvider } from './context/CrearPublicacionContext';
 import { AuthProvider } from "./context/LoginContext";
 import { TokenProvider } from "./context/TokenContext";
+import { useAuth } from "./context/LoginContext";
 //falta publicar imagen y despues el fetch final(falta poco!!)
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 
 function App() {
+  //usar esto para no mostrar la navegacion al publicar si no esta logeado https://reactnavigation.org/docs/auth-flow
   // const [busqueda, setBusqueda] = useState('');
   // const handleInputChangeBusqueda = (value) => {
   //     setBusqueda(value);
@@ -39,7 +41,7 @@ function App() {
             <Drawer.Screen
               name="HomePage"
               component={HomePage}
-              options={{ headerShown: true }}
+              options={{ headerShown: false }}
 
             />
             <Drawer.Screen
@@ -54,7 +56,7 @@ function App() {
                 headerShown: false,
                 title: "Publicar",
               }}
-            />
+            />     
             <Drawer.Screen
               name="Perfil"
               component={Perfil}
@@ -76,13 +78,6 @@ function App() {
 }
 const PublicarStack = () => {
   console.log("PublicarStack")
-  //No funciona buscar como hacerlo
-  //const {login,logout}  = useAuth();
-  //if (!loggedIn) {
-  //  navigation.navigate("Sesion");
-  //  return null;
-  //}
-
   return (
     <InputProvider>
       <Stack.Navigator initialRouteName="Seleccion">
