@@ -20,7 +20,7 @@ export const PantallaFinal = () => {
       };
 
       // Make fetch request with payload
-      const response = await fetch("https://d769-200-73-176-50.ngrok-free.app/publicar", {
+      const response = await fetch("https://bcb0-200-73-176-50.ngrok-free.app/publicar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

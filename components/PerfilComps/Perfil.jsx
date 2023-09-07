@@ -1,5 +1,4 @@
 import { Text, View, StyleSheet, Image } from "react-native";
-import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export const Perfil = () => {
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
     texto: {
         marginLeft: 9,
         fontSize: 19,
-        fontWeight: "700"
+        fontWeight: 'light'
     },
     estrella: {
         flexDirection: 'row',
@@ -71,7 +70,7 @@ const styles = StyleSheet.create({
     },
     publicaciones:{
         fontSize:19,
-        fontWeight:"500"
+        fontWeight:'bold'
     },
     producto:{
         width:130,
@@ -89,7 +88,7 @@ const styles = StyleSheet.create({
          backgroundColor:"#E1E1E1"
     },
     titulo:{
-        fontWeight:500,
+        fontWeight: 'bold',
         fontSize:16,
         marginTop:24,
         marginLeft:10
