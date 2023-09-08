@@ -1,3 +1,4 @@
+import { DrawerToggleButton } from '@react-navigation/drawer';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity,Fragment, Pressable } from 'react-native';
 import 'react-native-gesture-handler';
@@ -21,7 +22,7 @@ const Busqueda = () => {
                 placeholder="Busqueda"
                 placeholderTextColor="gray"
             />                
-        
+            <DrawerToggleButton></DrawerToggleButton>
             </View>
         </View>
     );

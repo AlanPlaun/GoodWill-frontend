@@ -4,7 +4,7 @@ import { View, Image, Text, StyleSheet, ScrollView } from 'react-native';
 const Producto = () => {
   return (
     <View style={styles.container}>
-      <ScrollView horizontal={true}>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
       <View style={styles.card}>
         <View style={styles.cardContain}>
           <Image source={require('../../assets/splash/pelo.jpg')} style={styles.image} />

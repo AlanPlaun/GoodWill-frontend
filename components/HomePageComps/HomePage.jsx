@@ -16,7 +16,6 @@ export const HomePage = () => {
     return (
         <View style={styles.Todo}>
             <ScrollView>
-                <Busqueda/>
                 <Anuncio/>
                 <Categorias/>
                 <Servicio/>
