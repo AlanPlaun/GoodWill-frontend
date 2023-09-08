@@ -7,14 +7,15 @@ import PublicarProducto2 from "./components/PublicarComps/PublicarProducto2";
 import PantallaFinal from "./components/PublicarComps/pantallafinal";
 import Perfil from "./components/PerfilComps/Perfil";
 import React from "react";
-import { StyleSheet} from 'react-native';
+import { StyleSheet, TextInput} from 'react-native';
 import { NavigationContainer} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createDrawerNavigator,DrawerToggleButton } from "@react-navigation/drawer";
 import { InputProvider } from './context/CrearPublicacionContext';
 import { AuthProvider } from "./context/LoginContext";
 import { TokenProvider } from "./context/TokenContext";
 import { useAuth } from "./context/LoginContext";
+import Busqueda from "./components/HomePageComps/Busqueda";
 //falta publicar imagen y despues el fetch final(falta poco!!)
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -30,20 +31,13 @@ function App() {
     <TokenProvider>
       <AuthProvider>
         <NavigationContainer>
-          <Drawer.Navigator>
-          {/* <TextInput
-                style={styles.inputBusqueda}
-                value={busqueda}
-                onChangeText={handleInputChangeBusqueda}
-                placeholder="Busqueda"
-                placeholderTextColor="gray"
-            />        */}
+          <Drawer.Navigator>   
             <Drawer.Screen
               name="HomePage"
               component={HomePage}
-              options={{ headerShown: false }}
-
-            />
+              options={{ header: () => <Busqueda /> }}
+              />
+                
             <Drawer.Screen
               name="Sesion"
               component={IngresoSesion}
