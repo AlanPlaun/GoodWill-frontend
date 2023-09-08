@@ -8,13 +8,12 @@ import { set } from 'react-native-reanimated';
 
 export const PublicarProducto1 = () => {
 const navigation = useNavigation();
-const { updateInputValue } = useContext(InputContext);
 const [inputValue, setInputValue] = useState('');
 const [categorias, setCategorias] = useState([]);
 const [data, setData] = useState([]);
 //falta el "precio" no se como hacerlo
 useEffect(() => {
-    fetch('https://1992-200-73-176-50.ngrok-free.app/categoriasProducto' ,{
+    fetch('https://a6b1-200-73-176-50.ngrok-free.app/categoriasProducto' ,{
         method: 'POST',
     })
     .then(res => res.json())

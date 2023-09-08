@@ -21,7 +21,7 @@ export const IngresoSesion = () => {
   console.log(email, contraseña)
     try {
       const response = await fetch(
-        "https://1992-200-73-176-50.ngrok-free.app/login",
+        "https://a6b1-200-73-176-50.ngrok-free.app/login",
         {
           method: "POST",
           headers: {
