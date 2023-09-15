@@ -3,17 +3,16 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Fragment, Pressabl
 import { SelectList } from 'react-native-dropdown-select-list'
 import { useNavigation } from '@react-navigation/native';
 import { InputContext } from '../../context/CrearPublicacionContext';
-import { set } from 'react-native-reanimated';
-// https://www.npmjs.com/package/react-native-dropdown-select-list
 
 export const PublicarProducto1 = () => {
 const navigation = useNavigation();
+const { updateInputValue } = useContext(InputContext);
 const [inputValue, setInputValue] = useState('');
 const [categorias, setCategorias] = useState([]);
 const [data, setData] = useState([]);
-//falta el "precio" no se como hacerlo
+
 useEffect(() => {
-    fetch('https://a6b1-200-73-176-50.ngrok-free.app/categoriasProducto' ,{
+    fetch('https://b8f7-200-73-176-50.ngrok-free.app/categoriasProducto' ,{
         method: 'POST',
     })
     .then(res => res.json())
@@ -31,7 +30,6 @@ const handleNext = () => {
     updateInputValue('Categoria', inputValue);
     navigation.navigate('PublicarProducto2')
 };
-
     return (
         <View>
             <View style={styles.ingresar}>

@@ -10,46 +10,26 @@ import {
 import { InputContext } from "../../context/CrearPublicacionContext";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
-import { useToken } from "../../context/TokenContext";
+import { useNavigation } from "@react-navigation/native";
 
 export const PantallaFinal = () => {
+  const navigation = useNavigation();
   const { inputValues } = useContext(InputContext);
   const { tokenState } = useToken();
   console.log(tokenState);
 
-  //imgur fetch request
-  // Client ID
-  //const clientId = "fd2e1e3d3d12ce1",
-  //  auth = "Client-ID " + clientId;
+  const makeFetchRequest = async () => {
+    
+    //HAY QUE SUBIR LAS COSAS EN PublicarProducto2 ASI SE CREA LA PUBLICACION. OBTENEMOS EL ID DE LA PUBLICACION Y LO MANDAMOS A PANTALLA FINAL, DONDE SUBIMOS LA IMAGEN A IMGUR Y PASAMOS EL LINK DE LA IMAGEN + LA ID AL BACK
+    //Front se tiene que conectar con la API de imgur y hay que subir el link de la img al back
+  }
 
-  // Creating an object of formData
-  //const formData = new FormData();
-
-  // Adding our image to formData
-  //formData.append("image", image);
-
-  // Making the post request
-  //await fetch("https://api.imgur.com/3/image/", {
-  // API Endpoint
-  //  method: "POST", // HTTP Method
-  //  body: formData, // Data to be sent
-  // headers: {
-  // Setting header
-  //    Authorization: auth,
-  //    Accept: "application/json",
-  //  },
-  //})
-  //  .then((res) => alert("image uploaded") && console.log(res)) // Handling success
-  // .catch((err) => alert("Failed") && console.log(err)); // Handling error
-
-  //HAY QUE SUBIR LAS COSAS EN PublicarProducto2 ASI SE CREA LA PUBLICACION. OBTENEMOS EL ID DE LA PUBLICACION Y LO MANDAMOS A PANTALLA FINAL, DONDE SUBIMOS LA IMAGEN A IMGUR Y PASAMOS EL LINK DE LA IMAGEN + LA ID AL BACK
-  //Front se tiene que conectar con la API de imgur y hay que subir el link de la img al back
   const [image, setImage] = useState(null);
   const handlePickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [4, 3],
+      aspect: [4, 3], //NOS OBLIGA A CORTAR LA IMG
       quality: 1,
     });
 
@@ -67,7 +47,7 @@ export const PantallaFinal = () => {
           { backgroundColor: pressed ? "#924747" : "#CE5656" },
         ]}
         onPress={() => {
-          makeFetchRequest;
+          makeFetchRequest();
         }}
       ></Pressable>
       <Pressable
@@ -75,6 +55,7 @@ export const PantallaFinal = () => {
         onPress={() => {
           handlePickImage();
         }}
+        onChange={()=>{}}
       >
         <MaterialCommunityIcons
           style={styles.uplImage}
@@ -90,7 +71,9 @@ export const PantallaFinal = () => {
           styles.Boton,
         ]}
         onPress={() => {
-          makeFetchRequest();
+          //makeFetchRequest();
+          //deberia llevar a la pantalla de agradecimiento :v
+          navigation.navigate('HomePage')
         }}
       >
         <Text style={styles.textoBoton}>Siguiente</Text>
