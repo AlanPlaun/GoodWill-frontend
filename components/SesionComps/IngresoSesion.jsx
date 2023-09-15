@@ -21,7 +21,11 @@ export const IngresoSesion = () => {
   console.log(email, contraseña)
     try {
       const response = await fetch(
+<<<<<<< HEAD
         "https://ca21-200-73-176-50.ngrok-free.app/login",
+=======
+        "https://b8f7-200-73-176-50.ngrok-free.app/login",
+>>>>>>> 4ac9634fdee65d0bf5eb19622b04a8a803b78210
         {
           method: "POST",
           headers: {

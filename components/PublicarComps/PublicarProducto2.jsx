@@ -15,16 +15,17 @@ export const PublicarProducto2 = () => {
   const makeFetchRequest = async () => {
     try {
       // Construct payload using input values
+      console.log(text,text2)
       const payload = {
         user_token: tokenState.value.successful,
-        titulo: inputValues["titulo"],
+        titulo: text,
         descripcion: text2,
-        categoria: text,
+        categoria: inputValues["Categoria"],
       };
       console.log(payload);
       // Make fetch request with payload
       const response = await fetch(
-        "https://a6b1-200-73-176-50.ngrok-free.app/publicar",
+        "https://b8f7-200-73-176-50.ngrok-free.app/publicar",
         {
           method: "POST",
           headers: {
@@ -36,9 +37,10 @@ export const PublicarProducto2 = () => {
 
       // Handle response
       if (response.ok) {
+        console.log("olol")
         const data = await response.json();
         console.log(data);
-        navigation.navigate('pantallafinal')
+        navigation.navigate('PantallaFinal')
 
       } else {
         console.log("Request failed:", response.status);
@@ -69,7 +71,7 @@ export const PublicarProducto2 = () => {
             styles.Boton,
           ]}
           onPress={() => {
-            makeFetchRequest
+            makeFetchRequest()
           }}
         >
           <Text style={styles.textoBoton}>Siguiente</Text>

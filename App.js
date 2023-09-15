@@ -16,17 +16,12 @@ import { AuthProvider } from "./context/LoginContext";
 import { TokenProvider } from "./context/TokenContext";
 import { useAuth } from "./context/LoginContext";
 import Busqueda from "./components/HomePageComps/Busqueda";
-//falta publicar imagen y despues el fetch final(falta poco!!)
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 
 function App() {
   //usar esto para no mostrar la navegacion al publicar si no esta logeado https://reactnavigation.org/docs/auth-flow
-  // const [busqueda, setBusqueda] = useState('');
-  // const handleInputChangeBusqueda = (value) => {
-  //     setBusqueda(value);
-  // };
   return (
     <TokenProvider>
       <AuthProvider>
@@ -45,6 +40,10 @@ function App() {
             />
             <Drawer.Screen
               name="¿Qué querés publicar hoy?"
+
+
+
+              
               component={PublicarStack}
               options={{
                 headerShown: false,
