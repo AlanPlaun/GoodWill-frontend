@@ -21,14 +21,22 @@ const Busqueda = () => {
                 onChangeText={handleInputChangeBusqueda}
                 placeholder="Busqueda"
                 placeholderTextColor="gray"
-            />                
-            <DrawerToggleButton></DrawerToggleButton>
+            />        
+            <View style={styles.hambMenu}>        
+            <DrawerToggleButton></DrawerToggleButton></View>
             </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    hambMenu:{
+        borderColor:"black",
+        borderWidth:1,
+        width:60,
+        height:40,
+        bottom:7
+    },
     srcBar:{
         bottom:37
     },

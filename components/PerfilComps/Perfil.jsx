@@ -1,7 +1,24 @@
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, } from "react-native";
+import { useState, useEffect } from "react"
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { useToken } from "../../context/TokenContext";
 
 export const Perfil = () => {
+    const { tokenState } = useToken();
+    const token = tokenState.value.successful
+    const [usuario, setUsuario] = useState([])
+    //cambiar para que el token pase por el authoritation header (no se :v)
+    useEffect(() => {
+        fetch(`https://ca21-200-73-176-50.ngrok-free.app/usuario`,{
+            method: 'POST',
+            body: JSON.stringify(token)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            setUsuario(data)
+        });
+    }, []);
 
 
     return (
@@ -9,8 +26,8 @@ export const Perfil = () => {
             <Image source={require('../../assets/splash/electricislo.jpg')} style={styles.image}/>
             
             <View style={styles.estrella}>
-            <Text style={styles.texto}>Ángel Labruna</Text>
-
+            <Text style={styles.texto}>{usuario?.nombreUsuario}</Text>
+            <Text style={styles.texto}></Text>
                 <MaterialCommunityIcons name="star" size={40} color="#FFD439" />
                 <MaterialCommunityIcons name="star" size={40} color="#FFD439" />
                 <MaterialCommunityIcons name="star" size={40} color="#FFD439" />

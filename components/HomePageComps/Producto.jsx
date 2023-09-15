@@ -1,33 +1,31 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, ScrollView } from 'react-native';
+import { useState, useEffect } from 'react';
+import CardProducto from './CardProducto';
+
 
 const Producto = () => {
+  const [listaProductos, setListaProductos] = useState([])
+  useEffect(() => {
+      fetch(`https://ca21-200-73-176-50.ngrok-free.app/publicaciones`)
+      
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        setListaProductos(data)
+      });
+  }, []);
+
   return (
     <View style={styles.container}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
       <View style={styles.card}>
-        <View style={styles.cardContain}>
-          <Image source={require('../../assets/splash/pelo.jpg')} style={styles.image} />
-          <Text style={styles.title}>Peluqueríashe</Text>
-          <Text style={styles.subtitle}>Favorashe</Text>
-          <Text style={styles.name}>Gonzalo Martínez</Text>
-        </View>
-      </View>
-      <View style={styles.card}>
-        <View style={styles.cardContain}>
-          <Image source={require('../../assets/splash/electricislo.jpg')} style={styles.image} />
-          <Text style={styles.title}>Electricistashe</Text>
-          <Text style={styles.subtitle}>Favorashe</Text>
-          <Text style={styles.name}>Angel Labrunashe</Text>
-        </View>
-      </View>
-      <View style={styles.card}>
-        <View style={styles.cardContain}>
-              <Image source={require('../../assets/splash/plomerazo.jpg')} style={styles.image} />
-          <Text style={styles.title}>Plomeríashe</Text>
-          <Text style={styles.subtitle}>Favorashe</Text>
-          <Text style={styles.name}>Gonzalo Martínez</Text>
-        </View>
+        { listaProductos.map(productos => (
+        <CardProducto
+        idPublicacion = {productos.idPublicacion}  nombre = {productos.titulo}  creditos = {productos.cantCredito}  descripcion = {productos.descripcion}  ubicacion = {productos.ubicacion}  idUsuario = {productos.fkUsuario}  idCategoria = {productos.fkCategoria} idPublicador = {productos}
+        />
+        ))
+        }
       </View>
       </ScrollView>
     </View>
