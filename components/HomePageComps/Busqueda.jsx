@@ -31,8 +31,7 @@ const Busqueda = () => {
 
 const styles = StyleSheet.create({
     hambMenu:{
-        borderColor:"black",
-        borderWidth:1,
+       
         width:60,
         height:40,
         bottom:7

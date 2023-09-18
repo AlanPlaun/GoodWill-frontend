@@ -6,26 +6,27 @@ import CardProducto from './CardProducto';
 
 const Producto = () => {
   const [listaProductos, setListaProductos] = useState([])
-  useEffect(() => {
-      fetch(`https://ca21-200-73-176-50.ngrok-free.app/publicaciones`)
-      
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        setListaProductos(data)
-      });
-  }, []);
+    useEffect(() => {
+        fetch(`https://17b0-190-193-5-99.ngrok-free.app/publicaciones`)
+        
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          setListaProductos(data)
+        });
+    }, []);
 
   return (
     <View style={styles.container}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
       <View style={styles.card}>
-        { listaProductos.map(productos => (
+        <CardProducto/>
+        {/* { listaProductos.map(productos => (
         <CardProducto
         idPublicacion = {productos.idPublicacion}  nombre = {productos.titulo}  creditos = {productos.cantCredito}  descripcion = {productos.descripcion}  ubicacion = {productos.ubicacion}  idUsuario = {productos.fkUsuario}  idCategoria = {productos.fkCategoria} idPublicador = {productos}
         />
         ))
-        }
+        } */}
       </View>
       </ScrollView>
     </View>

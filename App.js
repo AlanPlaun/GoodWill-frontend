@@ -6,6 +6,7 @@ import PublicarProducto1 from "./components/PublicarComps/PublicarProducto1";
 import PublicarProducto2 from "./components/PublicarComps/PublicarProducto2";
 import PantallaFinal from "./components/PublicarComps/pantallafinal";
 import Perfil from "./components/PerfilComps/Perfil";
+import Publicacion from "./components/ProductoComps/Publicacion";
 import React from "react";
 import { StyleSheet, TextInput} from 'react-native';
 import { NavigationContainer} from "@react-navigation/native";
@@ -40,10 +41,6 @@ function App() {
             />
             <Drawer.Screen
               name="¿Qué querés publicar hoy?"
-
-
-
-              
               component={PublicarStack}
               options={{
                 headerShown: false,
@@ -61,6 +58,20 @@ function App() {
                   color: "black",
                 },
                 title: "Perfil",
+              }}
+            />
+            <Drawer.Screen
+              name="Publicacion"
+              component={Publicacion}
+              options={{ header: () => <Busqueda /> 
+              
+                headerStyle: {
+                  backgroundColor: "#CE5656",
+                },
+                headerTitleStyle: {
+                  color: "black",
+                },
+                
               }}
             />
           </Drawer.Navigator>
