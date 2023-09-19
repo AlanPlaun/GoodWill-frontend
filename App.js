@@ -8,10 +8,10 @@ import PantallaFinal from "./components/PublicarComps/pantallafinal";
 import Perfil from "./components/PerfilComps/Perfil";
 import Publicacion from "./components/ProductoComps/Publicacion";
 import React from "react";
-import { StyleSheet, TextInput} from 'react-native';
-import { NavigationContainer} from "@react-navigation/native";
+import { StyleSheet, TextInput } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createDrawerNavigator,DrawerToggleButton } from "@react-navigation/drawer";
+import { createDrawerNavigator, DrawerToggleButton } from "@react-navigation/drawer";
 import { InputProvider } from './context/CrearPublicacionContext';
 import { AuthProvider } from "./context/LoginContext";
 import { TokenProvider } from "./context/TokenContext";
@@ -27,13 +27,19 @@ function App() {
     <TokenProvider>
       <AuthProvider>
         <NavigationContainer>
-          <Drawer.Navigator>   
+          <Drawer.Navigator>
+            <Drawer.Screen
+              name="Publicacion"
+              component={Publicacion}
+              options={{ header: () => <Busqueda /> }}
+
+            />
             <Drawer.Screen
               name="HomePage"
               component={HomePage}
               options={{ header: () => <Busqueda /> }}
-              />
-                
+            />
+
             <Drawer.Screen
               name="Sesion"
               component={IngresoSesion}
@@ -46,7 +52,7 @@ function App() {
                 headerShown: false,
                 title: "Publicar",
               }}
-            />     
+            />
             <Drawer.Screen
               name="Perfil"
               component={Perfil}
@@ -60,20 +66,7 @@ function App() {
                 title: "Perfil",
               }}
             />
-            <Drawer.Screen
-              name="Publicacion"
-              component={Publicacion}
-              options={{ header: () => <Busqueda /> 
-              
-                headerStyle: {
-                  backgroundColor: "#CE5656",
-                },
-                headerTitleStyle: {
-                  color: "black",
-                },
-                
-              }}
-            />
+
           </Drawer.Navigator>
         </NavigationContainer>
       </AuthProvider>
@@ -142,26 +135,26 @@ const PublicarStack = () => {
   );
 };
 const styles = StyleSheet.create({
-  srcBar:{
-      bottom:37
+  srcBar: {
+    bottom: 37
   },
   container: {
-      top: 24,
-      backgroundColor: '#CE5656',
-      height: 56,
-      width: 411,
+    top: 24,
+    backgroundColor: '#CE5656',
+    height: 56,
+    width: 411,
   },
   inputBusqueda: {
-      marginTop: 20,
-      width: 231,
-      height: 40,
-      borderRadius: 5,
-      padding: 10,
-      top: 25.49,
-      bottom: 27.45,
-      backgroundColor: '#FFFFFF',
-      borderRadius: 35,
-      alignSelf: 'center',
+    marginTop: 20,
+    width: 231,
+    height: 40,
+    borderRadius: 5,
+    padding: 10,
+    top: 25.49,
+    bottom: 27.45,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 35,
+    alignSelf: 'center',
   }
 });
 

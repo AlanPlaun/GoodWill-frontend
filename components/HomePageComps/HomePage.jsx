@@ -5,6 +5,7 @@ import Anuncio from './Anuncio';
 import Categorias from './Categorías';
 import Servicio from './Servicio.jsx';
 import Productos from './Productos';
+import Publicacion from '../ProductoComps/Publicacion';
 import { useNavigation } from '@react-navigation/native';
 
 export const HomePage = () => {
@@ -21,7 +22,8 @@ export const HomePage = () => {
                 <Servicio/>
                 <Categorias/>
                 <Productos/>
-            </ScrollView>
+            </ScrollView> 
+            <Publicacion/>
         </View>
     );
 };
