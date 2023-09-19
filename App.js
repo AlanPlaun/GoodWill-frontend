@@ -29,17 +29,10 @@ function App() {
         <NavigationContainer>
           <Drawer.Navigator>
             <Drawer.Screen
-              name="Publicacion"
-              component={Publicacion}
-              options={{ header: () => <Busqueda /> }}
-
-            />
-            <Drawer.Screen
               name="HomePage"
               component={HomePage}
               options={{ header: () => <Busqueda /> }}
             />
-
             <Drawer.Screen
               name="Sesion"
               component={IngresoSesion}
@@ -66,6 +59,13 @@ function App() {
                 title: "Perfil",
               }}
             />
+              <Drawer.Screen
+                name="Publicacion"
+                component={Publicacion}
+                options={{ header: () => <Busqueda /> ,
+                title:""}}
+  
+              />
 
           </Drawer.Navigator>
         </NavigationContainer>

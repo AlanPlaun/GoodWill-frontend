@@ -23,7 +23,6 @@ export const HomePage = () => {
                 <Categorias/>
                 <Productos/>
             </ScrollView> 
-            <Publicacion/>
         </View>
     );
 };

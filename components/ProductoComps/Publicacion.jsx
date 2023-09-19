@@ -3,11 +3,17 @@ import {View,Text,StyleSheet,Button,Pressable, Image} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-export const Publicacion = () => { 
+export const Publicacion = (props) => { 
   const navigation = useNavigation();
+  // const selectedPublicacionData = props.params.selectedPublicacion
+  const publicacionData = props.route.params.selectedPublicacion.idPublicador
+  console.log(publicacionData)
+
   return (
     <View style={styles.Todo}>
-      <Text style={styles.titulo}>Lol</Text> 
+      <Text style={styles.titulo}>{publicacionData.titulo}</Text> 
+      {/* <Text style={styles.titulo}>{selectedPublicacionData.nombre}</Text>  */}
+
       <Image source={require('../../assets/splash/electricislo.jpg')} style={styles.image}/>
       {/* <Image style={styles.image} source={{uri: '{props.imagenPubli}',}}/> */}
       <Pressable style={styles.boton}>

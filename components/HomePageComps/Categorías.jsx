@@ -1,31 +1,26 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
-
+import React, { useState,useEffect } from 'react';
+import { View, Text, StyleSheet, Image, ScrollView} from 'react-native';
+import BarCategorias from './BarCategorias';
 const Categorias = () => {
-    return (
+    //https://8af8-200-73-176-50.ngrok-free.app/categorias
+    const [listaCategorias, setlistaCategorias] = useState([])
+        useEffect(() => {
+            fetch(`https://8af8-200-73-176-50.ngrok-free.app/categorias`)
+            
+            .then(res => res.json())
+            .then(data => {
+              console.log(data)
+              setlistaCategorias(data)
+            });
+        }, []);
+return (
         <View style={styles.container}>
             <ScrollView horizontal={true}>
-                
-            <View style={styles.categoria}>
-                <Image style={styles.foto} source={require('../../assets/splash/Ellipse13.png')} />
-                <Text style={styles.texto}>Plomeros</Text>
-            </View>
-            <View style={styles.categoria}>
-                <Image style={styles.foto} source={require('../../assets/splash/Ellipse13.png')} />
-                <Text style={styles.texto}>Plomeros</Text>
-            </View>
-            <View style={styles.categoria}>
-                <Image style={styles.foto} source={require('../../assets/splash/Ellipse13.png')} />
-                <Text style={styles.texto}>Plomeros</Text>
-            </View>
-            <View style={styles.categoria}>
-                <Image style={styles.foto} source={require('../../assets/splash/Ellipse13.png')} />
-                <Text style={styles.texto}>Plomeros</Text>
-            </View>
-            <View style={styles.categoria}>
-                <Image style={styles.foto} source={require('../../assets/splash/Ellipse13.png')} />
-                <Text style={styles.texto}>Plomeros</Text>
-            </View>
+                {listaCategorias.map(categorias =>( 
+                <BarCategorias
+                key={categorias.idCategoria} nombre={categorias.categoria} fkPublicacion={categorias.fkTipoPublicacion} foto={categorias.imagen}/>
+                ))
+                }
             </ScrollView>
         </View>
     )
