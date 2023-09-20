@@ -18,10 +18,9 @@ export const IngresoSesion = () => {
   };
 
  const subirDatos = async () => {
-  console.log(email, contraseña)
     try {
       const response = await fetch(
-        "https://ca21-200-73-176-50.ngrok-free.app/login",
+        "http://192.168.0.22:5000/login",
         {
           method: "POST",
           headers: {
@@ -36,12 +35,15 @@ export const IngresoSesion = () => {
         console.log(data);
         setToken(data);
         login();
+        navigation.navigate("HomePage");
       } else {
         console.log("Request failed:", response.status);
+        alert("Usuario o contraseña incorrectos");
       }
     } catch (error) {
       console.error(error);
     }
+
   }
   const navigation = useNavigation();
 
@@ -70,7 +72,7 @@ export const IngresoSesion = () => {
           styles.Boton,
         ]}
         onPress={() => {
-            subirDatos(), navigation.navigate("HomePage");
+          subirDatos();
         }}
       >
         <Text style={styles.texto}>Siguiente</Text>

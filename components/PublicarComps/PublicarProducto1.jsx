@@ -12,7 +12,7 @@ const [categorias, setCategorias] = useState([]);
 const [data, setData] = useState([]);
 
 useEffect(() => {
-    fetch('https://b8f7-200-73-176-50.ngrok-free.app/categoriasProducto' ,{
+    fetch('https://192.168.0.22:5000/categoriasProducto' ,{
         method: 'POST',
     })
     .then(res => res.json())

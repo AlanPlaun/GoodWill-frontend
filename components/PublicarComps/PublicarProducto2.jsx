@@ -17,7 +17,6 @@ export const PublicarProducto2 = () => {
       // Construct payload using input values
       console.log(text,text2)
       const payload = {
-        user_token: tokenState.value.successful,
         titulo: text,
         descripcion: text2,
         categoria: inputValues["Categoria"],
@@ -25,11 +24,12 @@ export const PublicarProducto2 = () => {
       console.log(payload);
       // Make fetch request with payload
       const response = await fetch(
-        "https://b8f7-200-73-176-50.ngrok-free.app/publicar",
+        "https://192.168.0.22:5000/publicar",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "user_token": tokenState.value.successful,
           },
           body: JSON.stringify(payload),
         }
