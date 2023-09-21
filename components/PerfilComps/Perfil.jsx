@@ -10,15 +10,7 @@ export const Perfil = () => {
     const [usuario, setUsuario] = useState([])
     //cambiar para que el token pase por el authoritation header (no se :v)
     useEffect(() => {
-        fetch(`https://ca21-200-73-176-50.ngrok-free.app/usuario`, {
-            method: 'POST',
-            body: JSON.stringify(token)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setUsuario(data)
-            });
+       
     }, []);
 
 
