@@ -24,7 +24,7 @@ export const PublicarProducto2 = () => {
       console.log(payload);
       // Make fetch request with payload
       const response = await fetch(
-        "https://192.168.0.22:5000/publicar",
+        "http://192.168.0.166:5000/publicar",
         {
           method: "POST",
           headers: {
