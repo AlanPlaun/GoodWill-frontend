@@ -11,35 +11,53 @@ import {
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
-import { uploadBytes, getDownloadURL } from "firebase/storage";
+import { getApps, initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBzT0aMq4_maVs0s954WMg-spGqwMZ-8R0",
+  authDomain: "goodwill-ort.firebaseapp.com",
+  projectId: "goodwill-ort",
+  storageBucket: "goodwill-ort.appspot.com",
+  messagingSenderId: "348820315175",
+  appId: "1:348820315175:web:1058bcc8cac1bc9bea4202",
+  measurementId: "G-ZX6NWZEWVQ"
+};
+
+if (!getApps().length) {
+  const app = initializeApp(firebaseConfig);
+}
 
 export const PantallaFinal = () => {
   const navigation = useNavigation();
+  const [uploading, setUploading] = useState(false);
+  const [image, setImage] = useState(null);
 
   const handlePickImage = async () => {
     let pickerResult = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: true,
-      aspect: [4, 3],
-    })
+      allowsEditing: true
+    });
 
-    console.log({pickerResult});
+    console.log({ pickerResult });
 
-    this.handleImagePicked(pickerResult);
+    handleImagePicked(pickerResult);
   };
 
-  _handleImagePicked = async (pickerResult) => {
+  const handleImagePicked = async (pickerResult) => {
     try {
-      this.setState({ uploading: true });
+      setUploading(true);
 
-      if (!pickerResult.cancelled) {
+      if (!pickerResult.canceled) {
         const uploadUrl = await uploadImageAsync(pickerResult.uri);
-        this.setState({ image: uploadUrl });
+        setImage(uploadUrl);
       }
     } catch (e) {
       console.log(e);
       alert("Upload failed, sorry :(");
     } finally {
-      this.setState({ uploading: false });
+      setUploading(false);
     }
   };
 
@@ -58,13 +76,13 @@ export const PantallaFinal = () => {
       xhr.send(null);
     });
   
-    const fileRef = ref(getStorage(), uuid.v4());
+    const fileRef = ref(getStorage(), uuidv4()); // Use uuidv4() to generate a UUID
     const result = await uploadBytes(fileRef, blob);
   
     blob.close();
   
     return await getDownloadURL(fileRef); //subir esto a la base de datos
-  }
+  }  
 
   return (
     <View>
@@ -78,7 +96,7 @@ export const PantallaFinal = () => {
         onPress={() => {
           handlePickImage();
         }}
-        onChange={()=>{}}
+        onChange={() => {}}
       >
         <MaterialCommunityIcons
           style={styles.uplImage}
@@ -95,7 +113,7 @@ export const PantallaFinal = () => {
         ]}
         onPress={() => {
           //deberia llevar a la pantalla de agradecimiento :v
-          navigation.navigate('HomePage')
+          navigation.navigate("HomePage");
         }}
       >
         <Text style={styles.textoBoton}>Siguiente</Text>

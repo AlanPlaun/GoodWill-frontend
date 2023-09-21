@@ -11,8 +11,8 @@ export const PublicarProducto2 = () => {
   const [text, onChangeText] = useState("");
   const [text2, onChangeText2] = useState("");
   const makeFetchRequest = async () => {
-    // Construct payload using input values
-    const payload = {
+     // Construct payload using input values
+     const payload = {
       titulo: text,
       descripcion: text2,
       categoria: inputValues["Categoria"],
