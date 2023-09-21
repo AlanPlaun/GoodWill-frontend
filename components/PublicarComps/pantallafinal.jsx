@@ -7,7 +7,6 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
-import { InputContext } from "../../context/CrearPublicacionContext";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
@@ -15,11 +14,7 @@ import { uploadBytes, getDownloadURL } from "firebase/storage";
 
 export const PantallaFinal = () => {
   const navigation = useNavigation();
-  const { inputValues } = useContext(InputContext);
-  const { tokenState } = useToken();
-  console.log(tokenState);
 
-  const [file, setFile] = useState(null);
   const handlePickImage = async () => {
     let pickerResult = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
@@ -82,6 +77,7 @@ export const PantallaFinal = () => {
         onPress={() => {
           handlePickImage();
         }}
+        onChange={()=>{}}
       >
         <MaterialCommunityIcons
           style={styles.uplImage}
