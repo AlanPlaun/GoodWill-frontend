@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView} from 'react-native';
 import BarCategorias from './BarCategorias';
 const Categorias = () => {
-    //https://8af8-200-73-176-50.ngrok-free.app/categorias
+
     const [listaCategorias, setlistaCategorias] = useState([])
         useEffect(() => {
             fetch(`http://192.168.0.22:5000/categorias`)

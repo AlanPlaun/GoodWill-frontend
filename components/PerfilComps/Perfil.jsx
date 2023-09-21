@@ -6,11 +6,28 @@ import { useToken } from "../../context/TokenContext";
 export const Perfil = () => {
     const { tokenState } = useToken();
     const token = tokenState.value.successful
-    //Console.log(token)
     const [usuario, setUsuario] = useState([])
-    //cambiar para que el token pase por el authoritation header (no se :v)
     useEffect(() => {
-       
+        try {
+            const response = fetch(
+              "http://192.168.0.22:5000/usuario",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "user_token": tokenState.value.successful
+                },
+              }
+            );
+            if (response.ok) {
+              const data =  response.json();
+              console.log(data);
+            } else {
+              console.log("Request failed:", response.status);
+            }
+          } catch (error) {
+            console.error(error);
+          }
     }, []);
 
 

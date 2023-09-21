@@ -74,6 +74,7 @@ function App() {
   );
 }
 const PublicarStack = () => {
+
   return (
     <InputProvider>
       <Stack.Navigator initialRouteName="Seleccion">

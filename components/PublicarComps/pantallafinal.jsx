@@ -7,6 +7,7 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
+
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
@@ -15,7 +16,7 @@ export const PantallaFinal = () => {
   const navigation = useNavigation();
 
   const makeFetchRequest = async () => {
-
+    
     //HAY QUE SUBIR LAS COSAS EN PublicarProducto2 ASI SE CREA LA PUBLICACION. OBTENEMOS EL ID DE LA PUBLICACION Y LO MANDAMOS A PANTALLA FINAL, DONDE SUBIMOS LA IMAGEN A IMGUR Y PASAMOS EL LINK DE LA IMAGEN + LA ID AL BACK
     //Front se tiene que conectar con la API de imgur y hay que subir el link de la img al back
   }
@@ -51,7 +52,7 @@ export const PantallaFinal = () => {
         onPress={() => {
           handlePickImage();
         }}
-        onChange={() => { }}
+        onChange={()=>{}}
       >
         <MaterialCommunityIcons
           style={styles.uplImage}
