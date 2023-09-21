@@ -19,7 +19,7 @@ export const PublicarProducto2 = () => {
     };
     try {
       const response = await fetch(
-        "http://192.168.0.22:5000/publicar",
+        "http://192.168.0.166:5000/publicar",
         {
           method: "POST",
           headers: {
