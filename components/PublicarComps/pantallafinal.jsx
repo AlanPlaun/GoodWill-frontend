@@ -7,38 +7,63 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
-import { InputContext } from "../../context/CrearPublicacionContext";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
+import { uploadBytes, getDownloadURL } from "firebase/storage";
 
 export const PantallaFinal = () => {
   const navigation = useNavigation();
-  const { inputValues } = useContext(InputContext);
-  const { tokenState } = useToken();
-  console.log(tokenState);
 
-  const makeFetchRequest = async () => {
-    
-    //HAY QUE SUBIR LAS COSAS EN PublicarProducto2 ASI SE CREA LA PUBLICACION. OBTENEMOS EL ID DE LA PUBLICACION Y LO MANDAMOS A PANTALLA FINAL, DONDE SUBIMOS LA IMAGEN A IMGUR Y PASAMOS EL LINK DE LA IMAGEN + LA ID AL BACK
-    //Front se tiene que conectar con la API de imgur y hay que subir el link de la img al back
-  }
-
-  const [image, setImage] = useState(null);
   const handlePickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+    let pickerResult = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
-      aspect: [4, 3], //NOS OBLIGA A CORTAR LA IMG
-      quality: 1,
-    });
+      aspect: [4, 3],
+    })
 
-    console.log(result);
+    console.log({pickerResult});
 
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
+    this.handleImagePicked(pickerResult);
+  };
+
+  _handleImagePicked = async (pickerResult) => {
+    try {
+      this.setState({ uploading: true });
+
+      if (!pickerResult.cancelled) {
+        const uploadUrl = await uploadImageAsync(pickerResult.uri);
+        this.setState({ image: uploadUrl });
+      }
+    } catch (e) {
+      console.log(e);
+      alert("Upload failed, sorry :(");
+    } finally {
+      this.setState({ uploading: false });
     }
   };
+
+  async function uploadImageAsync(uri) {
+    const blob = await new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = function () {
+        resolve(xhr.response);
+      };
+      xhr.onerror = function (e) {
+        console.log(e);
+        reject(new TypeError("Network request failed"));
+      };
+      xhr.responseType = "blob";
+      xhr.open("GET", uri, true);
+      xhr.send(null);
+    });
+  
+    const fileRef = ref(getStorage(), uuid.v4());
+    const result = await uploadBytes(fileRef, blob);
+  
+    blob.close();
+  
+    return await getDownloadURL(fileRef); //subir esto a la base de datos
+  }
 
   return (
     <View>
@@ -46,9 +71,6 @@ export const PantallaFinal = () => {
         style={({ pressed }) => [
           { backgroundColor: pressed ? "#924747" : "#CE5656" },
         ]}
-        onPress={() => {
-          makeFetchRequest();
-        }}
       ></Pressable>
       <Pressable
         style={styles.icono}
@@ -71,7 +93,6 @@ export const PantallaFinal = () => {
           styles.Boton,
         ]}
         onPress={() => {
-          //makeFetchRequest();
           //deberia llevar a la pantalla de agradecimiento :v
           navigation.navigate('HomePage')
         }}

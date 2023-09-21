@@ -1,10 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { InputContext } from "../../context/CrearPublicacionContext";
 import { useToken } from "../../context/TokenContext";
-
-// https://www.npmjs.com/package/react-native-dropdown-select-list
 
 export const PublicarProducto2 = () => {
   const navigation = useNavigation();
@@ -13,41 +11,36 @@ export const PublicarProducto2 = () => {
   const [text, onChangeText] = useState("");
   const [text2, onChangeText2] = useState("");
   const makeFetchRequest = async () => {
+    // Construct payload using input values
+    const payload = {
+      titulo: text,
+      descripcion: text2,
+      categoria: inputValues["Categoria"],
+    };
     try {
-      // Construct payload using input values
-      console.log(text,text2)
-      const payload = {
-        titulo: text,
-        descripcion: text2,
-        categoria: inputValues["Categoria"],
-      };
-      console.log(payload);
-      // Make fetch request with payload
       const response = await fetch(
-        "https://192.168.0.22:5000/publicar",
+        "http://192.168.0.166:5000/publicar",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "user_token": tokenState.value.successful,
+            "user_token": tokenState.value.successful
           },
           body: JSON.stringify(payload),
         }
       );
 
-      // Handle response
       if (response.ok) {
-        console.log("olol")
         const data = await response.json();
         console.log(data);
-        navigation.navigate('PantallaFinal')
-
+        navigation.navigate("PantallaFinal");
       } else {
         console.log("Request failed:", response.status);
       }
     } catch (error) {
-      console.error("Failed to make fetch request:", error);
+      console.error(error);
     }
+
   };
 
   return (
