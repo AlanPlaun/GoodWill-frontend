@@ -19,7 +19,7 @@ import { useAuth } from "./context/LoginContext";
 import Busqueda from "./components/HomePageComps/Busqueda";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-
+import DrawerItem from "@react-navigation/drawer";
 
 function App() {
   //usar esto para no mostrar la navegacion al publicar si no esta logeado https://reactnavigation.org/docs/auth-flow
@@ -28,6 +28,7 @@ function App() {
       <AuthProvider>
         <NavigationContainer>
           <Drawer.Navigator>
+            
             <Drawer.Screen
               name="HomePage"
               component={HomePage}
@@ -50,6 +51,7 @@ function App() {
               name="Perfil"
               component={Perfil}
               options={{
+                
                 headerStyle: {
                   backgroundColor: "#CE5656",
                 },
@@ -57,14 +59,17 @@ function App() {
                   color: "black",
                 },
                 title: "Perfil",
+                drawerItemStyle:{
+                  activeTintColor:"red",
+                  activeBackgroundColor:"red"
+                }
               }}
             />
               <Drawer.Screen
                 name="Publicacion"
                 component={Publicacion}
                 options={{ header: () => <Busqueda /> ,
-                title:""}}
-  
+                title:"",}}
               />
 
           </Drawer.Navigator>
