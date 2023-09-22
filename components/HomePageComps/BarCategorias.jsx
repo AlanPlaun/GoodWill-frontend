@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
         borderColor: "black",
         width: 45,
         height: 46,
-        left: 6
+        left: 6,
+        borderRadius:40
     },
     texto: {
         fontSize: 12,

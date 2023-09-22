@@ -7,7 +7,7 @@ import CardProducto from './CardProducto';
 const Producto = () => {
   const [listaProductos, setListaProductos] = useState([])
     useEffect(() => {
-        fetch(`http://192.168.0.22:5000/publicaciones`)
+        fetch(`https://1e8f-200-73-176-50.ngrok-free.app/publicaciones`)
         
         .then(res => res.json())
         .then(data => {
@@ -24,7 +24,6 @@ const Producto = () => {
         <CardProducto
         key = {productos.idPublicacion}  nombre = {productos.titulo}  descripcion = {productos.descripcion}  ubicacion = {productos.ubicacion}  nombreUsuario= {productos.nombreUsuario}  imagenUsuario={productos.img} imagenPublicacion={productos.imagen}
         /> 
-        {/* publicador = {productos.nombreUsuario} imgProducto = {productos.imagen} imgPublicador ={productos.img} */}
       </View>
         ))
         } 
@@ -48,7 +47,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 30, // Ajusta el espaciado entre las categorías si es necesario
-
   },
   cardContain: {
     left: 13,

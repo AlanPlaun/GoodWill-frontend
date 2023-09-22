@@ -15,12 +15,11 @@ import { createDrawerNavigator, DrawerToggleButton } from "@react-navigation/dra
 import { InputProvider } from './context/CrearPublicacionContext';
 import { AuthProvider } from "./context/LoginContext";
 import { TokenProvider } from "./context/TokenContext";
-import { useAuth } from "./context/LoginContext";
 import Busqueda from "./components/HomePageComps/Busqueda";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-import DrawerItem from "@react-navigation/drawer";
-
+{/**https://aboutreact.com/how-to-hide-navigation-drawer-sidebar-option/ */}
+const lol = 1
 function App() {
   
   return (
@@ -28,12 +27,13 @@ function App() {
       <AuthProvider>
         <NavigationContainer>
           <Drawer.Navigator>
-            
             <Drawer.Screen
               name="HomePage"
               component={HomePage}
-              options={{ header: () => <Busqueda /> }}
+              options={{ header: () => <Busqueda /> 
+              }}
             />
+            
             <Drawer.Screen
               name="Sesion"
               component={IngresoSesion}
@@ -45,15 +45,16 @@ function App() {
               options={{
                 headerShown: false,
                 title: "Publicar",
+                DrawerToggleButton: true
               }}
             />
             <Drawer.Screen
               name="Perfil"
               component={Perfil}
               options={{
-                
                 headerStyle: {
                   backgroundColor: "#CE5656",
+                  
                 },
                 headerTitleStyle: {
                   color: "black",
@@ -66,7 +67,10 @@ function App() {
                 name="Publicacion"
                 component={Publicacion}
                 options={{ header: () => <Busqueda /> ,
-                title:"",}}
+                title:"",
+                drawerActiveBackgroundColor: 'transparent', 
+                
+             }}
               />
 
           </Drawer.Navigator>

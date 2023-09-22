@@ -3,7 +3,6 @@ import {View,Text,StyleSheet,TextInput,Button,Pressable} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../context/LoginContext";
 import { useToken } from "../../context/TokenContext";
-
 export const IngresoSesion = () => {
   const [email, setEmail] = useState("");
   const [contraseña, setContraseña] = useState("");
@@ -20,7 +19,7 @@ export const IngresoSesion = () => {
  const subirDatos = async () => {
     try {
       const response = await fetch(
-        "http://192.168.0.22:5000/login",
+        "https://1e8f-200-73-176-50.ngrok-free.app/login",
         {
           method: "POST",
           headers: {

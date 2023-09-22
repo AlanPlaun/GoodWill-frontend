@@ -2,14 +2,15 @@ import { Text, View, StyleSheet, Image, } from "react-native";
 import { useState, useEffect } from "react"
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useToken } from "../../context/TokenContext";
+import { ScrollView } from "react-native-gesture-handler";
 
 export const Perfil = () => {
     const { tokenState } = useToken();
-
+    
     const [usuario, setUsuario] = useState({})
     useEffect(() => {
         try {
-            fetch("http://192.168.0.22:5000/usuario", {
+            fetch("https://1e8f-200-73-176-50.ngrok-free.app/usuario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -39,13 +40,11 @@ export const Perfil = () => {
     return (
         <View style={styles.container}>
             <Image source={require('../../assets/splash/electricislo.jpg')} style={styles.image} />
-
             <View style={styles.estrella}>
                 {/* <Text style={styles.texto}>{usuario?.nombreUsuario}</Text> */}
                 <Text style={styles.texto}>
                     {usuario.usuario && usuario.usuario.nombre + " " + usuario.usuario.apellido}
                 </Text>
-
                 <Text style={styles.texto}></Text>
                 <MaterialCommunityIcons name="star" size={40} color="#FFD439" />
                 <MaterialCommunityIcons name="star" size={40} color="#FFD439" />
@@ -84,7 +83,7 @@ const styles = StyleSheet.create({
     texto: {
         marginLeft: 9,
         fontSize: 19,
-        fontWeight: 'light'
+        fontWeight: 'bold'
     },
     estrella: {
         flexDirection: 'row',
@@ -105,7 +104,8 @@ const styles = StyleSheet.create({
     },
     publicaciones: {
         fontSize: 19,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginLeft: 21
     },
     producto: {
         width: 130,
@@ -115,7 +115,9 @@ const styles = StyleSheet.create({
     },
     publicacion: {
         flexDirection: "row",
-        height: 150
+        height: 150,
+        borderBottomColor: 'rgba(0, 0, 0, 0.07)',
+        borderBottomWidth:1
     },
     publicacion2: {
         flexDirection: "row",
@@ -123,7 +125,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#E1E1E1"
     },
     titulo: {
-        fontWeight: 'bold',
+        fontWeight: '500',
         fontSize: 16,
         marginTop: 24,
         marginLeft: 10

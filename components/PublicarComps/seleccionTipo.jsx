@@ -4,20 +4,25 @@ import { InputContext } from '../../context/CrearPublicacionContext';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { useAuth } from "../../context/LoginContext";
 
 export const SeleccionTipo = () => {
+    const { authState } = useAuth();
     const navigation = useNavigation();
     const { updateInputValue } = useContext(InputContext);
     const [inputValue, setInputValue] = useState('');
-
     const handleNext = () => {
         updateInputValue('seleccionTipo', inputValue);
         navigation.navigate('PublicarProducto1')
     };
-    //no funciona el setinputvalue                 
+    console.log(authState.loggedIn)
+    
+        if(authState.loggedIn==true){
+            
+
+    
     return (
         <View>
-
             <View style={styles.fondo}>
                 <Pressable onPress={() => { setInputValue('Producto'), handleNext() }}>
                     <View style={styles.option} >
@@ -38,7 +43,14 @@ export const SeleccionTipo = () => {
 
             </View>
         </View>
-    );
+    );}
+    else{
+        return(
+            <View>
+                <Text>INICIA SESIOON PELOTUDOO</Text>
+            </View>
+        )
+    }
 };
 
 const styles = StyleSheet.create({

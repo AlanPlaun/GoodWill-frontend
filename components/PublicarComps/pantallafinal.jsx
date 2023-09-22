@@ -84,7 +84,7 @@ export const PantallaFinal = (props) => {
   const makeFetchRequest = async () => {
    try {
      const response = await fetch(
-       "http://192.168.0.22:5000/subirimagen",
+       "https://1e8f-200-73-176-50.ngrok-free.app//subirimagen",
        {
          method: "POST",
          headers: {

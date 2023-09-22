@@ -4,20 +4,19 @@ import { useNavigation } from "@react-navigation/native";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { ScrollView } from "react-native-gesture-handler";
+
 export const Publicacion = (props) => {
-  //Poner props
+ 
   const navigation = useNavigation();
   const publicacionData = props.route.params.selectedPublicacion;
   console.log(publicacionData);
 
-  const foto = 'https://www.verte.tv/image/50931/electrodomesticos.jpg'
   return (
     <View style={styles.Todo} >
       <ScrollView>
         <Text style={styles.titulo}>{publicacionData.nombre}</Text>
 
         <Image source={{uri : publicacionData.imagenPublicacion}} style={styles.image} />
-        {/* <Image style={styles.image} source={{uri: publicacionData.imagenPubli,}}/> */}
         <Pressable style={styles.boton}>
           <Text style={styles.textoBoton}>Contratar</Text>
         </Pressable>
@@ -35,21 +34,17 @@ export const Publicacion = (props) => {
         <View style={styles.descripcion}>
           <Text style={styles.titulos}>Descripcion</Text>
           <Text style>{publicacionData.descripcion}</Text>
-          {/* <Text style={styles.descripcionTexto}>{publicacionData.descripcion}</Text> */}
         </View>
         <View style={styles.linea}></View>
         <View style={styles.ubicacion}>
           <Text style={styles.titulos}>Ubicacion</Text>
-          <Text>zona: {publicacionData.ubicacion}</Text>
-          {/* <Text>Zona: {publicacionData.ubicacion}</Text> */}
+          <Text>Zona: {publicacionData.ubicacion}</Text>
         </View>
         <View style={styles.linea}></View>
         <View style={styles.infoPerfil}>
           <Text style={styles.titulos}>Información del proveedor</Text>
           <View style={styles.perfil}>
             <Image source={{uri: publicacionData.imagenUsuario}} style={styles.imagenPerfil} />
-            {/* <Image style={styles.imagenPerfil} source={{uri: '{props.imgPublicador}',}}/> */}
-
             <Text>{publicacionData.nombreUsuario}</Text>
           </View>
 
