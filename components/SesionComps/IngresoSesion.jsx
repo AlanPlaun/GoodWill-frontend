@@ -20,7 +20,7 @@ export const IngresoSesion = () => {
  const subirDatos = async () => {
     try {
       const response = await fetch(
-        "http://192.168.0.166:5000/login",
+        "http://192.168.0.22:5000/login",
         {
           method: "POST",
           headers: {

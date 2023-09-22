@@ -12,7 +12,7 @@ const [categorias, setCategorias] = useState([]);
 const [data, setData] = useState([]);
 
 useEffect(() => {
-    fetch('http://192.168.0.166:5000/categoriasProducto' ,{
+    fetch('http://192.168.0.22:5000/categoriasProducto' ,{
         method: 'POST',
     })
     .then(res => res.json())

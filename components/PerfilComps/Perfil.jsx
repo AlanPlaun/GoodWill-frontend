@@ -5,29 +5,34 @@ import { useToken } from "../../context/TokenContext";
 
 export const Perfil = () => {
     const { tokenState } = useToken();
-    const token = tokenState.value.successful
-    const [usuario, setUsuario] = useState([])
+
+    const [usuario, setUsuario] = useState({})
     useEffect(() => {
         try {
-            const response = fetch(
-              "http://192.168.0.22:5000/usuario",
-              {
+            fetch("http://192.168.0.22:5000/usuario", {
                 method: "POST",
                 headers: {
-                  "Content-Type": "application/json",
-                  "user_token": tokenState.value.successful
-                },
-              }
-            );
-            if (response.ok) {
-              const data =  response.json();
-              console.log(data);
-            } else {
-              console.log("Request failed:", response.status);
-            }
-          } catch (error) {
+                    "Content-Type": "application/json",
+                    "user_token": tokenState.value.successful
+                }
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        console.log("Request failed:", response.status);
+                    }
+                })
+                .then((data) => {
+                    setUsuario(data);
+                    console.log(data);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        } catch (error) {
             console.error(error);
-          }
+        }
     }, []);
 
 
@@ -37,7 +42,9 @@ export const Perfil = () => {
 
             <View style={styles.estrella}>
                 {/* <Text style={styles.texto}>{usuario?.nombreUsuario}</Text> */}
-                <Text style={styles.texto}>Lol</Text>
+                <Text style={styles.texto}>
+                    {usuario.usuario && usuario.usuario.nombre + " " + usuario.usuario.apellido}
+                </Text>
 
                 <Text style={styles.texto}></Text>
                 <MaterialCommunityIcons name="star" size={40} color="#FFD439" />
@@ -46,17 +53,16 @@ export const Perfil = () => {
                 <MaterialCommunityIcons name="star" size={40} color="#FFD439" />
                 <MaterialCommunityIcons name="star-half" size={40} color="#FFD439" />
             </View>
-            <Text style={styles.subtitulo}>Soy el mejor electricista de Almagro</Text>
+            <Text style={styles.subtitulo}>{usuario.usuario?.descripcion}</Text>
             <View style={styles.lineaRoja}></View>
             <Text style={styles.publicaciones}>Publicaciones</Text>
-            <View style={styles.publicacion}>
-                <Image source={require('../../assets/splash/Microondas.jpeg')} style={styles.producto} />
-                <Text style={styles.titulo}>Arreglo microondas</Text>
-            </View>
-            <View style={styles.publicacion2}>
-                <Image source={require('../../assets/splash/lampara.jpeg')} style={styles.producto} />
-                <Text style={styles.titulo}>Arreglo lamparas</Text>
-            </View>
+            {usuario.publicaciones?.map(publicacion => (
+                <View style={styles.publicacion}>
+                    <Image source={{uri:publicacion.imagen}} style={styles.producto} />
+                    <Text style={styles.titulo}>{publicacion.titulo}</Text>
+                </View>
+            ))
+            }
         </View>
     )
 }

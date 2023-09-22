@@ -9,9 +9,6 @@ const Busqueda = () => {
     const handleInputChangeBusqueda = (value) => {
         setBusqueda(value);
     };
-
-  
-
     return (
         <View style={styles.container}>
             <View style={styles.srcBar}>

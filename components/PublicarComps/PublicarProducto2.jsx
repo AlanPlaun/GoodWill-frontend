@@ -19,7 +19,7 @@ export const PublicarProducto2 = () => {
     };
     try {
       const response = await fetch(
-        "http://192.168.0.166:5000/publicar",
+        "http://192.168.0.22:5000/publicar",
         {
           method: "POST",
           headers: {
@@ -32,8 +32,7 @@ export const PublicarProducto2 = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
-        navigation.navigate("PantallaFinal");
+        navigation.navigate("PantallaFinal", {id : data.idPublicacion});
       } else {
         console.log("Request failed:", response.status);
       }

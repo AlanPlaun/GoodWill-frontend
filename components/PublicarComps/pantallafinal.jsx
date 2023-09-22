@@ -30,16 +30,15 @@ if (!getApps().length) {
   const app = initializeApp(firebaseConfig);
 }
 
-export const PantallaFinal = () => {
+export const PantallaFinal = (props) => {
   const navigation = useNavigation();
   const [uploading, setUploading] = useState(false);
   const [image, setImage] = useState(null);
-
   const handlePickImage = async () => {
     let pickerResult = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true
     });
-
+    
     console.log({ pickerResult });
 
     handleImagePicked(pickerResult);
@@ -78,12 +77,35 @@ export const PantallaFinal = () => {
   
     const fileRef = ref(getStorage(), uuidv4()); // Use uuidv4() to generate a UUID
     const result = await uploadBytes(fileRef, blob);
-  
+    
     blob.close();
-  
-    return await getDownloadURL(fileRef); //subir esto a la base de datos
+    return result.ref.getDownloadURL();
   }  
+  const makeFetchRequest = async () => {
+   try {
+     const response = await fetch(
+       "http://192.168.0.22:5000/subirimagen",
+       {
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify({ imagen: image, idPublicacion: props.route.params.id}),
+       }
+     );
 
+     if (response.ok) {
+       const data = await response.json();
+       console.log(data);
+       navigation.navigate("PantallaFinal");
+     } else {
+       console.log("Request failed:", response.status);
+     }
+   } catch (error) {
+     console.error(error);
+   }
+
+ };
   return (
     <View>
       <Pressable
