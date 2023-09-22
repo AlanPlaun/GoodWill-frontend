@@ -9,7 +9,7 @@ export const Perfil = () => {
     const [usuario, setUsuario] = useState({})
     useEffect(() => {
         try {
-            fetch("http://192.168.0.22:5000/usuario", {
+            fetch("https://0a41-200-73-176-50.ngrok-free.app/usuario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

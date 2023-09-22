@@ -5,7 +5,7 @@ const Categorias = () => {
 
     const [listaCategorias, setlistaCategorias] = useState([])
         useEffect(() => {
-            fetch(`http://192.168.0.22:5000/categorias`)
+            fetch(`https://0a41-200-73-176-50.ngrok-free.app/categorias`)
             
             .then(res => res.json())
             .then(data => {

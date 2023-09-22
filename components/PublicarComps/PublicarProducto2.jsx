@@ -19,7 +19,7 @@ export const PublicarProducto2 = () => {
     };
     try {
       const response = await fetch(
-        "http://192.168.0.22:5000/publicar",
+        "https://0a41-200-73-176-50.ngrok-free.app/publicar",
         {
           method: "POST",
           headers: {

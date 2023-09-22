@@ -34,6 +34,7 @@ export const PantallaFinal = (props) => {
   const navigation = useNavigation();
   const [uploading, setUploading] = useState(false);
   const [image, setImage] = useState(null);
+  const [url, setUrl] = useState(null);
   const handlePickImage = async () => {
     let pickerResult = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true
@@ -74,30 +75,38 @@ export const PantallaFinal = (props) => {
       xhr.open("GET", uri, true);
       xhr.send(null);
     });
-  
-    const fileRef = ref(getStorage(), uuidv4()); // Use uuidv4() to generate a UUID
+
+    const filePath = 'posts/' + uuidv4();
+    const fileRef = ref(getStorage(), filePath);
     const result = await uploadBytes(fileRef, blob);
-    
-    blob.close();
-    return result.ref.getDownloadURL();
+    try {
+      await result;
+      const downloadURL = await getDownloadURL(fileRef);
+      setUrl(downloadURL);
+      console.log(downloadURL);
+      blob.close();
+      return downloadURL;
+    } catch (error) {
+      console.error(error)
+      throw new Error("Upload Failed")
+    }
   }  
   const makeFetchRequest = async () => {
    try {
      const response = await fetch(
-       "http://192.168.0.22:5000/subirimagen",
+       "https://0a41-200-73-176-50.ngrok-free.app/subirimagen",
        {
          method: "POST",
          headers: {
            "Content-Type": "application/json",
          },
-         body: JSON.stringify({ imagen: image, idPublicacion: props.route.params.id}),
+         body: JSON.stringify({ imagen: url, idPublicacion: props.route.params.id}),
        }
      );
 
      if (response.ok) {
        const data = await response.json();
-       console.log(data);
-       navigation.navigate("PantallaFinal");
+       navigation.navigate("HomePage");
      } else {
        console.log("Request failed:", response.status);
      }
@@ -134,8 +143,7 @@ export const PantallaFinal = (props) => {
           styles.Boton,
         ]}
         onPress={() => {
-          //deberia llevar a la pantalla de agradecimiento :v
-          navigation.navigate("HomePage");
+          makeFetchRequest();
         }}
       >
         <Text style={styles.textoBoton}>Siguiente</Text>
