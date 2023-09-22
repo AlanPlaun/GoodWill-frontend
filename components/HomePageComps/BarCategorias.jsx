@@ -5,7 +5,7 @@ const BarCategorias = (props) => {
     return (
                 
             <View style={styles.categoria}>
-                 <Image style={styles.foto} source={{uri: 'https://www.verte.tv/image/50931/electrodomesticos.jpg',}}/>
+                 <Image style={styles.foto} source={{uri: props.foto}}/>
                 <Text style={styles.texto}>{props.nombre}</Text>
             </View>
             

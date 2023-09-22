@@ -10,15 +10,15 @@ export const Publicacion = () => {
   // const publicacionData = props.route.params.selectedPublicacion.idPublicador
   // console.log(publicacionData) 
 
+  const foto = 'https://www.verte.tv/image/50931/electrodomesticos.jpg'
   return (
     <View style={styles.Todo} >
       <ScrollView>
         <Text style={styles.titulo}>Lolazo</Text>
-
-        {/* <Text style={styles.titulo}>{publicacionData.titulo}</Text>  */}
+       {/* <Text style={styles.titulo}>{publicacionData.titulo}</Text>  */}
 
         <Image source={require('../../assets/splash/electricislo.jpg')} style={styles.image} />
-        {/* <Image style={styles.image} source={{uri: '{props.imagenPubli}',}}/> */}
+        {/* <Image style={styles.image} source={{uri: publicacionData.imagenPubli,}}/> */}
         <Pressable style={styles.boton}>
           <Text style={styles.textoBoton}>Contratar</Text>
         </Pressable>
@@ -49,6 +49,8 @@ export const Publicacion = () => {
           <Text style={styles.titulos}>Información del proveedor</Text>
           <View style={styles.perfil}>
             <Image source={require('../../assets/splash/electricislo.jpg')} style={styles.imagenPerfil} />
+            {/* <Image style={styles.imagenPerfil} source={{uri: '{props.imgPublicador}',}}/> */}
+
             <Text>Lolazo Lolazo</Text>
           </View>
 
