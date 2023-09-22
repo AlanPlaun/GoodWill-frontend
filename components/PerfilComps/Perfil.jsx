@@ -41,7 +41,6 @@ export const Perfil = () => {
         <View style={styles.container}>
             <Image source={require('../../assets/splash/electricislo.jpg')} style={styles.image} />
             <View style={styles.estrella}>
-                {/* <Text style={styles.texto}>{usuario?.nombreUsuario}</Text> */}
                 <Text style={styles.texto}>
                     {usuario.usuario && usuario.usuario.nombre + " " + usuario.usuario.apellido}
                 </Text>

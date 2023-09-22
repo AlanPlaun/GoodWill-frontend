@@ -20,6 +20,7 @@ const Producto = () => {
     <View style={styles.container}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         { listaProductos.map(productos => (
+          
       <View style={styles.card}>
         <CardProducto
         key = {productos.idPublicacion}  nombre = {productos.titulo}  descripcion = {productos.descripcion}  ubicacion = {productos.ubicacion}  nombreUsuario= {productos.nombreUsuario}  imagenUsuario={productos.img} imagenPublicacion={productos.imagen}

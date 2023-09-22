@@ -13,6 +13,7 @@ const [data, setData] = useState([]);
 
 useEffect(() => {
     fetch('https://1e8f-200-73-176-50.ngrok-free.app//categoriasProducto' ,{
+
         method: 'POST',
     })
     .then(res => res.json())
