@@ -15,6 +15,9 @@ const CardProducto = (props) => {
       <Text style={styles.title}>{props.nombre}</Text>
       <Text style={styles.subtitle}>Favorashe</Text>
       <Text style={styles.name}>{props.nombre}</Text>
+      {/* <Text style={styles.name}>{props.publicador}</Text> */}
+      {/* <Image style={styles.image} source={{uri: {props.imgProducto},}}/> */}
+
       </Pressable>
       
     </View>

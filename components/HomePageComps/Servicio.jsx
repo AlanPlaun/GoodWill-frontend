@@ -1,11 +1,12 @@
 import { View, Text, StyleSheet} from 'react-native';
 import Producto from './Producto';
-
+import Servicios from './Servicios';
 const Servicio = () =>{
     return(
     <View style={styles.container}>
         <Text style={styles.texto}>Servicios</Text>
         <Producto/>
+        {/* <Servicios/> */}
     </View>)
 }
 const styles = StyleSheet.create({

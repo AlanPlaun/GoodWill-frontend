@@ -6,7 +6,6 @@ const Categorias = () => {
     const [listaCategorias, setlistaCategorias] = useState([])
         useEffect(() => {
             fetch(`http://192.168.0.166:5000/categorias`)
-            
             .then(res => res.json())
             .then(data => {
               console.log(data)

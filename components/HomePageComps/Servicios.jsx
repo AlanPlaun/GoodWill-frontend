@@ -4,27 +4,26 @@ import { useState, useEffect } from 'react';
 import CardProducto from './CardProducto';
 
 
-const Producto = () => {
-  const [listaProductos, setListaProductos] = useState([])
+const Servicios = () => {
+  const [listaServicios, setListaServicios] = useState([])
     useEffect(() => {
-        fetch(`http://192.168.0.166:5000/publicaciones`)
+        fetch(`http://192.168.0.166:5000/publicaciones/servicio`)
         
         .then(res => res.json())
         .then(data => {
           console.log(data)
-          setListaProductos(data)
+          setListaServicios(data)
         });
     }, []);
 
   return (
     <View style={styles.container}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        { listaProductos.map(productos => (
+        { listaServicios.map(servicios => (
       <View style={styles.card}>
         <CardProducto
-        key = {productos.idPublicacion}  nombre = {productos.titulo}   creditos = {productos.cantCredito}  descripcion = {productos.descripcion}  ubicacion = {productos.ubicacion}  idUsuario = {productos.fkUsuario}  idCategoria = {productos.fkCategoria} idPublicador = {productos}
-        /> 
-        {/* publicador = {productos.nombreUsuario} imgProducto = {productos.imagen} imgPublicador ={productos.img} */}
+        key = {servicios.idPublicacion}  nombre = {servicios.titulo}  creditos = {servicios.cantCredito}  descripcion = {servicios.descripcion}  ubicacion = {servicios.ubicacion}  idUsuario = {servicios.fkUsuario}  idCategoria = {servicios.fkCategoria} idPublicador = {productos}
+        />
       </View>
         ))
         } 
@@ -80,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Producto;
+export default Servicios;
