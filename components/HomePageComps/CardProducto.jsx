@@ -11,10 +11,10 @@ const CardProducto = (props) => {
           navigation.navigate("Publicacion", {selectedPublicacion: props});
         }}
       >
-        <Image source={require('../../assets/splash/pelo.jpg')} style={styles.image} />
+        <Image source={{uri: props.imagenPublicacion}} style={styles.image} />
       <Text style={styles.title}>{props.nombre}</Text>
-      <Text style={styles.subtitle}>Favorashe</Text>
-      <Text style={styles.name}>{props.nombre}</Text>
+      <Text style={styles.subtitle}>Favor</Text>
+      <Text style={styles.name}>{props.nombreUsuario}</Text>
       {/* <Text style={styles.name}>{props.publicador}</Text> */}
       {/* <Image style={styles.image} source={{uri: {props.imgProducto},}}/> */}
 

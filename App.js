@@ -22,7 +22,7 @@ const Drawer = createDrawerNavigator();
 import DrawerItem from "@react-navigation/drawer";
 
 function App() {
-  //usar esto para no mostrar la navegacion al publicar si no esta logeado https://reactnavigation.org/docs/auth-flow
+  
   return (
     <TokenProvider>
       <AuthProvider>
@@ -58,11 +58,8 @@ function App() {
                 headerTitleStyle: {
                   color: "black",
                 },
+                
                 title: "Perfil",
-                drawerItemStyle:{
-                  activeTintColor:"red",
-                  activeBackgroundColor:"red"
-                }
               }}
             />
               <Drawer.Screen

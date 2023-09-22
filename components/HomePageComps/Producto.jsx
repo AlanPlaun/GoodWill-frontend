@@ -22,7 +22,7 @@ const Producto = () => {
         { listaProductos.map(productos => (
       <View style={styles.card}>
         <CardProducto
-        key = {productos.idPublicacion}  nombre = {productos.titulo}   creditos = {productos.cantCredito}  descripcion = {productos.descripcion}  ubicacion = {productos.ubicacion}  idUsuario = {productos.fkUsuario}  idCategoria = {productos.fkCategoria} idPublicador = {productos}
+        key = {productos.idPublicacion}  nombre = {productos.titulo}  descripcion = {productos.descripcion}  ubicacion = {productos.ubicacion}  nombreUsuario= {productos.nombreUsuario}  imagenUsuario={productos.img} imagenPublicacion={productos.imagen}
         /> 
         {/* publicador = {productos.nombreUsuario} imgProducto = {productos.imagen} imgPublicador ={productos.img} */}
       </View>
