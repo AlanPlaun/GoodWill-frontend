@@ -3,14 +3,18 @@ import { useState, useEffect } from "react"
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useToken } from "../../context/TokenContext";
 import { ScrollView } from "react-native-gesture-handler";
-
+import { useAuth } from "../../context/LoginContext";
 export const Perfil = () => {
+    const { authState } = useAuth();
+
     const { tokenState } = useToken();
-    
+
     const [usuario, setUsuario] = useState({})
+    if(authState.loggedIn==true){
+
     useEffect(() => {
         try {
-            fetch("https://1e8f-200-73-176-50.ngrok-free.app/usuario", {
+            fetch("https://e517-181-47-118-150.ngrok-free.app/usuario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -27,6 +31,7 @@ export const Perfil = () => {
                 .then((data) => {
                     setUsuario(data);
                     console.log(data);
+                    console.log(usuario.usuario.idUsuario   )
                 })
                 .catch((error) => {
                     console.error(error);
@@ -35,10 +40,9 @@ export const Perfil = () => {
             console.error(error);
         }
     }, []);
-
-
+    console.log(authState.loggedIn)
     return (
-        <View style={styles.container}>
+        <View style={styles.container} key={usuario.usuario.idUsuario}>
             <Image source={require('../../assets/splash/electricislo.jpg')} style={styles.image} />
             <View style={styles.estrella}>
                 <Text style={styles.texto}>
@@ -56,13 +60,17 @@ export const Perfil = () => {
             <Text style={styles.publicaciones}>Publicaciones</Text>
             {usuario.publicaciones?.map(publicacion => (
                 <View style={styles.publicacion}>
-                    <Image source={{uri:publicacion.imagen}} style={styles.producto} />
+                    <Image source={{ uri: publicacion.imagen }} style={styles.producto} />
                     <Text style={styles.titulo}>{publicacion.titulo}</Text>
                 </View>
             ))
             }
         </View>
-    )
+    )}
+    else{
+        return(
+        <Text style={styles.texto}>Vos sos medio tonto puede ser</Text>)
+    }
 }
 
 const styles = StyleSheet.create({
@@ -116,7 +124,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         height: 150,
         borderBottomColor: 'rgba(0, 0, 0, 0.07)',
-        borderBottomWidth:1
+        borderBottomWidth: 1
     },
     publicacion2: {
         flexDirection: "row",

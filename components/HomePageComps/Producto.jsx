@@ -7,26 +7,26 @@ import CardProducto from './CardProducto';
 const Producto = () => {
   const [listaProductos, setListaProductos] = useState([])
     useEffect(() => {
-        fetch(`https://1e8f-200-73-176-50.ngrok-free.app/publicaciones`)
+        fetch(`https://e517-181-47-118-150.ngrok-free.app/publicaciones`)
         
         .then(res => res.json())
         .then(data => {
           console.log(data)
           setListaProductos(data)
+          console.log(listaProductos.idPublicacion)
         });
     }, []);
-
-  return (
+    return (
     <View style={styles.container}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         { listaProductos.map(productos => (
-          
-      <View style={styles.card}>
+        <View style={styles.card} key={productos.idPublicacion}>
         <CardProducto
-        key = {productos.idPublicacion}  nombre = {productos.titulo}  descripcion = {productos.descripcion}  ubicacion = {productos.ubicacion}  nombreUsuario= {productos.nombreUsuario}  imagenUsuario={productos.img} imagenPublicacion={productos.imagen}
+          nombre = {productos.titulo}  descripcion = {productos.descripcion}  ubicacion = {productos.ubicacion}  nombreUsuario= {productos.nombreUsuario}  imagenUsuario={productos.img} imagenPublicacion={productos.imagen}
         /> 
       </View>
-        ))
+      
+ ))
         } 
       </ScrollView>
     </View>

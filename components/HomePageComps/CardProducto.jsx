@@ -3,18 +3,18 @@ import { View, Image, Text, StyleSheet, ScrollView, Pressable } from 'react-nati
 import { useNavigation } from '@react-navigation/native';
 const CardProducto = (props) => {
   const navigation = useNavigation();
-
   return (
     <View style={styles.cardContain}>
       <Pressable
         onPress={() => {
           navigation.navigate("Publicacion", {selectedPublicacion: props});
         }}
-      >
-        <Image source={{uri: props.imagenPublicacion}} style={styles.image} />
+        >
+      <Image source={{uri: props.imagenPublicacion}} style={styles.image} />
       <Text style={styles.title}>{props.nombre}</Text>
       <Text style={styles.subtitle}>Favor</Text>
       <Text style={styles.name}>{props.nombreUsuario}</Text>
+      <Text style={styles.name}>{props.key}</Text>
 
       </Pressable>
       
