@@ -13,8 +13,8 @@ import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
 import { getApps, initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import 'react-native-get-random-values';
-import { v4 as uuidv4 } from 'uuid';
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBzT0aMq4_maVs0s954WMg-spGqwMZ-8R0",
@@ -23,7 +23,7 @@ const firebaseConfig = {
   storageBucket: "goodwill-ort.appspot.com",
   messagingSenderId: "348820315175",
   appId: "1:348820315175:web:1058bcc8cac1bc9bea4202",
-  measurementId: "G-ZX6NWZEWVQ"
+  measurementId: "G-ZX6NWZEWVQ",
 };
 
 if (!getApps().length) {
@@ -37,9 +37,9 @@ export const PantallaFinal = (props) => {
   const [url, setUrl] = useState(null);
   const handlePickImage = async () => {
     let pickerResult = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: true
+      allowsEditing: true,
     });
-    
+
     console.log({ pickerResult });
 
     handleImagePicked(pickerResult);
@@ -76,7 +76,7 @@ export const PantallaFinal = (props) => {
       xhr.send(null);
     });
 
-    const filePath = 'posts/' + uuidv4();
+    const filePath = "posts/" + uuidv4();
     const fileRef = ref(getStorage(), filePath);
     const result = await uploadBytes(fileRef, blob);
     try {
@@ -84,39 +84,44 @@ export const PantallaFinal = (props) => {
       const downloadURL = await getDownloadURL(fileRef);
       setUrl(downloadURL);
       console.log(downloadURL);
-      blob.close()
+      blob.close();
       return downloadURL;
     } catch (error) {
-      console.error(error)
-      throw new Error("Upload Failed")
+      console.error(error);
+      throw new Error("Upload Failed");
     }
-  }  
+  }
   const makeFetchRequest = async () => {
-   try {
-     const response = await fetch(
+    try {
+      if (!url) {
+        alert("Por favor, seleccione una imagen antes de continuar.");
+        return;
+      }
+      const response = await fetch(
+        "http://10.152.2.135:5000/subirimagen",
 
-       "https://e517-181-47-118-150.ngrok-free.app/subirimagen",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            imagen: url,
+            idPublicacion: props.route.params.id,
+          }),
+        }
+      );
 
-       {
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json",
-         },
-         body: JSON.stringify({ imagen: url, idPublicacion: props.route.params.id}),
-       }
-     );
-
-     if (response.ok) {
-       const data = await response.json();
-       navigation.navigate("HomePage");
-     } else {
-       console.log("Request failed:", response.status);
-     }
-   } catch (error) {
-     console.error(error);
-   }
-
- };
+      if (response.ok) {
+        const data = await response.json();
+        navigation.navigate("HomePage");
+      } else {
+        console.log("Request failed:", response.status);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <View>
       <Pressable
