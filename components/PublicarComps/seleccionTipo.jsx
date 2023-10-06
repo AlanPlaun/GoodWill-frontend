@@ -16,44 +16,67 @@ export const SeleccionTipo = () => {
         navigation.navigate('PublicarProducto1')
     };
     console.log(authState.loggedIn)
-    
-        if(authState.loggedIn==true){
-            
 
-    
-    return (
-        <View>
-            <View style={styles.fondo}>
-                <Pressable onPress={() => { setInputValue('Producto'), handleNext() }}>
-                    <View style={styles.option} >
-                        <View style={styles.circle}>
-                            <FontAwesome5 style={styles.bolsa} name="shopping-bag" size={60} color="white" />
-                        </View>
-                        <Text style={styles.titulo}>Productos</Text>
-                    </View>
-                </Pressable>
-                <Pressable onPress={() => { setInputValue('Producto'), handleNext() }}>
-                    <View style={styles.option} >
-                        <View style={styles.circle}>
-                            <MaterialCommunityIcons style={styles.herramientas} name="tools" size={60} color="white" />
-                        </View>
-                        <Text style={styles.titulo}>Servicios</Text>
-                    </View>
-                </Pressable>
+    if (authState.loggedIn == true) {
 
-            </View>
-        </View>
-    );}
-    else{
-        return(
+
+
+        return (
             <View>
-                <Text>INICIA SESIOON PELOTUDOO</Text>
+                <View style={styles.fondo}>
+                    <Pressable onPress={() => { setInputValue('Producto'), handleNext() }}>
+                        <View style={styles.option} >
+                            <View style={styles.circle}>
+                                <FontAwesome5 style={styles.bolsa} name="shopping-bag" size={60} color="white" />
+                            </View>
+                            <Text style={styles.titulo}>Productos</Text>
+                        </View>
+                    </Pressable>
+                    <Pressable onPress={() => { setInputValue('Producto'), handleNext() }}>
+                        <View style={styles.option} >
+                            <View style={styles.circle}>
+                                <MaterialCommunityIcons style={styles.herramientas} name="tools" size={60} color="white" />
+                            </View>
+                            <Text style={styles.titulo}>Servicios</Text>
+                        </View>
+                    </Pressable>
+
+                </View>
+            </View>
+        );
+    }
+    else {
+        return (
+            <View style={styles.sesion}>
+                <Text style={styles.sesionTexto}>Para publicar tenes que tener una sesión iniciada</Text> 
+                <Pressable style={styles.sesionBoton} onPress={() => {
+          navigation.navigate("Sesion");}}>
+                    <Text style={styles.sesionBotonTexto}>ir a Iniciar Sesión</Text>
+                </Pressable>
             </View>
         )
     }
 };
 
 const styles = StyleSheet.create({
+    sesionBotonTexto:{
+    textAlign: "center",
+    fontWeight:"500"
+},
+    sesionBoton: {
+    backgroundColor:"#CE5656",
+    width:100,
+    borderRadius: 4,
+    },
+    sesion: {
+        alignItems: "center",
+        marginTop: 20,
+    },
+    sesionTexto: {
+         width: 250,
+        textAlign: "center",
+         fontSize: 18
+     },
     bolsa: {
         bottom: 2
     },

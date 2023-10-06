@@ -14,7 +14,7 @@ export const Perfil = () => {
 
     useEffect(() => {
         try {
-            fetch("https://e517-181-47-118-150.ngrok-free.app/usuario", {
+            fetch("http://10.152.2.134:5000/usuario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -31,13 +31,7 @@ function App() {
               name="HomePage"
               component={HomePage}
               options={{ header: () => <Busqueda /> 
-              }}
-            />
-            
-            <Drawer.Screen
-              name="Sesion"
-              component={IngresoSesion}
-              options={{ headerShown: false }}
+            }}
             />
             <Drawer.Screen
               name="¿Qué querés publicar hoy?"
@@ -47,6 +41,12 @@ function App() {
                 title: "Publicar",
                 DrawerToggleButton: true
               }}
+            />
+            
+            <Drawer.Screen
+              name="Sesion"
+              component={IngresoSesion}
+              options={{ headerShown: false }}
             />
             <Drawer.Screen
               name="Perfil"
