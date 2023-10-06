@@ -7,7 +7,7 @@ import CardProducto from './CardProducto';
 const Producto = () => {
   const [listaProductos, setListaProductos] = useState([])
     useEffect(() => {
-        fetch(`https://e517-181-47-118-150.ngrok-free.app/publicaciones`)
+        fetch(`http://10.152.2.135:5000/publicaciones`)
         
         .then(res => res.json())
         .then(data => {
@@ -15,6 +15,7 @@ const Producto = () => {
           setListaProductos(data)
           console.log(listaProductos.idPublicacion)
         });
+       
     }, []);
     return (
     <View style={styles.container}>

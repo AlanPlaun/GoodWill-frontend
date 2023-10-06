@@ -10,7 +10,14 @@ export const PublicarProducto2 = () => {
   const { tokenState } = useToken();
   const [text, onChangeText] = useState("");
   const [text2, onChangeText2] = useState("");
+
   const makeFetchRequest = async () => {
+
+    if (!text || !text2) {
+      alert("Por favor complete todos los campos")
+      return;
+    }
+
      // Construct payload using input values
      const payload = {
       titulo: text,
@@ -19,7 +26,7 @@ export const PublicarProducto2 = () => {
     };
     try {
       const response = await fetch(
-        "https://e517-181-47-118-150.ngrok-free.app/publicar",
+        "http://10.152.2.135:5000/publicar",
 
         {
           method: "POST",
