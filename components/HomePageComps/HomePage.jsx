@@ -7,10 +7,12 @@ import Servicio from './Servicio.jsx';
 import Productos from './Productos';
 import Publicacion from '../ProductoComps/Publicacion';
 import { useNavigation } from '@react-navigation/native';
+import { TokenContext } from '../../context/TokenContext.js';
 
 export const HomePage = () => {
     const navigation = useNavigation();
-
+    const {token} = React.useContext(TokenContext)
+    console.log(token)
     const handlePublicarPress = () => {
       navigation.navigate('PublicarStack');
     };

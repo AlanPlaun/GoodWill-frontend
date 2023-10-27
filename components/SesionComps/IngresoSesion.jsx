@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import {View,Text,StyleSheet,TextInput,Button,Pressable} from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { useAuth } from "../../context/LoginContext";
-import { useToken } from "../../context/TokenContext";
+import { TokenContext } from '../../context/TokenContext.js';
 export const IngresoSesion = () => {
   const [email, setEmail] = useState("");
   const [contraseña, setContraseña] = useState("");
-  const { login, logout } = useAuth();
-  const { setToken, clearToken } = useToken();
+  const {token,setToken} = React.useContext(TokenContext)
   const handleInputChangeEmail = (value) => {
     setEmail(value);
   };
@@ -19,8 +17,7 @@ export const IngresoSesion = () => {
  const subirDatos = async () => {
     try {
       const response = await fetch(
-        "https://5f2d-181-47-118-150.ngrok-free.app/login",
-
+        "http://10.152.2.135:5000/login",
         {
           method: "POST",
           headers: {
@@ -32,10 +29,7 @@ export const IngresoSesion = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
-        setToken(data);
-        //localStorage.setItem("usuario")
-        login();
+        setToken(data.successful);
         navigation.navigate("HomePage");
       } else {
         console.log("Request failed:", response.status);
