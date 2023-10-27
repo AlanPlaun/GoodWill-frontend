@@ -4,10 +4,10 @@ import { InputContext } from '../../context/CrearPublicacionContext';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { useAuth } from "../../context/LoginContext";
+import { TokenContext } from '../../context/TokenContext';
 
 export const SeleccionTipo = () => {
-    const { authState } = useAuth();
+    const {token} = React.useContext(TokenContext)
     const navigation = useNavigation();
     const { updateInputValue } = useContext(InputContext);
     const [inputValue, setInputValue] = useState('');
@@ -15,9 +15,9 @@ export const SeleccionTipo = () => {
         updateInputValue('seleccionTipo', inputValue);
         navigation.navigate('PublicarProducto1')
     };
-    console.log(authState.loggedIn)
 
-    if (authState.loggedIn == true) {
+
+    if (token != null) {
 
 
 

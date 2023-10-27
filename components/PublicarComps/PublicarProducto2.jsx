@@ -2,12 +2,12 @@ import React, { useContext, useState, useEffect } from "react";
 import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { InputContext } from "../../context/CrearPublicacionContext";
-import { useToken } from "../../context/TokenContext";
+import { TokenContext } from '../../context/TokenContext';
 
 export const PublicarProducto2 = () => {
   const navigation = useNavigation();
   const { inputValues } = useContext(InputContext);
-  const { tokenState } = useToken();
+  const {token} = React.useContext(TokenContext)
   const [text, onChangeText] = useState("");
   const [text2, onChangeText2] = useState("");
 
@@ -26,18 +26,13 @@ export const PublicarProducto2 = () => {
     };
     try {
       const response = await fetch(
-<<<<<<< HEAD
-        "http://10.152.2.134:5000/publicar",
-=======
         "http://10.152.2.135:5000/publicar",
->>>>>>> 518f5baeb7bd170ff7a91013183d5622783261b5
 
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "user_token": tokenState.value.successful
-          },
+            "user_token": token  },
           body: JSON.stringify(payload),
         }
       );

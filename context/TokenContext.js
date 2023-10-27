@@ -1,40 +1,10 @@
-import React, { createContext, useContext, useReducer } from 'react';
+// './context/TokenContext.js'
+import React, { createContext, useContext} from 'react';
 
-const TokenContext = createContext();
+export const TokenContext = createContext();
 
-export const useToken = () => {
-  return useContext(TokenContext);
-};
+export const TokenProvider = (props) => {
+    const [token, setToken] = React.useState(localStorage.getItem("usuario")||null);
 
-const initialState = {
-  value: null,
-};
-
-const tokenReducer = (state, action) => {
-  switch (action.type) {
-    case 'SET_TOKEN':
-      return { ...state, value: action.payload };
-    case 'CLEAR_TOKEN':
-      return { ...state, value: null };
-    default:
-      return state;
-  }
-};
-
-export const TokenProvider = ({ children }) => {
-  const [tokenState, dispatch] = useReducer(tokenReducer, initialState);
-
-  const setToken = (token) => {
-    dispatch({ type: 'SET_TOKEN', payload: token });
-  };
-
-  const clearToken = () => {
-    dispatch({ type: 'CLEAR_TOKEN' });
-  };
-
-  return (
-    <TokenContext.Provider value={{ tokenState, setToken, clearToken }}>
-      {children}
-    </TokenContext.Provider>
-  );
+    return <TokenContext.Provider value={{ token, setToken }}>{props.children}</TokenContext.Provider>;
 };

@@ -13,8 +13,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator, DrawerToggleButton } from "@react-navigation/drawer";
 import { InputProvider } from './context/CrearPublicacionContext';
-import { AuthProvider } from "./context/LoginContext";
-import { TokenProvider } from "./context/TokenContext";
+import { TokenProvider } from "./context/TokenContext.js";
 import Busqueda from "./components/HomePageComps/Busqueda";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -24,7 +23,6 @@ function App() {
   
   return (
     <TokenProvider>
-      <AuthProvider>
         <NavigationContainer>
           <Drawer.Navigator>
             <Drawer.Screen
@@ -75,7 +73,6 @@ function App() {
 
           </Drawer.Navigator>
         </NavigationContainer>
-      </AuthProvider>
     </TokenProvider>
   );
 }

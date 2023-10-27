@@ -7,17 +7,12 @@ import CardProducto from './CardProducto';
 const Producto = () => {
   const [listaProductos, setListaProductos] = useState([])
     useEffect(() => {
-<<<<<<< HEAD
-        fetch(`http://10.152.2.134:5000/publicaciones`)
-=======
         fetch(`http://10.152.2.135:5000/publicaciones`)
->>>>>>> 518f5baeb7bd170ff7a91013183d5622783261b5
         
         .then(res => res.json())
         .then(data => {
           console.log(data)
           setListaProductos(data)
-          console.log(listaProductos.idPublicacion)
         });
        
     }, []);
