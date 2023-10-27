@@ -16,12 +16,13 @@ import { InputProvider } from './context/CrearPublicacionContext';
 import { AuthProvider } from "./context/LoginContext";
 import { TokenProvider } from "./context/TokenContext";
 import Busqueda from "./components/HomePageComps/Busqueda";
+import Contratar from "./components/ContratarComps/Contratar";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-{/**https://aboutreact.com/how-to-hide-navigation-drawer-sidebar-option/ */}
+{/**https://aboutreact.com/how-to-hide-navigation-drawer-sidebar-option/ */ }
 const lol = 1
 function App() {
-  
+
   return (
     <TokenProvider>
       <AuthProvider>
@@ -29,9 +30,10 @@ function App() {
           <Drawer.Navigator>
             <Drawer.Screen
               name="HomePage"
-              component={HomePage}
-              options={{ header: () => <Busqueda /> 
-            }}
+              component={HomeNavigator}
+              options={{
+                header: () => <Busqueda />
+              }}
             />
             <Drawer.Screen
               name="¿Qué querés publicar hoy?"
@@ -42,7 +44,7 @@ function App() {
                 DrawerToggleButton: true
               }}
             />
-            
+
             <Drawer.Screen
               name="Sesion"
               component={IngresoSesion}
@@ -54,24 +56,15 @@ function App() {
               options={{
                 headerStyle: {
                   backgroundColor: "#CE5656",
-                  
+
                 },
                 headerTitleStyle: {
                   color: "black",
                 },
-                
+
                 title: "Perfil",
               }}
             />
-              <Drawer.Screen
-                name="Publicacion"
-                component={Publicacion}
-                options={{ header: () => <Busqueda /> ,
-                title:"",
-                drawerActiveBackgroundColor: 'transparent', 
-                
-             }}
-              />
 
           </Drawer.Navigator>
         </NavigationContainer>
@@ -79,6 +72,38 @@ function App() {
     </TokenProvider>
   );
 }
+
+
+const HomeNavigator = () => {
+  return (
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen
+        name="Home"
+        component={HomePage}
+        options={{
+          headerShown: false,
+          title: "Publicar",
+          DrawerToggleButton: true
+        }} />
+      <Stack.Screen
+        name="Publicacion"
+        component={Publicacion}
+        options={{
+          headerShown: false,
+          title: "Publicar",
+          DrawerToggleButton: true
+        }} 
+        />
+        <Stack.Screen
+        name="Contratar"
+        component={Contratar}
+        options={{
+          headerShown: false,
+        }} 
+        />
+    </Stack.Navigator>)
+}
+
 const PublicarStack = () => {
 
   return (

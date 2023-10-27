@@ -17,7 +17,10 @@ export const Publicacion = (props) => {
         <Text style={styles.titulo}>{publicacionData.nombre}</Text>
 
         <Image source={{uri : publicacionData.imagenPublicacion}} style={styles.image} />
-        <Pressable style={styles.boton}>
+        <Pressable style={styles.boton}onPress={() => {
+          navigation.navigate("Contratar");
+        }}
+        >
           <Text style={styles.textoBoton}>Contratar</Text>
         </Pressable>
         <View style={styles.favcom}>

@@ -5,12 +5,7 @@ const Categorias = () => {
 
     const [listaCategorias, setlistaCategorias] = useState([])
         useEffect(() => {
-<<<<<<< HEAD
-            fetch(`http://10.152.2.134:5000/categorias`)
-=======
-            fetch(`http://10.152.2.135:5000/categorias`)
->>>>>>> 518f5baeb7bd170ff7a91013183d5622783261b5
-            
+            fetch(`https://5f2d-181-47-118-150.ngrok-free.app/categorias`) 
             .then(res => res.json())
             .then(data => {
               console.log(data)
@@ -21,9 +16,9 @@ return (
         <View style={styles.container}>
             <ScrollView horizontal={true}>
                 {listaCategorias.map(categorias =>( 
-                <BarCategorias
-                key={categorias.idCategoria} nombre={categorias.categoria} fkPublicacion={categorias.fkTipoPublicacion} foto={categorias.imagen}/>
-                ))
+                    <BarCategorias
+                    key={categorias.idCategoria} nombre={categorias.categoria} fkPublicacion={categorias.fkTipoPublicacion} foto={categorias.imagen}/>
+                    ))
                 }
             </ScrollView>
         </View>
