@@ -26,7 +26,7 @@ export const PublicarProducto2 = () => {
     };
     try {
       const response = await fetch(
-        "http://10.152.2.135:5000/publicar",
+        "http://10.152.2.134:5000/publicar",
 
         {
           method: "POST",

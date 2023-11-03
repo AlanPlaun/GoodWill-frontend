@@ -12,7 +12,7 @@ const [categorias, setCategorias] = useState([]);
 const [data, setData] = useState([]);
 
 useEffect(() => {
-    fetch('http://10.152.2.135:5000/categoriasProducto' ,{
+    fetch('http://10.152.2.134:5000/categoriasProducto' ,{
 
         method: 'POST',
     })

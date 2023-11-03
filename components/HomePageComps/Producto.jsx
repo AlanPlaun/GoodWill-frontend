@@ -7,7 +7,7 @@ import CardProducto from './CardProducto';
 const Producto = () => {
   const [listaProductos, setListaProductos] = useState([])
     useEffect(() => {
-        fetch(`http://10.152.2.135:5000/publicaciones`)
+        fetch(`http://10.152.2.134:5000/publicaciones`)
         
         .then(res => res.json())
         .then(data => {

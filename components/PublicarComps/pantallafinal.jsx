@@ -98,7 +98,7 @@ export const PantallaFinal = (props) => {
         return;
       }
       const response = await fetch(
-        "http://10.152.2.135:5000/subirimagen",
+        "http://10.152.2.134:5000/subirimagen",
 
         {
           method: "POST",

@@ -17,7 +17,7 @@ export const IngresoSesion = () => {
  const subirDatos = async () => {
     try {
       const response = await fetch(
-        "http://10.152.2.135:5000/login",
+        "http://10.152.2.134:5000/login",
         {
           method: "POST",
           headers: {

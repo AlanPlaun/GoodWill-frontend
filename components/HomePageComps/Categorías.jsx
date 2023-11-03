@@ -5,7 +5,7 @@ const Categorias = () => {
 
     const [listaCategorias, setlistaCategorias] = useState([])
         useEffect(() => {
-            fetch(`http://10.152.2.135:5000/categorias`)
+            fetch(`http://10.152.2.134:5000/categorias`)
             
             .then(res => res.json())
             .then(data => {

@@ -30,7 +30,7 @@ function App() {
               name="HomePage"
               component={HomeNavigator}
               options={{
-                header: () => <Busqueda />
+                headerShown:false
               }}
             />
             <Drawer.Screen
@@ -78,25 +78,29 @@ const HomeNavigator = () => {
         name="Home"
         component={HomePage}
         options={{
-          headerShown: false,
-          title: "Publicar",
-          DrawerToggleButton: true
+          header: () => <Busqueda />
         }} />
       <Stack.Screen
         name="Publicacion"
         component={Publicacion}
-        options={{
-          headerShown: false,
-          title: "Publicar",
-          DrawerToggleButton: true
+         options={{
+          header: () => <Busqueda />
         }} 
         />
         <Stack.Screen
         name="Contratar"
         component={Contratar}
         options={{
-          headerShown: false,
-        }} 
+          headerStyle: {
+            backgroundColor: "#CE5656",
+
+          },
+          headerTitleStyle: {
+            color: "black",
+          },
+
+          title: "Contratar servicio",
+        }}
         />
     </Stack.Navigator>)
 }
