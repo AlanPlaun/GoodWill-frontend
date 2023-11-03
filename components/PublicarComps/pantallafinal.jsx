@@ -92,7 +92,7 @@ export const PantallaFinal = (props) => {
       throw new Error("Upload Failed");
     }
   }
-  
+
   const makeFetchRequest = async () => {
     try {
       if (!url) {

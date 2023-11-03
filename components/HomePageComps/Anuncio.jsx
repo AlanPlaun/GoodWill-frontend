@@ -10,6 +10,7 @@ const Anuncio = () => {
 
     )
 }
+
 const styles = StyleSheet.create({
     container: {
         top: 24,

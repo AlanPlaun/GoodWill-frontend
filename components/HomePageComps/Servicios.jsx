@@ -7,7 +7,7 @@ import CardProducto from './CardProducto';
 const Servicios = () => {
   const [listaServicios, setListaServicios] = useState([])
     useEffect(() => {
-        fetch(`http://10.152.2.135:5000/publicaciones/servicio`)
+        fetch(`http://10.152.2.134:5000/publicaciones/servicio`)
         
         .then(res => res.json())
         .then(data => {
