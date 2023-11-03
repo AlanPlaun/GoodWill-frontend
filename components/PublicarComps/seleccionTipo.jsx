@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { TokenContext } from '../../context/TokenContext';
 
 export const SeleccionTipo = () => {
-    const {token} = React.useContext(TokenContext)
+    const { token } = React.useContext(TokenContext)
     const navigation = useNavigation();
     const { updateInputValue } = useContext(InputContext);
     const [inputValue, setInputValue] = useState('');
@@ -18,9 +18,6 @@ export const SeleccionTipo = () => {
     };
 
     if (token != null) {
-
-
-
         return (
             <View>
                 <View style={styles.fondo}>
@@ -48,9 +45,10 @@ export const SeleccionTipo = () => {
     else {
         return (
             <View style={styles.sesion}>
-                <Text style={styles.sesionTexto}>Para publicar tenes que tener una sesión iniciada</Text> 
+                <Text style={styles.sesionTexto}>Para publicar tenes que tener una sesión iniciada</Text>
                 <Pressable style={styles.sesionBoton} onPress={() => {
-          navigation.navigate("Sesion");}}>
+                    navigation.navigate("Sesion");
+                }}>
                     <Text style={styles.sesionBotonTexto}>ir a Iniciar Sesión</Text>
                 </Pressable>
             </View>
@@ -59,24 +57,24 @@ export const SeleccionTipo = () => {
 };
 
 const styles = StyleSheet.create({
-    sesionBotonTexto:{
-    textAlign: "center",
-    fontWeight:"500"
-},
+    sesionBotonTexto: {
+        textAlign: "center",
+        fontWeight: "500"
+    },
     sesionBoton: {
-    backgroundColor:"#CE5656",
-    width:100,
-    borderRadius: 4,
+        backgroundColor: "#CE5656",
+        width: 100,
+        borderRadius: 4,
     },
     sesion: {
         alignItems: "center",
         marginTop: 20,
     },
     sesionTexto: {
-         width: 250,
+        width: 250,
         textAlign: "center",
-         fontSize: 18
-     },
+        fontSize: 18
+    },
     bolsa: {
         bottom: 2
     },

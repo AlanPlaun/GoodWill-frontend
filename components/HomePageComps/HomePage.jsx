@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Busqueda from '../HomePageComps/Busqueda';
 import Anuncio from './Anuncio';
 import Categorias from './Categorias';
@@ -11,7 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 export const HomePage = () => {
     const navigation = useNavigation();
     const handlePublicarPress = () => {
-      navigation.navigate('PublicarStack');
+        navigation.navigate('PublicarStack');
     };
     return (
         <View style={styles.Todo}>
@@ -25,8 +25,6 @@ export const HomePage = () => {
         </View>
     );
 };
-
-
 
 const styles = StyleSheet.create({
     Todo: {

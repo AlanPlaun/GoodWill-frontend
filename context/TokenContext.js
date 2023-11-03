@@ -2,7 +2,7 @@
 import React, { createContext, useContext} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 export const TokenContext = createContext();
-
+//no funciona async
 export const TokenProvider = (props) => {
     const [token, setToken] = React.useState(AsyncStorage.getItem("usuario")||null);
 

@@ -29,12 +29,13 @@ const firebaseConfig = {
 if (!getApps().length) {
   const app = initializeApp(firebaseConfig);
 }
-
+//publica imagen mas de una vez
 export const PantallaFinal = (props) => {
   const navigation = useNavigation();
   const [uploading, setUploading] = useState(false);
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
+
   const handlePickImage = async () => {
     let pickerResult = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
@@ -91,6 +92,7 @@ export const PantallaFinal = (props) => {
       throw new Error("Upload Failed");
     }
   }
+
   const makeFetchRequest = async () => {
     try {
       if (!url) {
