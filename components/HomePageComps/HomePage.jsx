@@ -2,17 +2,14 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView} from 'react-native';
 import Busqueda from '../HomePageComps/Busqueda';
 import Anuncio from './Anuncio';
-import Categorias from './Categorías';
+import Categorias from './Categorias';
 import Servicio from './Servicio.jsx';
 import Productos from './Productos';
 import Publicacion from '../ProductoComps/Publicacion';
 import { useNavigation } from '@react-navigation/native';
-import { TokenContext } from '../../context/TokenContext.js';
 
 export const HomePage = () => {
     const navigation = useNavigation();
-    const {token} = React.useContext(TokenContext)
-    console.log(token)
     const handlePublicarPress = () => {
       navigation.navigate('PublicarStack');
     };
@@ -20,9 +17,9 @@ export const HomePage = () => {
         <View style={styles.Todo}>
             <ScrollView>
                 <Anuncio/>
-                <Categorias/>
+                <Categorias tipo= "Servicio" />
                 <Servicio/>
-                <Categorias/>
+                <Categorias tipo= "Producto" />
                 <Productos/>
             </ScrollView> 
         </View>

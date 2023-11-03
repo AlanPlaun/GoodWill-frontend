@@ -10,9 +10,10 @@ const { updateInputValue } = useContext(InputContext);
 const [inputValue, setInputValue] = useState('');
 const [categorias, setCategorias] = useState([]);
 const [data, setData] = useState([]);
+console.log(inputValue);
 
 useEffect(() => {
-    fetch('http://10.152.2.134:5000/categoriasProducto' ,{
+    fetch('https://55ef-200-73-176-51.ngrok-free.app/categoriasportipo' ,{
 
         method: 'POST',
     })

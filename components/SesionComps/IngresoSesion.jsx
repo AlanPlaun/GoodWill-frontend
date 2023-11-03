@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {View,Text,StyleSheet,TextInput,Button,Pressable} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { TokenContext } from '../../context/TokenContext.js';
+
 export const IngresoSesion = () => {
   const [email, setEmail] = useState("");
   const [contraseña, setContraseña] = useState("");
@@ -17,7 +18,7 @@ export const IngresoSesion = () => {
  const subirDatos = async () => {
     try {
       const response = await fetch(
-        "http://10.152.2.134:5000/login",
+        "https://55ef-200-73-176-51.ngrok-free.app/login",
         {
           method: "POST",
           headers: {

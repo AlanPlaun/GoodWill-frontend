@@ -11,11 +11,11 @@ export const SeleccionTipo = () => {
     const navigation = useNavigation();
     const { updateInputValue } = useContext(InputContext);
     const [inputValue, setInputValue] = useState('');
-    const handleNext = () => {
+    const handleNext = (selectedType) => {
+        setInputValue(selectedType);
         updateInputValue('seleccionTipo', inputValue);
-        navigation.navigate('PublicarProducto1')
+        navigation.navigate('PublicarProducto1');
     };
-
 
     if (token != null) {
 
@@ -24,7 +24,7 @@ export const SeleccionTipo = () => {
         return (
             <View>
                 <View style={styles.fondo}>
-                    <Pressable onPress={() => { setInputValue('Producto'), handleNext() }}>
+                    <Pressable onPress={() => { handleNext('Producto') }}>
                         <View style={styles.option} >
                             <View style={styles.circle}>
                                 <FontAwesome5 style={styles.bolsa} name="shopping-bag" size={60} color="white" />
@@ -32,7 +32,7 @@ export const SeleccionTipo = () => {
                             <Text style={styles.titulo}>Productos</Text>
                         </View>
                     </Pressable>
-                    <Pressable onPress={() => { setInputValue('Producto'), handleNext() }}>
+                    <Pressable onPress={() => {handleNext('Servicio') }}>
                         <View style={styles.option} >
                             <View style={styles.circle}>
                                 <MaterialCommunityIcons style={styles.herramientas} name="tools" size={60} color="white" />

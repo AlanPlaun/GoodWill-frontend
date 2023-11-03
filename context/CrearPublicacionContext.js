@@ -8,6 +8,7 @@ const InputProvider = ({ children }) => {
       ...prevInputValues,
       [screenId]: value,
     }));
+    console.log(inputValues)
   };
 
   return (
