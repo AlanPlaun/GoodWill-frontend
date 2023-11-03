@@ -6,28 +6,28 @@ import CardProducto from './CardProducto';
 
 const Producto = () => {
   const [listaProductos, setListaProductos] = useState([])
-    useEffect(() => {
-        fetch(`http://10.152.2.135:5000/publicaciones`)
-        
-        .then(res => res.json())
-        .then(data => {
-          console.log(data)
-          setListaProductos(data)
-        });
-       
-    }, []);
-    return (
+  useEffect(() => {
+    fetch(`https://29b0-200-73-176-51.ngrok-free.app/publicaciones`)
+
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        setListaProductos(data)
+      });
+
+  }, []);
+  return (
     <View style={styles.container}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        { listaProductos.map(productos => (
-        <View style={styles.card} key={productos.idPublicacion}>
-        <CardProducto
-          nombre = {productos.titulo}  descripcion = {productos.descripcion}  ubicacion = {productos.ubicacion}  nombreUsuario= {productos.nombreUsuario}  imagenUsuario={productos.img} imagenPublicacion={productos.imagen}
-        /> 
-      </View>
-      
- ))
-        } 
+        {listaProductos.map(productos => (
+          <View style={styles.card} key={productos.idPublicacion}>
+            <CardProducto
+              nombre={productos.titulo} descripcion={productos.descripcion} ubicacion={productos.ubicacion} nombreUsuario={productos.nombreUsuario} imagenUsuario={productos.img} imagenPublicacion={productos.imagen}
+            />
+          </View>
+
+        ))
+        }
       </ScrollView>
     </View>
   );
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     left: 13,
   },
   image: {
-    left:1,
+    left: 1,
     width: 100,
     height: 100,
     marginBottom: 8,
@@ -74,8 +74,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     width: 130,
     color: "grey",
-
-
   },
 });
 

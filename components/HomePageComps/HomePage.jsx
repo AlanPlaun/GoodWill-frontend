@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Busqueda from '../HomePageComps/Busqueda';
 import Anuncio from './Anuncio';
 import Categorias from './Categorías';
@@ -11,25 +11,23 @@ import { TokenContext } from '../../context/TokenContext.js';
 
 export const HomePage = () => {
     const navigation = useNavigation();
-    const {token} = React.useContext(TokenContext)
+    const { token } = React.useContext(TokenContext)
     console.log(token)
     const handlePublicarPress = () => {
-      navigation.navigate('PublicarStack');
+        navigation.navigate('PublicarStack');
     };
     return (
         <View style={styles.Todo}>
             <ScrollView>
-                <Anuncio/>
-                <Categorias/>
-                <Servicio/>
-                <Categorias/>
-                <Productos/>
-            </ScrollView> 
+                <Anuncio />
+                <Categorias />
+                <Servicio />
+                <Categorias />
+                <Productos />
+            </ScrollView>
         </View>
     );
 };
-
-
 
 const styles = StyleSheet.create({
     Todo: {

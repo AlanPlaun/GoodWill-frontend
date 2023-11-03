@@ -1,6 +1,6 @@
 import { DrawerToggleButton } from '@react-navigation/drawer';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity,Fragment, Pressable } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Fragment, Pressable } from 'react-native';
 import 'react-native-gesture-handler';
 
 const Busqueda = () => {
@@ -12,29 +12,29 @@ const Busqueda = () => {
     return (
         <View style={styles.container}>
             <View style={styles.srcBar}>
-            <TextInput
-                style={styles.inputBusqueda}
-                value={busqueda}
-                onChangeText={handleInputChangeBusqueda}
-                placeholder="Busqueda"
-                placeholderTextColor="gray"
-            />        
-            <View style={styles.hambMenu}>        
-            <DrawerToggleButton></DrawerToggleButton></View>
+                <TextInput
+                    style={styles.inputBusqueda}
+                    value={busqueda}
+                    onChangeText={handleInputChangeBusqueda}
+                    placeholder="Busqueda"
+                    placeholderTextColor="gray"
+                />
+                <View style={styles.hambMenu}>
+                    <DrawerToggleButton></DrawerToggleButton></View>
             </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    hambMenu:{
-       
-        width:60,
-        height:40,
-        bottom:7
+    hambMenu: {
+
+        width: 60,
+        height: 40,
+        bottom: 7
     },
-    srcBar:{
-        bottom:37
+    srcBar: {
+        bottom: 37
     },
     container: {
         top: 24,
