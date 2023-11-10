@@ -13,6 +13,7 @@ export const HomePage = () => {
     const handlePublicarPress = () => {
         navigation.navigate('PublicarStack');
     };
+    //hacer que se recarge la pantalla si se crea un nuevo servicio o producto
     return (
         <View style={styles.Todo}>
             <ScrollView>

@@ -18,8 +18,7 @@ import Busqueda from "./components/HomePageComps/Busqueda";
 import Contratar from "./components/ContratarComps/Contratar";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-{/**https://aboutreact.com/how-to-hide-navigation-drawer-sidebar-option/ */ }
-const lol = 1
+
 function App() {
 
   return (
