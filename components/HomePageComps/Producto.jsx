@@ -7,20 +7,17 @@ const Producto = () => {
   const [listaProductos, setListaProductos] = useState([]);
   //ROMPI TODOOOOOOOOOO ASHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
   useEffect(() => {
-    fetch(`https://55ef-200-73-176-51.ngrok-free.app/publicaciones`, {
+    fetch(`https://b882-200-73-176-51.ngrok-free.app/publicaciones`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => {
-        console.log(res)
-        res.json()}
-        )
-      .then((res) => {
-        
-        setListaProductos(data);
-      });
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      setListaProductos(data)
+    });
   }, []);
   return (
     <View style={styles.container}>

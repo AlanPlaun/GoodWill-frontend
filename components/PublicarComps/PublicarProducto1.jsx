@@ -13,7 +13,7 @@ const [data, setData] = useState([]);
 console.log(inputValue);
 
 useEffect(() => {
-    fetch('https://55ef-200-73-176-51.ngrok-free.app/categoriasportipo' ,{
+    fetch('https://b882-200-73-176-51.ngrok-free.app/categoriasportipo' ,{
 
         method: 'POST',
     })

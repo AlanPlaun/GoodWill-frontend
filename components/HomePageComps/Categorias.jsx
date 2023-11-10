@@ -4,7 +4,7 @@ import BarCategorias from "./BarCategorias";
 const Categorias = (props) => {
   const [listaCategorias, setlistaCategorias] = useState([]);
   useEffect(() => {
-    fetch("https://55ef-200-73-176-51.ngrok-free.app/categoriasportipo", {
+    fetch("https://b882-200-73-176-51.ngrok-free.app/categoriasportipo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -7,7 +7,7 @@ import CardProducto from './CardProducto';
 const Servicios = () => {
   const [listaServicios, setListaServicios] = useState([])
     useEffect(() => {
-        fetch(`http://10.152.2.134:5000/publicaciones/servicio`)
+        fetch(`https://b882-200-73-176-51.ngrok-free.app/servicio`)
         
         .then(res => res.json())
         .then(data => {
