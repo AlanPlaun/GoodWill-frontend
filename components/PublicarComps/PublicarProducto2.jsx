@@ -10,9 +10,9 @@ export const PublicarProducto2 = () => {
   const {token} = React.useContext(TokenContext)
   const [text, onChangeText] = useState("");
   const [text2, onChangeText2] = useState("");
-
+  const [Punts, onChangeText3] = useState(null)
+  const holder = "Cantidad de puntos (recomendado: " + inputValues["Puntos"] + ")"
   const makeFetchRequest = async () => {
-
     if (!text || !text2) {
       alert("Por favor complete todos los campos")
       return;
@@ -23,10 +23,11 @@ export const PublicarProducto2 = () => {
       titulo: text,
       descripcion: text2,
       categoria: inputValues["Categoria"],
+      puntos: Punts
     };
     try {
       const response = await fetch(
-        "https://9e2c-200-73-176-51.ngrok-free.app/publicar",
+        "https://b882-200-73-176-51.ngrok-free.app/publicar",
 
         {
           method: "POST",
@@ -63,6 +64,14 @@ export const PublicarProducto2 = () => {
           style={styles.inputingreso}
           onChangeText={onChangeText2}
           placeholder="Descripción de la publicación"
+          placeholderTextColor="gray"
+        />
+        <TextInput
+          style={styles.inputingreso}
+          onChangeText={onChangeText3}
+          placeholder= {holder} 
+          keyboardType="numeric"
+          placeholderTextColor="gray"
         />
         <Pressable
           style={({ pressed }) => [

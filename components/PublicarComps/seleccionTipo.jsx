@@ -10,10 +10,8 @@ export const SeleccionTipo = () => {
     const { token } = React.useContext(TokenContext)
     const navigation = useNavigation();
     const { updateInputValue } = useContext(InputContext);
-    const [inputValue, setInputValue] = useState('');
     const handleNext = (selectedType) => {
-        setInputValue(selectedType);
-        updateInputValue('seleccionTipo', inputValue);
+        updateInputValue('seleccionTipo', selectedType);
         navigation.navigate('PublicarProducto1');
     };
 
