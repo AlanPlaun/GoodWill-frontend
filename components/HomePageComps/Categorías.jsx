@@ -5,7 +5,7 @@ const Categorias = () => {
 
     const [listaCategorias, setlistaCategorias] = useState([])
     useEffect(() => {
-        fetch(`https://b882-200-73-176-51.ngrok-free.app/categorias`)
+        fetch(`https://9e2c-200-73-176-51.ngrok-free.app/categorias`)
 
             .then(res => res.json())
             .then(data => {

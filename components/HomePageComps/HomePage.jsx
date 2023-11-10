@@ -3,9 +3,7 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Busqueda from '../HomePageComps/Busqueda';
 import Anuncio from './Anuncio';
 import Categorias from './Categorias';
-import Servicio from './Servicio.jsx';
-import Productos from './Productos';
-import Publicacion from '../ProductoComps/Publicacion';
+import PublicacionSeccion from './Productos';
 import { useNavigation } from '@react-navigation/native';
 
 export const HomePage = () => {
@@ -18,9 +16,9 @@ export const HomePage = () => {
             <ScrollView>
                 <Anuncio/>
                 <Categorias tipo= "Servicio" />
-                <Servicio/>
+                <PublicacionSeccion tipo="Servicio"/>
                 <Categorias tipo= "Producto" />
-                <Productos/>
+                <PublicacionSeccion tipo ="Producto"/>
             </ScrollView> 
         </View>
     );

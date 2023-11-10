@@ -38,7 +38,7 @@ export const PantallaFinal = (props) => {
 
   const handlePickImage = async () => {
     let pickerResult = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: true,
+      //  allowsEditing: true,
     });
 
     console.log({ pickerResult });

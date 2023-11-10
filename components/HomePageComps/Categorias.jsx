@@ -4,7 +4,7 @@ import BarCategorias from "./BarCategorias";
 const Categorias = (props) => {
   const [listaCategorias, setlistaCategorias] = useState([]);
   useEffect(() => {
-    fetch("https://b882-200-73-176-51.ngrok-free.app/categoriasportipo", {
+    fetch("https://9e2c-200-73-176-51.ngrok-free.app/categoriasportipo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,6 +17,7 @@ const Categorias = (props) => {
       })
       .catch((err) => console.log(err));
   }, []);
+  
   return (
     <View style={styles.container}>
       <ScrollView horizontal={true}>

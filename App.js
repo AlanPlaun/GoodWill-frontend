@@ -16,11 +16,13 @@ import { InputProvider } from './context/CrearPublicacionContext';
 import { TokenProvider } from "./context/TokenContext.js";
 import Busqueda from "./components/HomePageComps/Busqueda";
 import Contratar from "./components/ContratarComps/Contratar";
+import { TokenContext } from './context/TokenContext';
+import { useContext } from "react";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-{/**https://aboutreact.com/how-to-hide-navigation-drawer-sidebar-option/ */ }
-const lol = 1
+//https://aboutreact.com/how-to-hide-navigation-drawer-sidebar-option/
 function App() {
+  // const { token } = useContext(TokenContext)
 
   return (
     <TokenProvider>

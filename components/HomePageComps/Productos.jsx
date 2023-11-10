@@ -1,11 +1,25 @@
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { View, Text, StyleSheet} from 'react-native';
 import Producto from './Producto';
 
-const Productos = () =>{
+const PublicacionSeccion = (props) =>{
+    const [titulo, setTitulo]  = useState("")
+    useEffect(() =>{
+    function definirTitulo(){
+        if(props.tipo == "Servicio"){
+            setTitulo("Servicio")
+        }
+        else {
+            setTitulo("Producto");
+        }
+    }
+    definirTitulo()
+})
     return(
     <View style={styles.container}>
-        <Text style={styles.texto}>Productos</Text>
-        <Producto/>
+        <Text style={styles.texto}>{titulo}</Text>
+        <Producto props={props}/>
     </View>)
 }
 const styles = StyleSheet.create({
@@ -13,7 +27,7 @@ const styles = StyleSheet.create({
         backgroundColor:"#ECECEC",
         height:260,
         width:410,
-        marginTop:-45,
+        marginTop:-45,  
     },
     texto:{
         left: 14,
@@ -22,4 +36,4 @@ const styles = StyleSheet.create({
     }
 
 })
-export default Productos
+export default PublicacionSeccion
