@@ -18,7 +18,7 @@ export const IngresoSesion = () => {
  const subirDatos = async () => {
     try {
       const response = await fetch(
-        "https://9e2c-200-73-176-51.ngrok-free.app/login",
+        "https://a8db-186-19-157-106.ngrok-free.app/login",
         {
           method: "POST",
           headers: {
@@ -69,6 +69,7 @@ export const IngresoSesion = () => {
         ]}
         onPress={() => {
           subirDatos();
+          
         }}
       >
         <Text style={styles.texto}>Siguiente</Text>

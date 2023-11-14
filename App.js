@@ -43,13 +43,7 @@ function App() {
                 title: "Publicar",
                 DrawerToggleButton: true
               }}
-            />
-
-            <Drawer.Screen
-              name="Sesion"
-              component={IngresoSesion}
-              options={{ headerShown: false }}
-            />
+            />     
             <Drawer.Screen
               name="Perfil"
               component={Perfil}
@@ -75,7 +69,12 @@ function App() {
 
 const HomeNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator>
+       <Drawer.Screen
+              name="Sesion"
+              component={IngresoSesion}
+              options={{ headerShown: false }}
+        />
       <Stack.Screen
         name="Home"
         component={HomePage}
