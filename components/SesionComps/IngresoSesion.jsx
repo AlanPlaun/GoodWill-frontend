@@ -14,11 +14,11 @@ export const IngresoSesion = () => {
   const handleInputChangeContraseña = (value) => {
     setContraseña(value);
   };
-
+  
  const subirDatos = async () => {
     try {
       const response = await fetch(
-        "https://a8db-186-19-157-106.ngrok-free.app/login",
+        "https://da40-200-73-176-51.ngrok-free.app/login",
         {
           method: "POST",
           headers: {
@@ -31,7 +31,7 @@ export const IngresoSesion = () => {
       if (response.ok) {
         const data = await response.json();
         setToken(data.successful);
-        navigation.navigate("HomePage");
+        navigation.navigate("Home");
       } else {
         console.log("Request failed:", response.status);
         alert("Usuario o contraseña incorrectos");
@@ -39,7 +39,7 @@ export const IngresoSesion = () => {
     } catch (error) {
       console.error(error);
     }
-
+    
   }
   const navigation = useNavigation();
 
@@ -69,7 +69,6 @@ export const IngresoSesion = () => {
         ]}
         onPress={() => {
           subirDatos();
-          
         }}
       >
         <Text style={styles.texto}>Siguiente</Text>

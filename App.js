@@ -16,6 +16,7 @@ import { InputProvider } from './context/CrearPublicacionContext';
 import { TokenProvider } from "./context/TokenContext.js";
 import Busqueda from "./components/HomePageComps/Busqueda";
 import Contratar from "./components/ContratarComps/Contratar";
+import Confirmar from "./components/ContratarComps/Confirmar";
 import { TokenContext } from './context/TokenContext';
 import { useContext } from "react";
 const Stack = createNativeStackNavigator();
@@ -91,6 +92,21 @@ const HomeNavigator = () => {
         <Stack.Screen
         name="Contratar"
         component={Contratar}
+        options={{
+          headerStyle: {
+            backgroundColor: "#CE5656",
+
+          },
+          headerTitleStyle: {
+            color: "black",
+          },
+
+          title: "Contratar servicio",
+        }}
+        />
+        <Stack.Screen
+        name="Confirmar"
+        component={Confirmar}
         options={{
           headerStyle: {
             backgroundColor: "#CE5656",

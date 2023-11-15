@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
@@ -10,7 +10,7 @@ export const Perfil = () => {
   if (token != null) {
     useEffect(() => {
       try {
-        fetch("https://a8db-186-19-157-106.ngrok-free.app/usuario", {
+        fetch("https://da40-200-73-176-51.ngrok-free.app/usuario", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -57,13 +57,17 @@ export const Perfil = () => {
         <View style={styles.lineaRoja}></View>
         <Text style={styles.publicaciones}>Publicaciones</Text>
         {usuario.publicaciones?.map((publicacion, index) => (
-          <View key={publicacion.id || index} style={styles.publicacion}>
-            <Image
-              source={{ uri: publicacion.imagen }}
-              style={styles.producto}
-            />
-            <Text style={styles.titulo}>{publicacion.titulo}</Text>
-          </View>
+          <Pressable  onPress={() => {
+            navigation.navigate("Publicacion", {selectedPublicacion: props});
+          }}>
+            <View key={publicacion.id || index} style={styles.publicacion}>
+              <Image
+                source={{ uri: publicacion.imagen }}
+                style={styles.producto}
+              />
+              <Text style={styles.titulo}>{publicacion.titulo}</Text>
+            </View>
+          </Pressable>
         ))}
       </View>
     );
