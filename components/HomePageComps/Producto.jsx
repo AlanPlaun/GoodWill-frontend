@@ -21,7 +21,7 @@ const Producto = (props) => {
   //   });
   // }, []);
   useEffect(() => {
-    fetch("https://da40-200-73-176-51.ngrok-free.app/publicacionesportipo", {
+    fetch("https://0f56-186-19-157-106.ngrok-free.app/publicacionesportipo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,6 +40,7 @@ const Producto = (props) => {
         {listaProductos.map((productos) => (
           <View style={styles.card} key={productos.idPublicacion}>
             <CardProducto
+              idPubli={productos.idPublicacion}
               nombre={productos.titulo}
               descripcion={productos.descripcion}
               ubicacion={productos.ubicacion}

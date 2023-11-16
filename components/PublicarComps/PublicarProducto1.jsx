@@ -21,7 +21,7 @@ export const PublicarProducto1 = () => {
   //inputvalues y inputvalue son dos cosas distintas
 
   useEffect(() => {
-    fetch("https://da40-200-73-176-51.ngrok-free.app/categoriasportipo", {
+    fetch("https://0f56-186-19-157-106.ngrok-free.app/categoriasportipo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

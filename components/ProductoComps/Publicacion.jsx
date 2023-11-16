@@ -9,7 +9,7 @@ export const Publicacion = (props) => {
  
   const navigation = useNavigation();
   const publicacionData = props.route.params.selectedPublicacion;
-  console.log(publicacionData);
+  // console.log(publicacionData);
 
   return (
     <View style={styles.Todo} >
@@ -18,7 +18,7 @@ export const Publicacion = (props) => {
 
         <Image source={{uri : publicacionData.imagenPublicacion}} style={styles.image} />
         <Pressable style={styles.boton}onPress={() => {
-          navigation.navigate("Contratar");
+          navigation.navigate("Contratar", {selectedPublicacion: publicacionData});
         }}
         >
           <Text style={styles.textoBoton}>Contratar</Text>

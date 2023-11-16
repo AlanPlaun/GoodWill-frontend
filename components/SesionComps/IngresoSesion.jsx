@@ -18,7 +18,7 @@ export const IngresoSesion = () => {
  const subirDatos = async () => {
     try {
       const response = await fetch(
-        "https://da40-200-73-176-51.ngrok-free.app/login",
+        "https://0f56-186-19-157-106.ngrok-free.app/login",
         {
           method: "POST",
           headers: {
