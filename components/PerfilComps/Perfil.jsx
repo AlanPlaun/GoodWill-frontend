@@ -10,7 +10,7 @@ export const Perfil = () => {
   if (token != null) {
     useEffect(() => {
       try {
-        fetch("https://da40-200-73-176-51.ngrok-free.app/usuario", {
+        fetch("http://192.168.0.23:5000/usuario", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

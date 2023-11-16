@@ -6,22 +6,8 @@ import CardProducto from "./CardProducto";
 const Producto = (props) => {
 // const Producto = () => {
   const [listaProductos, setListaProductos] = useState([]);
-  //ROMPI TODOOOOOOOOOO ASHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-  // useEffect(() => {
-  //   fetch(`https://9e2c-200-73-176-51.ngrok-free.app/publicaciones`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     console.log(data)
-  //     setListaProductos(data)
-  //   });
-  // }, []);
   useEffect(() => {
-    fetch("https://da40-200-73-176-51.ngrok-free.app/publicacionesportipo", {
+    fetch("http://192.168.0.23:5000/publicacionesportipo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -100,7 +100,7 @@ export const PantallaFinal = (props) => {
         return;
       }
       const response = await fetch(
-        "https://b882-200-73-176-51.ngrok-free.app/subirimagen",
+        "http://192.168.0.23:5000/subirimagen",
 
         {
           method: "POST",
