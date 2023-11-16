@@ -26,6 +26,7 @@ const Producto = (props) => {
         {listaProductos.map((productos) => (
           <View style={styles.card} key={productos.idPublicacion}>
             <CardProducto
+              idPubli={productos.idPublicacion}
               nombre={productos.titulo}
               descripcion={productos.descripcion}
               ubicacion={productos.ubicacion}

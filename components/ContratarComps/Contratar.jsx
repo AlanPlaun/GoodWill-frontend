@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, Button, Pressable, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Calendar } from "react-native-calendars";
-const Contratar = () => {
+const Contratar = (props) => {
     const navigation = useNavigation();
     const [selectedDate, setSelectedDate] = useState('');
-
+    const publicacionData = props.route.params.selectedPublicacion;
+    
     const onDayPress = (day) => {
         setSelectedDate(day.dateString);
         console.log(selectedDate)
     };
-    console.log("ashee")
     return (
         <View>
             <View style={styles.ingresar}>
@@ -44,7 +44,7 @@ const Contratar = () => {
                     backgroundColor: pressed ? "#924747" : "#CE5656"
                 }, styles.Boton]}
                     onPress={() => {
-                        navigation.navigate("Confirmar",  {selectedFecha: selectedDate});
+                        navigation.navigate("Confirmar",  {selectedFecha: selectedDate, selectedPublicacion: publicacionData});
                     }}>
                     <Text style={styles.textoBoton}>Siguiente</Text>
                 </Pressable>

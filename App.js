@@ -19,6 +19,8 @@ import Contratar from "./components/ContratarComps/Contratar";
 import Confirmar from "./components/ContratarComps/Confirmar";
 import { TokenContext } from './context/TokenContext';
 import { useContext } from "react";
+import PublicacionProvider from "./context/PublicacionContext";
+import TusContrataciones from "./components/TusContratacionesComps/Contrataciones";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 //https://aboutreact.com/how-to-hide-navigation-drawer-sidebar-option/
@@ -27,6 +29,7 @@ function App() {
 
   return (
     <TokenProvider>
+      <PublicacionProvider>
         <NavigationContainer>
           <Drawer.Navigator>
             <Drawer.Screen
@@ -60,9 +63,25 @@ function App() {
                 title: "Perfil",
               }}
             />
+            <Drawer.Screen
+              name="Mis Contrataciones"
+              component={TusContrataciones}
+              options={{
+                headerStyle: {
+                  backgroundColor: "#CE5656",
+
+                },
+                headerTitleStyle: {
+                  color: "black",
+                },
+
+                title: "Mis Contrataciones",
+              }}
+            />
 
           </Drawer.Navigator>
         </NavigationContainer>
+        </PublicacionProvider>
     </TokenProvider>
   );
 }
@@ -71,11 +90,11 @@ function App() {
 const HomeNavigator = () => {
   return (
     <Stack.Navigator>
-       <Drawer.Screen
+        <Drawer.Screen
               name="Sesion"
               component={IngresoSesion}
               options={{ headerShown: false }}
-        />
+        /> 
       <Stack.Screen
         name="Home"
         component={HomePage}
