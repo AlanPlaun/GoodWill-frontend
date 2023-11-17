@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import CardProducto from "./CardProducto";
 
 const Producto = (props) => {
-// const Producto = () => {
   const [listaProductos, setListaProductos] = useState([]);
   useEffect(() => {
     fetch("http://192.168.0.23:5000/publicacionesportipo", {
@@ -17,6 +16,7 @@ const Producto = (props) => {
       .then((res) => res.json())
       .then((res) => {
         setListaProductos(res);
+        console.log(res)
       })
       .catch((err) => console.log(err));
   }, []);

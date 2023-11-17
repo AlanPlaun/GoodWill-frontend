@@ -19,7 +19,6 @@ import Contratar from "./components/ContratarComps/Contratar";
 import Confirmar from "./components/ContratarComps/Confirmar";
 import { TokenContext } from './context/TokenContext';
 import { useContext } from "react";
-import PublicacionProvider from "./context/PublicacionContext";
 import TusContrataciones from "./components/TusContratacionesComps/Contrataciones";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -29,7 +28,6 @@ function App() {
 
   return (
     <TokenProvider>
-      <PublicacionProvider>
         <NavigationContainer>
           <Drawer.Navigator>
             <Drawer.Screen
@@ -81,7 +79,6 @@ function App() {
 
           </Drawer.Navigator>
         </NavigationContainer>
-        </PublicacionProvider>
     </TokenProvider>
   );
 }
