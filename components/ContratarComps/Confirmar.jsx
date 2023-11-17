@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { TokenContext } from '../../context/TokenContext';
@@ -7,11 +7,11 @@ const Confirmar = (props) => {
   const navigation = useNavigation();
   const publicacionData = props.route.params.selectedPublicacion;
   const fecha = props.route.params.selectedFecha;
-  const { token } = React.useContext(TokenContext);
+  const { token } = useContext(TokenContext);
 
-  const Presionar = async () => {
+  const handleContratarPress = async () => {
     try {
-      const response = await fetch('http://192.168.0.23:5000/contratar', {
+      const response = await fetch('https://1b81-200-73-176-51.ngrok-free.app/contratar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -28,11 +28,12 @@ const Confirmar = (props) => {
       }
 
       const data = await response.json();
-      console.log(data)
+      console.log(data);
+
       if (data.haContratado) {
         // El usuario ya ha contratado este producto, muestra un alert
         alert('Contratación duplicada', data.message);
-        navigation.navigate('Home');  
+        navigation.navigate('Home');
       } else {
         // Contratación exitosa, puedes hacer algo más si es necesario
         console.log(data.contratacion);
@@ -54,7 +55,7 @@ const Confirmar = (props) => {
           { backgroundColor: pressed ? '#924747' : '#CE5656' },
           styles.boton,
         ]}
-        onPress={Presionar}>
+        onPress={handleContratarPress}>
         <Text style={styles.textoBoton}>Contratar</Text>
       </Pressable>
     </View>

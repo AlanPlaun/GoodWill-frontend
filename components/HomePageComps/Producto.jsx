@@ -1,86 +1,66 @@
-import React from "react";
-import { View, Image, Text, StyleSheet, ScrollView } from "react-native";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { View, ScrollView, StyleSheet } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 import CardProducto from "./CardProducto";
 
 const Producto = (props) => {
   const [listaProductos, setListaProductos] = useState([]);
-  useEffect(() => {
-    fetch("http://192.168.0.23:5000/publicacionesportipo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ tipo: props.props.tipo }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setListaProductos(res);
-        console.log(res)
-      })
-      .catch((err) => console.log(err));
-  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("https://1b81-200-73-176-51.ngrok-free.app/publicacionesportipo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ tipo: props.props.tipo }),
+      });
+
+      const data = await response.json();
+      setListaProductos(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      fetchData();
+    }, [props.props.tipo]) // Fetch data when the screen is focused or when the tipo prop changes
+  );
+
   return (
-    <View style={styles.container}>
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {listaProductos.map((productos) => (
-          <View style={styles.card} key={productos.idPublicacion}>
-            <CardProducto
-              idPubli={productos.idPublicacion}
-              nombre={productos.titulo}
-              descripcion={productos.descripcion}
-              ubicacion={productos.ubicacion}
-              nombreUsuario={productos.nombreUsuario}
-              imagenUsuario={productos.img}
-              imagenPublicacion={productos.imagen}
-            />
-          </View>
-        ))}
-      </ScrollView>
-    </View>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
+      {listaProductos.map((producto) => (
+        <View style={styles.card} key={producto.idPublicacion}>
+          <CardProducto
+            idPubli={producto.idPublicacion}
+            nombre={producto.titulo}
+            descripcion={producto.descripcion}
+            ubicacion={producto.ubicacion}
+            nombreUsuario={producto.nombreUsuario}
+            imagenUsuario={producto.img}
+            imagenPublicacion={producto.imagen}
+          />
+        </View>
+      ))}
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  scrollContainer: {
     flexDirection: "row", // Agregado para colocar los elementos en fila
+    marginLeft: 20,
   },
   card: {
     width: 130,
     height: 200,
     borderRadius: 8,
-    top: 7,
+    marginHorizontal: 5,
     backgroundColor: "#ffffff",
-    right: 15,
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: 30, // Ajusta el espaciado entre las categorías si es necesario
-  },
-  cardContain: {
-    left: 13,
-  },
-  image: {
-    left: 1,
-    width: 100,
-    height: 100,
-    marginBottom: 8,
-  },
-  title: {
-    fontWeight: "bold",
-    marginBottom: 0,
-    fontSize: 14,
-  },
-  subtitle: {
-    fontWeight: "light",
-    color: "grey",
-    marginBottom: 15,
-    fontSize: 14,
-  },
-  name: {
-    fontWeight: "light",
-    fontSize: 12,
-    width: 130,
-    color: "grey",
   },
 });
 

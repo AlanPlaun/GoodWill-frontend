@@ -1,4 +1,11 @@
-// Importa tus componentes
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { TokenProvider } from "./context/TokenContext.js";
+import { InputProvider } from './context/CrearPublicacionContext';
+import { useFocusEffect } from "@react-navigation/native";
 import HomePage from "./components/HomePageComps/HomePage";
 import IngresoSesion from "./components/SesionComps/IngresoSesion";
 import SeleccionTipo from "./components/PublicarComps/seleccionTipo";
@@ -7,139 +14,67 @@ import PublicarProducto2 from "./components/PublicarComps/PublicarProducto2";
 import PantallaFinal from "./components/PublicarComps/pantallafinal";
 import Perfil from "./components/PerfilComps/Perfil";
 import Publicacion from "./components/ProductoComps/Publicacion";
-import React from "react";
-import { StyleSheet, TextInput } from 'react-native';
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createDrawerNavigator, DrawerToggleButton } from "@react-navigation/drawer";
-import { InputProvider } from './context/CrearPublicacionContext';
-import { TokenProvider } from "./context/TokenContext.js";
 import Busqueda from "./components/HomePageComps/Busqueda";
 import Contratar from "./components/ContratarComps/Contratar";
 import Confirmar from "./components/ContratarComps/Confirmar";
-import { TokenContext } from './context/TokenContext';
-import { useContext } from "react";
 import TusContrataciones from "./components/TusContratacionesComps/Contrataciones";
+
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-//https://aboutreact.com/how-to-hide-navigation-drawer-sidebar-option/
-function App() {
-  // const { token } = useContext(TokenContext)
-
-  return (
-    <TokenProvider>
-        <NavigationContainer>
-          <Drawer.Navigator>
-            <Drawer.Screen
-              name="HomePage"
-              component={HomeNavigator}
-              options={{
-                headerShown:false
-              }}
-            />
-            <Drawer.Screen
-              name="¿Qué querés publicar hoy?"
-              component={PublicarStack}
-              options={{
-                headerShown: false,
-                title: "Publicar",
-                DrawerToggleButton: true
-              }}
-            />     
-            <Drawer.Screen
-              name="Perfil"
-              component={Perfil}
-              options={{
-                headerStyle: {
-                  backgroundColor: "#CE5656",
-
-                },
-                headerTitleStyle: {
-                  color: "black",
-                },
-
-                title: "Perfil",
-              }}
-            />
-            <Drawer.Screen
-              name="Mis Contrataciones"
-              component={TusContrataciones}
-              options={{
-                headerStyle: {
-                  backgroundColor: "#CE5656",
-
-                },
-                headerTitleStyle: {
-                  color: "black",
-                },
-
-                title: "Mis Contrataciones",
-              }}
-            />
-
-          </Drawer.Navigator>
-        </NavigationContainer>
-    </TokenProvider>
-  );
-}
-
 
 const HomeNavigator = () => {
   return (
     <Stack.Navigator>
-        <Drawer.Screen
-              name="Sesion"
-              component={IngresoSesion}
-              options={{ headerShown: false }}
-        /> 
+      <Stack.Screen
+        name="Sesion"
+        component={IngresoSesion}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Home"
         component={HomePage}
         options={{
-          header: () => <Busqueda />
-        }} />
+          header: () => <Busqueda />,
+        }}
+      />
       <Stack.Screen
         name="Publicacion"
         component={Publicacion}
-         options={{
-          header: () => <Busqueda />
-        }} 
-        />
-        <Stack.Screen
+        options={{
+          header: () => <Busqueda />,
+        }}
+      />
+      <Stack.Screen
         name="Contratar"
         component={Contratar}
         options={{
           headerStyle: {
             backgroundColor: "#CE5656",
-
           },
           headerTitleStyle: {
             color: "black",
           },
-
           title: "Contratar servicio",
         }}
-        />
-        <Stack.Screen
+      />
+      <Stack.Screen
         name="Confirmar"
         component={Confirmar}
         options={{
           headerStyle: {
             backgroundColor: "#CE5656",
-
           },
           headerTitleStyle: {
             color: "black",
           },
-
           title: "Contratar servicio",
         }}
-        />
-    </Stack.Navigator>)
-}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const PublicarStack = () => {
-
   return (
     <InputProvider>
       <Stack.Navigator initialRouteName="Seleccion">
@@ -199,9 +134,63 @@ const PublicarStack = () => {
     </InputProvider>
   );
 };
+
+const App = () => {
+  return (
+    <TokenProvider>
+      <NavigationContainer>
+        <Drawer.Navigator>
+          <Drawer.Screen
+            name="HomePage"
+            component={HomeNavigator}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Drawer.Screen
+            name="¿Qué querés publicar hoy?"
+            component={PublicarStack}
+            options={{
+              headerShown: false,
+              title: "Publicar",
+              DrawerToggleButton: true,
+            }}
+          />
+          <Drawer.Screen
+            name="Perfil"
+            component={Perfil}
+            options={{
+              headerStyle: {
+                backgroundColor: "#CE5656",
+              },
+              headerTitleStyle: {
+                color: "black",
+              },
+              title: "Perfil",
+            }}
+          />
+          <Drawer.Screen
+            name="Mis Contrataciones"
+            component={TusContrataciones}
+            options={{
+              headerStyle: {
+                backgroundColor: "#CE5656",
+              },
+              headerTitleStyle: {
+                color: "black",
+              },
+              title: "Mis Contrataciones",
+            }}
+          />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </TokenProvider>
+  );
+};
+
 const styles = StyleSheet.create({
   srcBar: {
-    bottom: 37
+    bottom: 37,
   },
   container: {
     top: 24,
@@ -220,7 +209,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 35,
     alignSelf: 'center',
-  }
+  },
 });
 
 export default App;

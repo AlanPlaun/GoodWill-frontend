@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import BarCategorias from "./BarCategorias";
+
 const Categorias = (props) => {
-  const [listaCategorias, setlistaCategorias] = useState([]);
+  const [listaCategorias, setListaCategorias] = useState([]);
+
   useEffect(() => {
-    fetch("http://192.168.0.23:5000/categoriasportipo", {
+    fetch("https://1b81-200-73-176-51.ngrok-free.app/categoriasportipo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -13,14 +15,18 @@ const Categorias = (props) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        setlistaCategorias(res);
+        setListaCategorias(res);
       })
       .catch((err) => console.log(err));
   }, []);
-  
+
   return (
     <View style={styles.container}>
-      <ScrollView horizontal={true}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContainer}
+      >
         {listaCategorias.map((categorias) => (
           <BarCategorias
             key={categorias.idCategoria}
@@ -36,21 +42,11 @@ const Categorias = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 118,
-    flexDirection: "row", // Agregado para colocar los elementos en fila
-    marginRight: 10,
+    height: 120,
+    marginTop: 10,
   },
-  categoria: {
-    marginLeft: 30, // Ajusta el espaciado entre las categorías si es necesario
-  },
-  foto: {
-    borderColor: "black",
-    width: 45,
-    height: 46,
-    left: 6,
-  },
-  texto: {
-    fontSize: 12,
+  scrollContainer: {
+    paddingHorizontal: 10,
   },
 });
 

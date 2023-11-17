@@ -1,20 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, Image, Pressable } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  Pressable,
+  ScrollView,
+} from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 import { TokenContext } from "../../context/TokenContext";
 
 const TusContrataciones = () => {
-  const [listaPublicacionesGuardadas, setListaPublicacionesGuardadas] = useState(null);
+  const [listaPublicacionesGuardadas, setListaPublicacionesGuardadas] =
+    useState(null);
   const { token } = React.useContext(TokenContext);
 
   const fetchPublicaciones = async () => {
     try {
-      const response = await fetch("http://192.168.0.23:5000/contrataciones", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          user_token: token,
-        },
-      });
+      const response = await fetch(
+        "https://1b81-200-73-176-51.ngrok-free.app/contrataciones",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            user_token: token,
+          },
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`Request failed with status: ${response.status}`);
@@ -22,51 +34,58 @@ const TusContrataciones = () => {
 
       const data = await response.json();
       setListaPublicacionesGuardadas(data);
-      console.log(data);
     } catch (error) {
       console.error("Error fetching publicaciones:", error.message);
     }
   };
 
-  useEffect(() => {
-    fetchPublicaciones();
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      fetchPublicaciones();
+    }, [token]) // Fetch data when the screen is focused or when the token changes
+  );
 
   const handleFinalizadoPress = async (item) => {
     const currentDate = new Date();
-    const formattedDate = currentDate.toISOString().split('T')[0];
+    const formattedDate = currentDate.toISOString().split("T")[0];
+    const id =  item.idContratacion
+
 
     try {
       // Primero, actualizamos el estado local
       setListaPublicacionesGuardadas((prevList) => {
-        return prevList.filter((publicacion) => publicacion.idPublicacion !== item.idPublicacion);
+        return prevList.filter(
+          (publicacion) => publicacion.idPublicacion !== item.idPublicacion
+        );
       });
-
+      
       // Luego, llamamos a la API para finalizar
-      const response = await fetch("http://192.168.0.23:5000/finalizar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          idContrataciones: item.idContrataciones,
-          fechaFinalizado: formattedDate,
-        }),
-      });
+      const response = await fetch(
+        "https://1b81-200-73-176-51.ngrok-free.app/finalizar",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fechaFinalizado: formattedDate,
+            idContrataciones: id,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`Request failed with status: ${response.status}`);
       }
 
       const data = await response.json();
-      console.log(data);
     } catch (error) {
       console.error("Error handling finalizado:", error.message);
     }
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {listaPublicacionesGuardadas &&
         listaPublicacionesGuardadas.map((item) => {
           if (item.fechaFin === null) {
@@ -79,14 +98,15 @@ const TusContrataciones = () => {
                     { backgroundColor: pressed ? "#924747" : "#CE5656" },
                     styles.boton,
                   ]}
-                  onPress={() => handleFinalizadoPress(item)}>
+                  onPress={() => handleFinalizadoPress(item)}
+                >
                   <Text style={styles.textoBoton}>Finalizado</Text>
                 </Pressable>
               </View>
             );
           }
         })}
-    </View>
+    </ScrollView>
   );
 };
 
@@ -132,4 +152,3 @@ const styles = StyleSheet.create({
 });
 
 export default TusContrataciones;
-  

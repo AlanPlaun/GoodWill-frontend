@@ -1,36 +1,31 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 const BarCategorias = (props) => {
-    return (
-                
-            <View style={styles.categoria}>
-                 <Image style={styles.foto} source={{uri: props.foto}}/>
-                <Text style={styles.texto}>{props.nombre}</Text>
-            </View>
-            
-    )
-}
+  return (
+    <TouchableOpacity style={styles.categoria} onPress={() => console.log('Category pressed')}>
+      <Image style={styles.foto} source={{ uri: props.foto }} />
+      <Text style={styles.texto}>{props.nombre}</Text>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-        height: 118,
-        flexDirection: 'row', // Agregado para colocar los elementos en fila
-        marginRight:10
-    },
-    categoria: {
-        marginLeft: 30, // Ajusta el espaciado entre las categorías si es necesario
-    },
-    foto: {
-        borderColor: "black",
-        width: 45,
-        height: 46,
-        left: 6,
-        borderRadius:40
-    },
-    texto: {
-        fontSize: 12,
-    }
-})
+  categoria: {
+    alignItems: 'center',
+    marginLeft: 15,
+    paddingVertical: 10,
+  },
+  foto: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginBottom: 5,
+  },
+  texto: {
+    fontSize: 12,
+    textAlign: 'center',
+  },
+});
 
-export default BarCategorias
+export default BarCategorias;

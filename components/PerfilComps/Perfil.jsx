@@ -10,7 +10,7 @@ export const Perfil = () => {
   if (token != null) {
     useEffect(() => {
       try {
-        fetch("http://192.168.0.23:5000/usuario", {
+        fetch("https://1b81-200-73-176-51.ngrok-free.app/usuario", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -26,7 +26,6 @@ export const Perfil = () => {
           })
           .then((data) => {
             setUsuario(data);
-            console.log(data.usuario.idUsuario);
           })
           .catch((error) => {
             console.error(error);

@@ -27,7 +27,7 @@ export const PublicarProducto2 = () => {
     };
     try {
       const response = await fetch(
-        "http://192.168.0.23:5000/publicar",
+        "https://1b81-200-73-176-51.ngrok-free.app/publicar",
 
         {
           method: "POST",
@@ -40,7 +40,7 @@ export const PublicarProducto2 = () => {
 
       if (response.ok) {
         const data = await response.json();
-        navigation.navigate("PantallaFinal", {id : data.idPublicacion});
+        navigation.navigate("PantallaFinal", {id : data});
       } else {
         console.log("Request failed:", response.status);
       }
